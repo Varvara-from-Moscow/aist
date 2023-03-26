@@ -1,0 +1,126 @@
+.contactForm {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 50px;
+    margin-top: 120px;
+}
+
+@media screen and (max-width: 1040px) {
+    .contactForm {
+        flex-direction: column;
+    }
+}  
+
+@media screen and (max-width: 720px) {
+    .contactForm {
+        margin-top: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+  }
+
+.contactForm__form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+@media screen and (max-width: 1040px) {
+    .contactForm__form {
+        width: 100%;
+    }
+  }
+
+.contactForm__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 720px) {
+    .contactForm__title {
+        font-size: 14px;
+        line-height: 150%;
+    }
+  }
+
+.contactForm__input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: transparent;
+    margin-bottom: 30px;
+    height: 30px;
+}
+
+.contactForm__input-span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%; 
+}
+
+@media screen and (max-width: 720px) {
+    .contactForm__input-span {
+        font-size: 12px;
+    }
+  }
+
+.contactForm__btn {
+    width: 252px;
+    height: 57px;
+    border: 1px solid #000000;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 7px;
+}
+
+@media screen and (max-width: 720px) {
+    .contactForm__btn {
+        width: 170px;
+        height: 38px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
+
+.contactForm__pic {
+    /*width: 660px;*/
+    height: 297px;
+    margin-left: 40px;
+    /*margin-top: 50px;*/
+    object-fit: cover;
+    margin-right: 0;
+}
+
+@media screen and (max-width: 1040px) {
+    .contactForm__pic {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .contactForm__pic {
+        object-fit: cover;
+        height: 320px;
+    }
+  }  
+
+  @media screen and (max-width: 500px) {
+    .contactForm__pic {
+        height: 280px;
+    }
+  } 
+
+  @media screen and (max-width: 400px) {
+    .contactForm__pic {
+        height: 163px;
+    }
+  }

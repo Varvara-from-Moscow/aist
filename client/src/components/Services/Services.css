@@ -1,0 +1,134 @@
+.services {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+    .services {
+        margin-top: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+  }
+
+.services__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 0;
+    align-self: flex-start;
+}
+.services__wrapper {
+    max-width: 1360px;
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-rows: 413px 413px;*/
+    gap: 39px;
+    padding: 0;
+}
+
+@media screen and (max-width: 1060px) {
+    .services__wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 690px) {
+    .services__wrapper {
+        grid-template-columns: 1fr;
+    }
+  }  
+
+.services__container {
+    /*min-width: 300px;*/
+    max-width: 426px;
+    height: 413px; /**/
+    list-style-type: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+@media screen and (max-width: 720px) {
+    .services__container {
+        height: none;
+        min-height: 343px;
+    }
+  }
+
+.services__container-pic {
+    /*width: 426px;*/
+    width: 100%;
+    min-height: 220px;
+    border: 3px solid #DF5330;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+@media screen and (max-width: 690px) {
+    .services__container-pic {
+        height: 185px;
+    }
+  } 
+
+.services__container-pic-cz {
+    background-image: url(../../images/cz.png);
+}
+
+.services__container-pic-egaist {
+    background-image: url(../../images/egaist.png);
+}
+
+.services__container-pic-1c {
+    background-image: url(../../images/1c.png);
+}
+
+.services__container-pic-ofd {
+    background-image: url(../../images/ofd.png);
+}
+
+.services__container-pic-ezp {
+    background-image: url(../../images/ezp.png);
+}
+
+.services__container-pic-mercuriy {
+    background-image: url(../../images/mercuriy.png);
+}
+
+.services__container-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+.services__container-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.services__container-btn {
+   background-color: #DF5330;
+   border: none;
+   border-radius: 7px;
+   /*width: 426px;*/
+   width: 100%;
+   height: 48px;
+   color: #fff;
+   /*
+   position: absolute;
+   left: 0;
+   bottom: 0;*/
+}
