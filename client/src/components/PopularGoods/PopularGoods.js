@@ -1,44 +1,26 @@
 
 import './PopularGoods.css'
+import { Link } from 'react-router-dom'
+import PopularGood from './PopularGood'
 
-function PopularGoods() {
+function PopularGoods({popular}) {
     return (
         <section className="popular-goods">
             <div className="popular-goods__title-wrapper">
                 <h3 className="popular-goods__title">Популярные товары</h3>
+                <Link className='' to="/equipment">
                 <button className="popular-goods__btn">Все товары</button>
+                </Link>
+                
             </div>
 
             <ul className="popular-goods__wrapper">
-                <li className="popular-goods__container">
-                    <div className="popular-goods__pic"></div>
-                    <p className="popular-goods__container-name">Название товара</p>
-                    <p className="popular-goods__container-price">10 000 р.</p>
-                    <div className="popular-goods__container-btn">
-                        <button className="popular-goods__button">О товаре</button>
-                        <button className="popular-goods__button">В корзину</button>
-                    </div>
-                </li>
-
-                <li className="popular-goods__container">
-                    <div className="popular-goods__pic"></div>
-                    <p className="popular-goods__container-name">Название товара</p>
-                    <p className="popular-goods__container-price">10 000 р.</p>
-                    <div className="popular-goods__container-btn">
-                        <button className="popular-goods__button">О товаре</button>
-                        <button className="popular-goods__button">В корзину</button>
-                    </div>
-                </li>
-
-                <li className="popular-goods__container">
-                    <div className="popular-goods__pic"></div>
-                    <p className="popular-goods__container-name">Название товара</p>
-                    <p className="popular-goods__container-price">10 000 р.</p>
-                    <div className="popular-goods__container-btn">
-                        <button className="popular-goods__button">О товаре</button>
-                        <button className="popular-goods__button">В корзину</button>
-                    </div>
-                </li>
+            {popular.length > 0 && popular.map((item)=> (
+              <PopularGood
+                key={item.id}
+                popular={item}
+              />
+      ))}
             </ul>
 
         </section>

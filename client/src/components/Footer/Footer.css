@@ -4,6 +4,7 @@
     padding-right:  40px;
     padding-top: 30px;
     padding-bottom: 50px;
+    margin-top: 120px;
 }
 
 @media screen and (max-width: 720px) {
@@ -23,6 +24,7 @@
 .footer__wrapper {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer__wrapper-container {
@@ -103,4 +105,13 @@
     display: flex;
     align-items: center;
 
+}
+
+.footer__nav-container-link {
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    text-decoration: none;
 }

@@ -37,11 +37,18 @@ margin-top: 120px;
     width: 170px;
     height: 39px;
     border: none;
-    border-radius: 2px;
     font-weight: 400;
     font-style: normal;
     font-size: 14px;
     line-height: 16px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.popular-goods__btn:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
 }
 
 @media screen and (max-width: 720px) {
@@ -114,10 +121,11 @@ margin-top: 120px;
 .popular-goods__pic {
     width: 100%;
     height: 399px;
-    background-color: #DF5330;
-    background-image: url(../../images/fon.png);
+    /*background-color: #DF5330;
+    background-image: url(../../images/fon.png);*/
     background-position: center;
     background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 1150px) {
@@ -140,10 +148,21 @@ margin-top: 120px;
   
 
 .popular-goods__container-name {
-
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px; 
+    color: #181818;
 }
 .popular-goods__container-price {
-
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px; 
+    color: #181818;
 }
 .popular-goods__container-btn {
     display: flex;
@@ -156,8 +175,19 @@ margin-top: 120px;
     width: 199px;
     height: 42px;
     border: none;
-    border-radius: 2px;
+    border-radius: 7px;
     margin-right: 27px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.popular-goods__button:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
 }
 
 .popular-goods__button:last-of-type {

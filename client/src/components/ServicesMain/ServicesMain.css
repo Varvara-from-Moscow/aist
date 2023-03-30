@@ -1,0 +1,137 @@
+.servicesMain {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+    .servicesMain {
+        margin-top: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+  }
+
+.servicesMain__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 0;
+    align-self: flex-start;
+}
+.servicesMain__wrapper {
+    max-width: 1360px;
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-rows: 413px 413px;*/
+    gap: 39px;
+    padding: 0;
+}
+
+@media screen and (max-width: 1060px) {
+    .servicesMain__wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 690px) {
+    .servicesMain__wrapper {
+        grid-template-columns: 1fr;
+    }
+  }  
+
+.servicesMain__container {
+    /*min-width: 300px;*/
+    max-width: 426px;
+    height: 413px; /**/
+    list-style-type: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+@media screen and (max-width: 720px) {
+    .servicesMain__container {
+        height: none;
+        min-height: 343px;
+    }
+  }
+
+.servicesMain__container-pic {
+    /*width: 426px;*/
+    width: 100%;
+    min-height: 220px;
+    border: 3px solid #DF5330;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+@media screen and (max-width: 690px) {
+    .servicesMain__container-pic {
+        height: 185px;
+    }
+  } 
+
+.servicesMain__container-pic-cz {
+    background-image: url(../../images/cz.png);
+}
+
+.servicesMain__container-pic-egaist {
+    background-image: url(../../images/egaist.png);
+}
+
+.servicesMain__container-pic-1c {
+    background-image: url(../../images/1c.png);
+}
+
+.servicesMain__container-pic-ofd {
+    background-image: url(../../images/ofd.png);
+}
+
+.servicesMain__container-pic-ezp {
+    background-image: url(../../images/ezp.png);
+}
+
+.servicesMain__container-pic-mercuriy {
+    background-image: url(../../images/mercuriy.png);
+}
+
+.servicesMain__container-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+.servicesMain__container-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.servicesMain__container-btn {
+   background-color: #DF5330;
+   border: none;
+   border-radius: 7px;
+   /*width: 426px;*/
+   width: 100%;
+   height: 48px;
+   color: #fff;
+   transition: 0.3s ease;
+   cursor: pointer;
+}
+
+.servicesMain__container-btn:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
+}

@@ -1,8 +1,15 @@
 import MainPic from '../../images/mainpicture.png' //src={MainPic}
 import './Promo.css'
+import { Link } from 'react-router-dom'
 
-function Promo() {
+function Promo({}) {
   return (
+    /*
+    React.useEffect(() => {
+      scrollInterval = setTimeout(() => {
+        setActive((active + 1) % carouselItems.length);
+      }, 5000);*/
+
       <section className="promo">
         
         <div className="promo__title-container">
@@ -15,8 +22,12 @@ function Promo() {
 
         <div className="promo__img">
             <div className="promo__btn-container">
-                <button className="promo__btn">Товары</button>
+            <Link className='promo__btn-link' to="/equipment">
+              <button className="promo__btn">Товары</button>
+            </Link>
+            <Link className='promo__btn-link' to="/services">    
                 <button className="promo__btn">Услуги</button>
+            </Link>
             </div>
         </div>
 

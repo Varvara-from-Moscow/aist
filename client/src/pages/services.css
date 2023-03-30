@@ -1,0 +1,80 @@
+.services__container {
+    display: flex;
+    margin-left: 40px;
+    background-color: #F5F5F5;
+}
+
+.services__title-dop {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-left: 40px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #181818;
+}
+
+.services__title {
+    margin: 0;
+    margin-left: 40px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #181818;
+}
+
+@media screen and (max-width: 1000px) {
+    .services__title {
+        font-size: 18px;
+        line-height: 21px;
+    }
+  }
+
+
+.services__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1100px) {
+    .services__wrapper {
+        margin-top: 60px;
+    }
+  }
+
+.services__menu-btn {
+    background-image: url(../images/Arrow.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.services__menu-btn:hover {
+    width: 17px;
+    height: 17px;
+    opacity: 0.7;
+    transition: 1s ease;
+}
+
+.services__menu {
+    display: flex;
+    height: 16px;
+    margin-right: 40px;
+    align-self: center;
+}
+
+.services__text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    margin-right: 20px;
+}
+        

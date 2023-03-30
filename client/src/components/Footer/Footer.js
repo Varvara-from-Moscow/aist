@@ -1,5 +1,6 @@
-import logo from '../../images/logo.png';
-import './Footer.css';
+import logo from '../../images/logo.png'
+import './Footer.css'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -21,9 +22,15 @@ function Footer() {
                 </ul>
                 <nav className="footer__nav-wrapper">
                     <ul className="footer__nav-container">
-                        <li className="footer__nav-container-li">О компании</li>
-                        <li className="footer__nav-container-li">Торговое оборудование</li>
-                        <li className="footer__nav-container-li">Услуги</li>
+                        <li className="footer__nav-container-li">
+                          <Link className='footer__nav-container-link' to="/">О компании</Link>
+                        </li>
+                        <li className="footer__nav-container-li">
+                          <Link className='footer__nav-container-link' to="/equipment">Торговое оборудование</Link>
+                        </li>
+                        <li className="footer__nav-container-li">
+                          <Link className='footer__nav-container-link' to="/services">Услуги</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

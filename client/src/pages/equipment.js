@@ -1,15 +1,18 @@
 import React from 'react'
 import Slider from '../components/Slider/Slider'
-import EquipmentList from '../components/EquipmentList/EquipmentList'
-import EquipmentNav from '../components/EquipmentNav/EquipmentNav'
+import EquipmentList from '../components/Equipment/EquipmentList/EquipmentList'
+import EquipmentNav from '../components/Equipment/EquipmentNav/EquipmentNav'
 import './equipment.css'
+import * as api from '../Api'
 
-function Equipment({isMenuCliked}) {
+function Equipment({isMenuCliked, onCardClick}) {
 
     const [isMobile, setIsMobile] = React.useState(false)
+    const [equipment, setEquipment] = React.useState({})
+    const [category, setCategory] = React.useState({})
 
     const handleResize = () => {
-      if (window.innerWidth < 1000) {
+      if (window.innerWidth < 1100) {
         setIsMobile(true)
       } else {
         setIsMobile(false)
@@ -20,6 +23,29 @@ function Equipment({isMenuCliked}) {
       window.addEventListener("resize", handleResize)
     })
 
+    React.useEffect(() => {
+      getEquipment()
+    }, [])
+  
+    const getEquipment = () => {
+      api.getEquipment({
+        })
+        .then(res => {
+          setEquipment(res)
+        })
+    }  
+
+    React.useEffect(() => {
+      getEquipmentCategory()
+    }, [])
+  
+    const getEquipmentCategory = () => {
+      api.getEquipmentCategory()
+        .then(res => {
+          setCategory(res)
+          console.log(res)
+        })
+    }
 
     return (
         <>
@@ -33,15 +59,23 @@ function Equipment({isMenuCliked}) {
                 </div>
             </div>
             <Slider></Slider>
-            <EquipmentList></EquipmentList>
+            <EquipmentList
+            data={equipment}
+            onCardClick={onCardClick}
+            />
             </>
             :
             <>
             <Slider></Slider>
             <h3 className='equipment__title-dop'>Оборудование</h3>
             <div className='equipment__container'>
-                <EquipmentNav></EquipmentNav>
-                <EquipmentList></EquipmentList> 
+                <EquipmentNav
+                data={category}
+                />
+                <EquipmentList
+                data={equipment}
+                onCardClick={onCardClick}
+                />
             </div>
             </>
             }
@@ -51,5 +85,3 @@ function Equipment({isMenuCliked}) {
   }
   
   export default Equipment;
-  //<EquipmentList></EquipmentList> 
-  //

@@ -77,6 +77,13 @@
     font-size: 14px;
     line-height: 16px;
     border-radius: 7px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contactForm__btn:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
 }
 
 @media screen and (max-width: 720px) {
