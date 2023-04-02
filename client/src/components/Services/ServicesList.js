@@ -1,7 +1,6 @@
 import './ServicesList.css'
 import ServisesCard from './ServisesCard'
 
-
 function ServicesList({onCardClick, data}) {
 
     return (

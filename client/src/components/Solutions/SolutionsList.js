@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Solutions from './Solutions'
 
-function SolutionsList({complects}) {
+function SolutionsList({complects, handleSaveGood}) {
 
   return (
       <section className="solutions">
@@ -12,6 +12,7 @@ function SolutionsList({complects}) {
               <Solutions
                 key={item.id}
                 data={item}
+                onSolution={handleSaveGood}
               />
         ))}
         </ul>

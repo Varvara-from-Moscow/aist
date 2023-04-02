@@ -1,16 +1,19 @@
 import './EquipmentList.css'
-import Card from '../Card/Card'
+import Good from '../Good/Good'
 
 
-function EquipmentList({onCardClick, data}) {
+function EquipmentList({onCardClick, data, handleSaveGood}) {
+
+
 
     return (
     <ul className="equipmentList">
-      {data.length > 0 && data.map((card)=> (
-        <Card
-          key={card.id}
-          card={card}
+      {data.length > 0 && data.map((good)=> (
+        <Good
+          key={good.id}
+          good={good}
           onCardClick={onCardClick}
+          onSave={handleSaveGood}
           />
       ))}
     </ul>

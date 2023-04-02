@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import './Navigation.css'
 
 
-function EquipmentNavigation({onClose, data}) {
+function EquipmentNavigation({data, handleChoseCategory, equipment}) {
+
+  function getFiterProduct() {
+    handleChoseCategory(equipment, data.slug);
+  }
+
   return (
-    <li className='equipment-navigation__list' onClick={onClose}>
-      <Link className='navigation__listlink' to='/`${data.slag}`'>{data.name}</Link>
+    <li className='equipment-navigation__list'>
+      <button className='equipment-navigation__btn' onClick={getFiterProduct}>{data.name}</button>
     </li>
   )
 }

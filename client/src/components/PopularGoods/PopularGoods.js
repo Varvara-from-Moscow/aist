@@ -3,7 +3,9 @@ import './PopularGoods.css'
 import { Link } from 'react-router-dom'
 import PopularGood from './PopularGood'
 
-function PopularGoods({popular}) {
+function PopularGoods({popular, handleSaveGood}) {
+
+    
     return (
         <section className="popular-goods">
             <div className="popular-goods__title-wrapper">
@@ -19,6 +21,7 @@ function PopularGoods({popular}) {
               <PopularGood
                 key={item.id}
                 popular={item}
+                onGood={handleSaveGood}
               />
       ))}
             </ul>

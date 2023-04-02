@@ -7,19 +7,21 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({popular, complects}) {
+function Main({popular, complects, handleSaveGood}) {
     return (
         <div>
             <Promo/>
             <Slider></Slider>
             <SolutionsList
             complects={complects}
+            handleSaveGood={handleSaveGood}
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>
             <ContactForm></ContactForm>
             <PopularGoods
             popular={popular}
+            handleSaveGood={handleSaveGood}
             />
 
             <Certificates></Certificates>

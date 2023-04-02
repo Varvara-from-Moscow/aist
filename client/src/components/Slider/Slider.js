@@ -1,68 +1,61 @@
 import './Slider.css'
-import Offer1 from '../Offers/Offer1' 
-import Offer2 from '../Offers/Offer2'
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
+import dataSlider from './DataSlider';
 import React from "react"
 
 function Slider() {
-/*
-  const obj = [
-    {
-      offer:"Гарантия лучшей цены",
-      question:"Нашли дешевле? Мы снизим цену!",
-      indication:"Оставь заявку на снижение цены в карточке товара или отправь заявку на консультацию"
-    },
-    {
-      offer:"Не нашли нужный товар?",
-      question:"Позвоните – мы привезем под заказ.",
-      indication:"Или оставьте заявку на сайте — мы свяжемся с Вами"
-    },
-  ]
+  const [slideIndex, setSlideIndex] = React.useState(1)
 
-  const slide = React.useRef(null)
-  const [prev, setPrev] = React.useState(false)
-  const [next, setNext] = React.useState(false)
-
-  setTimeout(() => {
-    ;
-  }, 5000);
-
-  let position = 0
-
-  function getNext() {
-    if (position === 0) {
-        setPrev(true)
-    } else {
-      position += 1000
-      setPrev(false)
-      slide.current.childNodes.forEach((item) => {
-        item.style = `transform: translateX(${position})px`
-      })  
+  const getNext = () => {
+    if(slideIndex !== dataSlider.length) {
+      setSlideIndex(slideIndex + 1)
+    } else if (slideIndex === dataSlider.length) {
+      setSlideIndex(1)
     }
   }
 
-  function getPrev() {
-    slide.current.childNodes.forEach((item) => {
-      item.style = "transform: translateX(-1000px)"
-  })
-  }*/
+  const getPrev = () => {
+    if(slideIndex !== 1){
+      setSlideIndex(slideIndex - 1)
+    } else if (slideIndex === 1){
+      setSlideIndex(dataSlider.length)
+    }
+  }
 
+  setTimeout(() => {
+    getNext();
+  }, "5000");
+/*
+  const moveDot = index => {
+    setSlideIndex(index)
+  }*/
 
   return (
       <div className="slider__container">
-        <div className="slider">
-          <div className="slider__item">
-          <Offer1></Offer1>
+        {dataSlider.map((item, index) => {
+          return(
 
-          </div>
-        </div>
+            <div key={item.id} className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
+              <div className="offers__container">
+                <div className="offers__text-wrapper">
+                  <p className="offers__title">{item.title}</p>
+                <div className="offers__text-container">
+                  <p className="offers__text">{item.subTitle}</p>
+                  <p className="offers__text">{item.text}</p>
+                </div>
+                </div>  
+                <img className="offers__pic" src={item.picture}></img>
+              </div>
+              
+              <div className='slide-container-btn'>
+                <button onClick={getNext} className="btn-slide btn-slide_active"></button>
+                <button onClick={getPrev} className="btn-slide"></button>
+              </div>
 
+            </div>
+          )
+        })}
       </div>
   );
 }
 
 export default Slider;
-/*   ref={slide}
-<button onClick={getNext}>next</button>
-<button onClick={getPrev}>prev</button>*/
-//

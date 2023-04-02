@@ -1,6 +1,7 @@
 import MainPic from '../../images/mainpicture.png' //src={MainPic}
 import './Promo.css'
 import { Link } from 'react-router-dom'
+import Carousel from '../Сarousel/Сarousel'
 
 function Promo({}) {
   return (
@@ -20,7 +21,16 @@ function Promo({}) {
         </div>
         <h1 className="promo__sub-title">Торговое оборудование и автоматизация в Ставропольском крае</h1>
 
-        <div className="promo__img">
+        <Carousel></Carousel>
+
+      </section>
+  );
+}
+
+export default Promo;
+
+/*
+<div className="promo__img">
             <div className="promo__btn-container">
             <Link className='promo__btn-link' to="/equipment">
               <button className="promo__btn">Товары</button>
@@ -30,9 +40,4 @@ function Promo({}) {
             </Link>
             </div>
         </div>
-
-      </section>
-  );
-}
-
-export default Promo;
+ */

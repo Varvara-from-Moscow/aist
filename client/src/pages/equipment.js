@@ -2,15 +2,17 @@ import React from 'react'
 import Slider from '../components/Slider/Slider'
 import EquipmentList from '../components/Equipment/EquipmentList/EquipmentList'
 import EquipmentNav from '../components/Equipment/EquipmentNav/EquipmentNav'
+import EquipmentNavigationList from '../components/Navigation/EquipmentNavigationList'
 import './equipment.css'
 import * as api from '../Api'
 
-function Equipment({isMenuCliked, onCardClick}) {
+function Equipment({isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose}) {
 
     const [isMobile, setIsMobile] = React.useState(false)
     const [equipment, setEquipment] = React.useState({})
+    const [equipmentAfterFilter, setEquipmentAfterFilter] = React.useState({})
     const [category, setCategory] = React.useState({})
-
+  
     const handleResize = () => {
       if (window.innerWidth < 1100) {
         setIsMobile(true)
@@ -32,6 +34,7 @@ function Equipment({isMenuCliked, onCardClick}) {
         })
         .then(res => {
           setEquipment(res)
+          setEquipmentAfterFilter(res)
         })
     }  
 
@@ -43,8 +46,20 @@ function Equipment({isMenuCliked, onCardClick}) {
       api.getEquipmentCategory()
         .then(res => {
           setCategory(res)
-          console.log(res)
         })
+    }
+
+    function handleChoseCategory(equipment, subCategory) {
+      return equipment.filter((item) => item.subcategory === subCategory)
+    }
+
+    function getTest(equipment, subCategory) {
+      const result = handleChoseCategory(equipment, subCategory)
+      setEquipmentAfterFilter(result)
+    }
+
+    function getAllEquipment() {
+      setEquipmentAfterFilter(equipment)
     }
 
     return (
@@ -60,8 +75,17 @@ function Equipment({isMenuCliked, onCardClick}) {
             </div>
             <Slider></Slider>
             <EquipmentList
-            data={equipment}
+            data={equipmentAfterFilter}
             onCardClick={onCardClick}
+            handleSaveGood={handleSaveGood}
+            />
+            <EquipmentNavigationList
+              isOpen={isOpen}
+              onClose={onClose}
+              handleChoseCategory={getTest}
+              data={category}
+              equipment={equipment}
+              getAllEquipment={getAllEquipment}
             />
             </>
             :
@@ -70,11 +94,15 @@ function Equipment({isMenuCliked, onCardClick}) {
             <h3 className='equipment__title-dop'>Оборудование</h3>
             <div className='equipment__container'>
                 <EquipmentNav
+                handleChoseCategory={getTest}
                 data={category}
+                equipment={equipment}
+                getAllEquipment={getAllEquipment}
                 />
                 <EquipmentList
-                data={equipment}
+                data={equipmentAfterFilter}
                 onCardClick={onCardClick}
+                handleSaveGood={handleSaveGood}
                 />
             </div>
             </>

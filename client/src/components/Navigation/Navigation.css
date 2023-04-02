@@ -189,3 +189,14 @@
     opacity: 1;
     transition: 0.3s ease;
 }
+
+.equipment-navigation__btn {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.equipment-navigation__list:hover {
+  opacity: 0.5;
+}

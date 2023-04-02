@@ -1,6 +1,7 @@
 
 //${BASE_URL}
-//export const BASE_URL = 'http://localhost:8000';
+//export const BASE_URL = 'http://213.184.131.218:8087/api';
+export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -14,9 +15,11 @@ function checkResponse(res) {
 //`http://localhost:8000/api/products/?category=${category}&available=${available}`
 //?category=services
 //complects
+//213.184.131.218
+//`${BASE_URL}/signup`
 
 export const getAllProducts = () => {
-  return fetch(`http://localhost:8000/api/products/`, 
+  return fetch(`${BASE_URL}/products/`, 
   {
   method: 'GET',
   headers: {
@@ -34,7 +37,7 @@ export const getComplects = (
     available = true,
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/products/?category=${category}&available=${available}`, 
+  return fetch(`${BASE_URL}/products/?category=${category}&available=${available}`, 
   {
   method: 'GET',
   headers: {
@@ -52,7 +55,7 @@ export const getServices = (
     available = true,
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/products/?category=${category}&available=${available}`, 
+  return fetch(`${BASE_URL}/products/?category=${category}&available=${available}`, 
   {
   method: 'GET',
   headers: {
@@ -70,7 +73,7 @@ export const getEquipment = (
     available = true,
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/products/?category=${category}&available=${available}`, 
+  return fetch(`${BASE_URL}/products/?category=${category}&available=${available}`, 
   {
   method: 'GET',
   headers: {
@@ -88,7 +91,7 @@ export const getPopular = (
     available = true,
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/products/?is_popular=${is_popular}&available=${available}`, 
+  return fetch(`${BASE_URL}/products/?is_popular=${is_popular}&available=${available}`, 
   {
   method: 'GET',
   headers: {
@@ -105,7 +108,7 @@ export const getProducts = (
     available = true,
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/products/?available=${available}`, 
+  return fetch(`${BASE_URL}/products/?available=${available}`, 
   {
   method: 'GET',
   headers: {
@@ -122,7 +125,7 @@ export const getEquipmentCategory = (
     category = 'equipment',
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/subcategories/?category=${category}`, 
+  return fetch(`${BASE_URL}/subcategories/?category=${category}`, 
   {
   method: 'GET',
   headers: {
@@ -139,7 +142,7 @@ export const getServicesCategory = (
     category = 'services',
   } = {}
 ) => {
-  return fetch(`http://localhost:8000/api/subcategories/?category=${category}`, 
+  return fetch(`${BASE_URL}/subcategories/?category=${category}`, 
   {
   method: 'GET',
   headers: {

@@ -1,7 +1,11 @@
 
 import './Solutions.css';
 
-function Solutions({data}) {
+function Solutions({data, onSolution}) {
+
+    function handleClick() {
+        onSolution(data)
+    }
   return (
 
           <li className="solutions__offer">
@@ -19,7 +23,7 @@ function Solutions({data}) {
             </ul>
             <div className="solutions__offer-price-and-btn-container">
                 <p className="solutions__offer-price">Цена: {data.price}</p>
-                <button className="solutions__offer-btn">Выбрать</button>
+                <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
             </div>
           </li>
   );

@@ -7,7 +7,7 @@
     margin: 0;
     margin-left: 40px;
     margin-right: 40px;
-    border: 2px solid palegreen;
+    /*border: 2px solid palegreen;*/
     box-sizing: border-box;
 }
 
@@ -32,7 +32,6 @@
 
 .servicesList__item{
     list-style-type: none;
-    border: 2px solid palegreen;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;

@@ -1,8 +1,15 @@
 import './EquipmentNav.css'
 
-function EquipmentNavItem({data}) {
+function EquipmentNavItem({data, handleChoseCategory, equipment}) {
+
+function getFiterProduct() {
+  handleChoseCategory(equipment, data.slug)
+}
+
     return (
-      <li className="equipmentNav__item">{data.name}</li>
+      <li className="equipmentNav__item">
+        <button className="equipmentNav__btn" onClick={getFiterProduct}>{data.name}</button>
+      </li>    
     );
   }
   

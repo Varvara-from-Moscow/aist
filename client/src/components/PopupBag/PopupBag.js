@@ -4,9 +4,47 @@ import './PopupBag.css'
 import Good from './Good/Good'
 
 
-function PopupBag({isOpen, onClose}) {
+function PopupBag({isOpen, onClose, savedGoods, handleDelete}) {
+  
 
-  const data = [
+  return (
+    <aside className={`bag-popup ${isOpen && 'bag-popup_opened'}`}>
+    <div className="bag-popup__container">
+      <button className="bag-popup__closebtn" type="button" onClick={onClose}></button>
+      <h3 className="bag-popup__title">Ваш заказ</h3>
+      <ul className="bag-popup__goods-list">
+        {savedGoods.length > 0 && savedGoods.map((good)=> (
+          <Good
+            key={good.id}
+            good={good}
+            handleDelete={handleDelete}
+            /*onCardClick={onCardClick}*/
+          />
+        ))}  
+      </ul>
+      <p>Сумма:{}</p>
+      <form>
+        <span className="bag-popup__input-span">Имя</span>
+        <input className="bag-popup__input"></input>
+        <span className="bag-popup__input-span">Телефон</span>
+        <input className="bag-popup__input"></input>
+        <span className="bag-popup__input-span">Email</span>
+        <input className="bag-popup__input"></input>
+        <span className="bag-popup__input-span">Промокод (При наличии)</span>
+        <input className="bag-popup__input"></input>
+        <span>Сумма: {} р.</span>
+        <span>Итоговая сумма: {} р.</span>
+      <button type="submit" className="bag-popup__button">Заказать</button>
+      </form>
+    </div>
+  </aside>
+  )
+}
+
+export default PopupBag;
+
+/*
+const data = [
     {
         "id": 4,
         "name": "Касса",
@@ -155,37 +193,5 @@ function PopupBag({isOpen, onClose}) {
 ] 
 
 
-  return (
-    <aside className={`bag-popup ${isOpen && 'bag-popup_opened'}`}>
-    <div className="bag-popup__container">
-      <button className="bag-popup__closebtn" type="button" onClick={onClose}></button>
-      <h3 className="bag-popup__title">Ваш заказ</h3>
-      <ul className="bag-popup__goods-list">
-        {data.length > 0 && data.map((good)=> (
-          <Good
-            key={good.id}
-            good={good}
-            /*onCardClick={onCardClick}*/
-          />
-        ))}  
-      </ul>
-      <p>Сумма:{}</p>
-      <form>
-        <span className="bag-popup__input-span">Имя</span>
-        <input className="bag-popup__input"></input>
-        <span className="bag-popup__input-span">Телефон</span>
-        <input className="bag-popup__input"></input>
-        <span className="bag-popup__input-span">Email</span>
-        <input className="bag-popup__input"></input>
-        <span className="bag-popup__input-span">Промокод (При наличии)</span>
-        <input className="bag-popup__input"></input>
-        <span>Сумма: {} р.</span>
-        <span>Итоговая сумма: {} р.</span>
-      <button type="submit" className="bag-popup__button">Заказать</button>
-      </form>
-    </div>
-  </aside>
-  )
-}
 
-export default PopupBag;
+*/

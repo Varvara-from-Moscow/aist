@@ -1,37 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import './Navigation.css'
 import EquipmentNavigationItem from './EquipmentNavigationItem'
-import * as api from '../../Api'
 
 
-function EquipmentNavigationList({isOpen, onClose}) {
+function EquipmentNavigationList({isOpen, onClose, data, handleChoseCategory, equipment, getAllEquipment}) {
 
-  const [category, setCategory] = React.useState({})
-
-  React.useEffect(() => {
-    getEquipmentCategory()
-  }, [])
-
-  const getEquipmentCategory = () => {
-    api.getEquipmentCategory()
-      .then(res => {
-        setCategory(res)
-      })
-  }
+  function handleGetAllEquipment() {
+    getAllEquipment()
+}
 
   return (
     <aside className={`navigation ${isOpen && 'navigation__opened'}`}>
       <div className='equipment-navigation__container'>
         <button className='navigation__closebtn' onClick={onClose}></button>
         <ul className='equipment-navigation_listcontainer'>
-          <li className='equipment-navigation__list' onClick={onClose}>
-            <Link className='navigation__listlink' to='/`${data.slag}`'>Все товары</Link>
+          <li className='equipment-navigation__list'>
+            <button className='equipment-navigation__btn' onClick={handleGetAllEquipment}>Все товары</button>
           </li>
-          {category.length > 0 && category.map((card)=> (
+          {data.length > 0 && data.map((card)=> (
             <EquipmentNavigationItem
               key={card.id}
               data={card}
+              handleChoseCategory={handleChoseCategory}
+              equipment={equipment}
             />
       ))}
 

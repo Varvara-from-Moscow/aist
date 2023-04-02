@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import React from 'react'
 import * as api from './Api'
 import './App.css'
@@ -7,18 +7,29 @@ import Footer from './components/Footer/Footer'
 import Main from './pages/main'
 import Equipment from './pages/equipment'
 import MainNavigation from './components/Navigation/MainNavigation'
-import EquipmentNavigationList from './components/Navigation/EquipmentNavigationList'
 import PopupBag from './components/PopupBag/PopupBag'
 import Services from './pages/services'
+import IndividualPageOfEquipment from './pages/individualPageOfEquipment'
 
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isBagOpen, setIsBagOpen] = React.useState(false)
-  const [selectedCard, setSelectedCard] = React.useState({})
   const [popular, setPopular] = React.useState({})
   const [complects, setComplects] = React.useState({})
+  const [allProducts, setAllProducts] = React.useState({})
+  const [selectedCard, setSelectedCard] = React.useState({})
+  const [savedGoods, setSavedGoods] = React.useState([])
 
+  const handleSaveGood = (good) => {
+    setSavedGoods([good, ...savedGoods])
+  }
+
+  const handleDeleteGood = (good) => {
+    setSavedGoods((movies) =>
+      movies.filter((g) => g.id !== good.id)
+    )
+  }
 
   React.useEffect(() => {
     getPopular()
@@ -39,7 +50,7 @@ function App() {
   const getAllProducts = () => {
     api.getAllProducts()
       .then(res => {
-        console.log(res)
+        setAllProducts(res)
       })
   }
 
@@ -92,6 +103,7 @@ function App() {
                 <Main
                 popular={popular}
                 complects={complects}
+                handleSaveGood={handleSaveGood}
                 />
               }
           />
@@ -102,6 +114,9 @@ function App() {
                 <Equipment
                 onCardClick={handleCardClick}
                 isMenuCliked={handleMenuClick}
+                handleSaveGood={handleSaveGood}
+                isOpen={isMenuOpen}
+                onClose={closeAllPopups} 
                 />
               }
           />
@@ -113,6 +128,27 @@ function App() {
                 />
               }
           />
+
+          <Route 
+              path='/equipment/:slug' 
+              element={
+                <IndividualPageOfEquipment
+                handleSaveGood={handleSaveGood}
+                allProducts={allProducts}
+                />
+              }
+          />
+
+          <Route 
+              path='/services/:subcategory'
+              element={
+                <Equipment
+                onCardClick={handleCardClick}
+                isMenuCliked={handleMenuClick}
+                handleSaveGood={handleSaveGood}
+                />
+              }
+          />
         
       </Routes>
       <MainNavigation
@@ -120,13 +156,12 @@ function App() {
           onClose={closeAllPopups} 
           isbagCliked={handleBagClick}
       />
-      <EquipmentNavigationList
-          isOpen={isMenuOpen}
-          onClose={closeAllPopups} 
-      />
+
       <PopupBag
           onClose={closeAllPopups}
           isOpen={isBagOpen}
+          savedGoods={savedGoods}
+          handleDelete={handleDeleteGood}
       />
       
       <Footer></Footer>
@@ -138,4 +173,9 @@ export default App;
 /*
                 onCardClick={handleCardClick}
                 isMenuCliked={handleMenuClick}
+
+                      <EquipmentNavigationList
+          isOpen={isMenuOpen}
+          onClose={closeAllPopups} 
+      />
 */

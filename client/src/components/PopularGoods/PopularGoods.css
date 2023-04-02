@@ -44,6 +44,7 @@ margin-top: 120px;
     transition: 0.3s ease;
     cursor: pointer;
     border-radius: 7px;
+    padding: 0;
 }
 
 .popular-goods__btn:hover {
@@ -80,6 +81,8 @@ margin-top: 120px;
     /*height: 504px;*/
     list-style-type: none;
 }
+
+
 /*
 .popular-goods__wrapper {
     max-width: 1360px;
@@ -166,13 +169,14 @@ margin-top: 120px;
 }
 .popular-goods__container-btn {
     display: flex;
+    justify-content: space-between;
     width: 100%;
    
 }
 .popular-goods__button {
     background-color: #DF5330;
     color: #fff;
-    width: 199px;
+    /*width: 199px;*/width: calc(50% - 14px);
     height: 42px;
     border: none;
     border-radius: 7px;
@@ -202,5 +206,64 @@ margin-top: 120px;
         font-weight: 400;
         font-size: 12px;
         line-height: 14px;
+        width: calc(50% - 5px);
+        margin-right: 10px;
     }
   }
+
+  .popular-goods__link {
+    background-color: #DF5330;
+    color: #fff;
+    /*width: 199px;*/width: calc(50% - 14px);
+    height: 42px;
+    border: none;
+    border-radius: 7px;
+    margin-right: 27px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.popular-goods__link:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
+}
+
+@media screen and (max-width: 720px) {
+    .popular-goods__link {
+        width: 85px;
+        height: 23px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        margin-right: 10px;
+        width: calc(50% - 5px);
+    }
+  }
+
+.popular-goods__link-text {
+    margin: 0;
+    color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+    .popular-goods__link-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }  
