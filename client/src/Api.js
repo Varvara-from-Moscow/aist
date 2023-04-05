@@ -1,6 +1,6 @@
 
 //${BASE_URL}
-export const BASE_URL = 'http://213.184.131.218:8087/api';
+export const BASE_URL = '/api';
 //export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
