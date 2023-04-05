@@ -39,6 +39,41 @@ function App() {
     )
   }
 
+  function increment(id) {
+    setSavedGoods((good) => {
+      return good.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            quanity: ++product.quanity,
+            total_price: product.quanity * product.price,
+            //price: product.quanity * product.price,
+          }
+        }
+        return product
+      })
+    })
+  }
+
+  function decrement(id) {
+    setSavedGoods((good) => {
+      return good.map((product) => {
+        if (product.id === id) {
+
+         const newQuanity = product.quanity - 1 > 1 ? product.quanity - 1 : 1
+
+          return {
+            ...product,
+            quanity: newQuanity,
+            total_price: newQuanity * product.price,
+            //price: newQuanity * product.price,
+          }
+        }
+        return product
+      })
+    })
+  }
+
   React.useEffect(() => {
     getPopular()
   }, [])
@@ -189,6 +224,8 @@ function App() {
           isOpen={isBagOpen}
           savedGoods={savedGoods}
           handleDelete={handleDeleteGood}
+          increment={increment}
+          decrement={decrement}
       />
       
       <Footer></Footer>

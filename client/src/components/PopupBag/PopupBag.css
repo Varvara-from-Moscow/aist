@@ -47,10 +47,30 @@
     /*position: relative;
     margin-top: 174px;*/
   }
+
+  @media screen and (max-width: 1000px) {
+    .bag-popup__container {
+        top: 100px;
+    }
+  }
   
   @media screen and (max-width: 720px) {
     .bag-popup__container {
-      width: 300px;
+        width: 390px;
+        top: 50px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .bag-popup__container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+  }
+
+  @media screen and (max-width: 485px) {
+    .bag-popup__container {
+        width: 300px;
     }
   }
 
@@ -75,8 +95,16 @@
   transition: 0.3s ease;
 }
 
+@media screen and (max-width: 400px) {
+    .bag-popup__closebtn {
+        top: -30px;
+        right: 0;
+    }
+  }
+
 .bag-popup__title {
     margin: 0;
+    margin-bottom: 30px;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -86,7 +114,19 @@
 .bag-popup__input {
     width: 100%;
     height: 55px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+    border: 1px solid #181818;
 }
+
+@media screen and (max-width: 720px) {
+    .bag-popup__input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+  }
+
 
 .bag-popup__button {
     width: 100%;
@@ -95,6 +135,7 @@
     border: none;
     height: 55px;
     border-radius: 7px;
+    margin-top: 30px;
 }
 
 .bag-popup__goods-list {
@@ -109,6 +150,16 @@
     width: 100%;
     margin-bottom: 34px;
 }
+
+.bag-popup__good:last-of-type{
+    margin-bottom: 0;
+}
+/*
+@media screen and (max-width: 720px) {
+    .bag-popup__good {
+        flex-direction: column;
+    }
+  }*/
 
 .bag-popup__good-desctiption-container {
     display: flex;
@@ -128,6 +179,13 @@
     text-align: start;
 }
 
+@media screen and (max-width: 720px) {
+    .bag-popup__good-name {
+        font-size: 14px;
+        line-height: 17px;
+    }
+  }
+
 .bag-popup__good-description {
     font-style: normal;
     font-weight: 400;
@@ -143,6 +201,12 @@
     margin-right: 35px;
 }
 
+@media screen and (max-width: 720px) {
+    .bag-popup__good-price {
+        margin-right: 25px;
+    }
+  }
+
 .bag-popup__good-delete-btn {
     background-image: url(../../images/deletebtn.png);
     background-position: center;
@@ -155,9 +219,10 @@
 }
 
 .bag-popup__good-img {
-    width: 100%;
-    height: 100%;
-    background-color: grey;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: fill;
+    /*background-color: grey;*/
 }
 
 .bag-popup__good-img-container {
@@ -166,12 +231,29 @@
     margin-right: 30px;
 }
 
+@media screen and (max-width: 720px) {
+    .bag-popup__good-img-container {
+        width: 65px;
+        height: 65px;
+        margin-right: 15px;
+    }
+  }
+
 .bag-popup__good-price-container {
     display: flex;
     justify-content: space-between;
     width: 186px;
     align-items: center;
 }
+
+@media screen and (max-width: 720px) {
+    .bag-popup__good-price-container {
+        width: 150px;
+        /*position: absolute;
+        bottom: 0;
+        right: 0;*/
+    }
+  }
 
 .bag-popup__item-increament-container {
     display: flex;
@@ -180,6 +262,12 @@
     height: 17px;
     margin-right: 35px;
 }
+
+@media screen and (max-width: 720px) {
+    .bag-popup__item-increament-container {
+        margin-right: 25px;
+    }
+  }
 
 .bag-popup__item-increament {
     padding: 0;
@@ -193,4 +281,60 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
+}
+
+.bag-popup__sum {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    align-self: flex-end;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.bag-popup__input-span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 720px) {
+    .bag-popup__input-span {
+        font-size: 18px;
+        line-height: 22px;
+    }
+  }
+
+.bag-popup__input-sum {
+    align-self: flex-end;
+    margin: 0;
+    margin-bottom: 15px;
+    margin-top: 170px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 720px) {
+    .bag-popup__input-sum {
+        margin-top: 57px;
+    }
+  }
+
+.bag-popup__input-sum-after-promocod {
+    align-self: flex-end;
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.bag-popup__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.bag-popup__item-count {
+    width: 10px;
+    border: none;
 }

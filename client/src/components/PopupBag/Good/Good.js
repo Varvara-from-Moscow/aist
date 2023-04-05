@@ -3,34 +3,48 @@ import React from 'react'
 import '../PopupBag.css'
 
 
-function Good({good, handleDelete}) {
+function Good({good, handleDelete, decrement, increment}) {
 
     function handleDeleteGood() {
         handleDelete(good)
     }
 
+    function handleIncrement() {
+      increment(good.id)
+    }
+
+    function handleDecrement() {
+      decrement(good.id)
+    }
+
   return (
 
         <li className="bag-popup__good">
+
           <div className='bag-popup__good-img-container'>
             <img className="bag-popup__good-img" src={good.image}></img>
           </div>  
           <div className="bag-popup__good-desctiption-container">
             <p className="bag-popup__good-name">{good.name}</p>
-            <p className="bag-popup__good-description">{}</p>
           </div>
 
           <div className="bag-popup__good-price-container">
+
             <div className="bag-popup__item-increament-container">
-                <button className="bag-popup__item-increament">+</button>
-                <div className="bag-popup__item-count">0</div>
-                <button className="bag-popup__item-decrement">-</button>
+                <button className="bag-popup__item-increament" onClick={handleIncrement}>+</button>
+                <input className="bag-popup__item-count" type="number" min='1' value={good.quanity}></input>
+                <button className="bag-popup__item-decrement" onClick={handleDecrement}>-</button>
             </div>
-            <div className="bag-popup__good-price">{good.price}</div>
+
+
+            <div className="bag-popup__good-price">{good.total_price}</div>
             <button className="bag-popup__good-delete-btn" onClick={handleDeleteGood}></button>
           </div>  
+
         </li>
   )
 }
 
 export default Good;
+//good.priceTotal
+////<p className="bag-popup__good-description">{}</p>
