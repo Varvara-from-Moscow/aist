@@ -2,10 +2,10 @@ import React from 'react'
 import './Navigation.css'
 
 
-function EquipmentNavigationItem({data, handleChoseCategory, equipment}) {
+function ServisesNavigationItem({data, handleChoseCategory, services}) {
 
   function getFiterProduct() {
-    handleChoseCategory(equipment, data.slug);
+    handleChoseCategory(services, data.slug);
   }
 
   return (
@@ -15,4 +15,4 @@ function EquipmentNavigationItem({data, handleChoseCategory, equipment}) {
   )
 }
 
-export default EquipmentNavigationItem;
+export default ServisesNavigationItem;

@@ -21,13 +21,21 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState({})
   const [savedGoods, setSavedGoods] = React.useState([])
 
-  const handleSaveGood = (good) => {
+ /* const handleSaveGood = (good) => {
     setSavedGoods([good, ...savedGoods])
+  }*/
+
+  const handleSaveGood = (good) => {
+    if(savedGoods.some(item => item.id === good.id)) {
+       console.log("Товар уже был добавлен в корзину")
+    }else{
+      setSavedGoods([good, ...savedGoods])
+    }
   }
 
   const handleDeleteGood = (good) => {
-    setSavedGoods((movies) =>
-      movies.filter((g) => g.id !== good.id)
+    setSavedGoods((goods) =>
+      goods.filter((g) => g.id !== good.id)
     )
   }
 
@@ -62,6 +70,19 @@ function App() {
     api.getComplects()
       .then(res => {
         setComplects(res)
+      })
+  }
+
+  const postBackCall = (userData) => {
+    api.postBackCall({
+      name:userData.name,
+      phone_number:userData.tel,
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 
@@ -104,6 +125,7 @@ function App() {
                 popular={popular}
                 complects={complects}
                 handleSaveGood={handleSaveGood}
+                postBackCall={postBackCall}
                 />
               }
           />
@@ -125,6 +147,10 @@ function App() {
               path="/services"
               element={
                 <Services
+                handleSaveGood={handleSaveGood}
+                isOpen={isMenuOpen}
+                isMenuCliked={handleMenuClick}
+                onClose={closeAllPopups} 
                 />
               }
           />
@@ -135,17 +161,18 @@ function App() {
                 <IndividualPageOfEquipment
                 handleSaveGood={handleSaveGood}
                 allProducts={allProducts}
+                postBackCall={postBackCall}
                 />
               }
           />
 
           <Route 
-              path='/services/:subcategory'
+              path='/services/:slug'
               element={
-                <Equipment
-                onCardClick={handleCardClick}
-                isMenuCliked={handleMenuClick}
+                <IndividualPageOfEquipment
                 handleSaveGood={handleSaveGood}
+                allProducts={allProducts}
+                postBackCall={postBackCall}
                 />
               }
           />

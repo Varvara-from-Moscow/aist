@@ -7,7 +7,7 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({popular, complects, handleSaveGood}) {
+function Main({popular, complects, handleSaveGood, postBackCall}) {
     return (
         <div>
             <Promo/>
@@ -18,7 +18,9 @@ function Main({popular, complects, handleSaveGood}) {
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>
-            <ContactForm></ContactForm>
+            <ContactForm
+            postBackCall={postBackCall}
+            />
             <PopularGoods
             popular={popular}
             handleSaveGood={handleSaveGood}

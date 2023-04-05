@@ -3,16 +3,18 @@ import * as api from '../Api'
 import Slider from '../components/Slider/Slider'
 import ServicesList from '../components/Services/ServicesList'
 import ServicesNav from '../components/Services/ServicesNav'
+import ServisesNavigationList from '../components/Navigation/ServisesNavigationList'
 import './services.css'
 
 
-function Services({}) {
+function Services({handleSaveGood, isOpen, onClose, isMenuCliked}) {
 
     //onClick={isMenuCliked}
     //isMenuCliked, onCardClick
 
     const [isMobile, setIsMobile] = React.useState(false)
     const [services, setServices] = React.useState({})
+    const [servicesAfterFilter, setServicesAfterFilter] = React.useState({})
     const [category, setCategory] = React.useState({})
 
     const handleResize = () => {
@@ -36,6 +38,7 @@ function Services({}) {
         })
         .then(res => {
           setServices(res)
+          setServicesAfterFilter(res)
         })
     }  
 
@@ -50,6 +53,19 @@ function Services({}) {
         })
     }
 
+    function handleChoseCategory(equipment, subCategory) {
+      return equipment.filter((item) => item.subcategory === subCategory)
+    }
+
+    function getTest(services, subCategory) {
+      const result = handleChoseCategory(services, subCategory)
+      setServicesAfterFilter(result)
+    }
+
+    function getAllServices() {
+      setServicesAfterFilter(services)
+    }
+
     return (
       <>
         {isMobile?
@@ -58,12 +74,21 @@ function Services({}) {
                 <h3 className='services__title'>Услуги</h3>
                 <div className='services__menu'>
                     <p className='services__text'>Все товары</p>
-                    <button className='services__menu-btn'></button>
+                    <button className='services__menu-btn' onClick={isMenuCliked}></button>
                 </div>
             </div>
               <Slider></Slider>
               <ServicesList
-              data={services}
+              data={servicesAfterFilter}
+              handleSaveGood={handleSaveGood}
+              />
+              <ServisesNavigationList
+                data={category}
+                isOpen={isOpen}
+                onClose={onClose}
+                handleChoseCategory={getTest}
+                services={services}
+                getAllServices={getAllServices}
               />
           </>
           :
@@ -74,9 +99,13 @@ function Services({}) {
             <div className='services__container'>
                 <ServicesNav
                 data={category}
+                handleChoseCategory={getTest}
+                services={services}
+                getAllServices={getAllServices}
                 />
                 <ServicesList
-                data={services}
+                data={servicesAfterFilter}
+                handleSaveGood={handleSaveGood}
                 />
             </div>
             </>

@@ -1,7 +1,7 @@
 
 //${BASE_URL}
-//export const BASE_URL = 'http://213.184.131.218:8087/api';
-export const BASE_URL = '//localhost:8000/api';
+export const BASE_URL = 'http://213.184.131.218:8087/api';
+//export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -17,6 +17,23 @@ function checkResponse(res) {
 //complects
 //213.184.131.218
 //`${BASE_URL}/signup`
+
+export const postBackCall = ( {name, phone_number} ) => {
+  return fetch(`${BASE_URL}/callbacks/`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      phone_number: phone_number,
+      })
+  }).then((res) => {
+    console.log(res);
+    return checkResponse(res);
+  });
+};
 
 export const getAllProducts = () => {
   return fetch(`${BASE_URL}/products/`, 

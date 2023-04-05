@@ -1,29 +1,52 @@
-import Pic from '../../images/contactpic.png';
-import './ContactForm.css';
+import Pic from '../../images/contactpic.png'
+//import { useForm } from "react-hook-form"
+import './ContactForm.css'
+import React from 'react'
 
-function ContactForm() {
+function ContactForm({postBackCall}) {
+  const [name, setName] = React.useState('');
+  const [tel, setTel] = React.useState();
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleTelChange(e) {
+    setTel(e.target.value);
+  }  
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // Передаём значения управляемых компонентов во внешний обработчик
+    postBackCall({
+        name,
+        tel,
+    });
+  } 
+
+
   return (
       <section className="contactForm">
-        <form className="contactForm__form">
+        <form className="contactForm__form" onSubmit={handleSubmit}>
         <h3 className="contactForm__title">У вас остались вопросы? Оставьте заявку и мы свяжемся с вами</h3>
           <span className="contactForm__input-span">Ваше имя</span>
           <input
               required
-              name="email"
-              type="email"
+              name="name"
+              type="text"
               minLength="5"
               className="contactForm__input" 
-             /*onChange={handleChange}*/
+              onChange={handleNameChange}
           /> 
           <span className="contactForm__input-span">Ваш номер телефона</span>
           <input
               required
-              name="number"
-              type="number"
+              name="tel"
+              type="tel"
               minLength="5"
-              maxLength="5"
+              maxLength="30"
               className="contactForm__input"
-            /*onChange={handleChange}*/
+              onChange={handleTelChange}
           />
            
           <button type="submit" className="contactForm__btn">ЗАКАЗАТЬ ЗВОНОК</button>

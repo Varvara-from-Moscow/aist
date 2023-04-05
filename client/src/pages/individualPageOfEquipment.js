@@ -4,7 +4,7 @@ import React from 'react'
 import * as api from '../Api'
 import { useParams } from 'react-router-dom';
 
-function IndividualPageOfEquipment({ handleSaveGood, allProducts }) {
+function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall }) {
 /*
     const [allProducts, setAllProducts] = React.useState({})
 
@@ -50,7 +50,9 @@ function IndividualPageOfEquipment({ handleSaveGood, allProducts }) {
               </div>
               
             </div>  
-            <ContactForm></ContactForm>
+            <ContactForm
+            postBackCall={postBackCall}
+            />
         </>
 
     );

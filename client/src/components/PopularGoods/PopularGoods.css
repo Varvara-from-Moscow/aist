@@ -80,6 +80,7 @@ margin-top: 120px;
 .popular-goods__container {
     /*height: 504px;*/
     list-style-type: none;
+    max-width: 425px;
 }
 
 
@@ -121,13 +122,34 @@ margin-top: 120px;
     }
   }
 */
+
+.popular-goods__pic-container {
+   width: 100%;
+   height: 399px;
+}
+
+@media screen and (max-width: 1150px) {
+    .popular-goods__pic-container {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .popular-goods__pic-container {
+        height: 250px;
+    }
+  }
+ 
+@media screen and (max-width: 720px) {
+    .popular-goods__pic-container {
+        height: 173px;
+    }
+  }
+  
+
 .popular-goods__pic {
     width: 100%;
     height: 399px;
-    /*background-color: #DF5330;
-    background-image: url(../../images/fon.png);*/
-    background-position: center;
-    background-repeat: no-repeat;
     object-fit: cover;
 }
 

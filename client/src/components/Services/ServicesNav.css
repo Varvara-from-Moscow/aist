@@ -1,10 +1,9 @@
 .servicesNav {
     width: 287px;
-    height: 340px;
+    max-width: 287px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    /*margin-right: 40px;*/
     margin-top: 0;
     background-color: #DF5330;
 }
@@ -29,4 +28,15 @@
 .servicesNav__item:hover {
     opacity: 0.5;
     transition: opacity 1s;
+}
+
+.servicesNav__item-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
 }

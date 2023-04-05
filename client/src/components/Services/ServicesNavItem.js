@@ -1,8 +1,15 @@
 import './ServicesNav.css'
 
-function ServicesNavItem({data}) {
+function ServicesNavItem({data, services, handleChoseCategory}) {
+
+  function getFiterProduct() {
+    handleChoseCategory(services, data.slug)
+  }
+
     return (
-      <li className="servicesNav__item">{data.name}</li>
+      <li className="servicesNav__item">
+        <button className="servicesNav__item-btn" onClick={getFiterProduct}>{data.name}</button>
+      </li>
     );
   }
   

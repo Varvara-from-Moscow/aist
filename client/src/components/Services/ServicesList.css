@@ -35,7 +35,8 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    min-height: 230px;
+   /* min-height: 230px;*/
+    justify-content: space-between;
 }
 .servicesList__item-pic {
     align-self: center;
@@ -63,14 +64,21 @@
   }
 
 .servicesList__item-main-container {
-    height: 83px;
+    /*height: 83px;*/
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    justify-content: end;
 }
 
 .servicesList__item-title {
+    margin: 0;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 13px;
+    line-height: 15px;
+    color: #181818;
 }
 
 @media screen and (max-width: 720px) {
@@ -80,23 +88,14 @@
     }
   }
 
-.servicesList__item-star-container {
-    width: 144px;
-    height: 15px;
-    border: 1px solid fuchsia;
-    display: flex;
-}
-
-@media screen and (max-width: 720px) {
-    .servicesList__item-star-container {
-        width: 130px;
-    }
-}
 .servicesList__item-price {
+    margin: 0;
+    margin-top: 10px;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 13px;
+    line-height: 15px;
+    color: #181818;
 }
 
 @media screen and (max-width: 720px) {
@@ -106,38 +105,30 @@
     }
 }
 
-.servicesList__item-bag-container {
-    width: 86px;
-    height: 23px;
-    border: 1px solid palevioletred;
-}
-.servicesList__item-bag {
-
-}
-.servicesList__item-increament {
-
-}
-
 .servicesList__item-wrapper {
     display: flex;
     justify-content: space-between;
 }
 
-.servicesList__item-wrapper-star {
-    display: flex;
-    justify-content: space-between;
-}
-
-@media screen and (max-width: 600px) {
-    .servicesList__item-wrapper-star {
-        flex-direction: column;
-    }
-}
-
-.servicesList__item-star {
-    background-image: url(../../images/Star.png);
+.servicesList__item-add-btn {
+    background-image: url(../../images/blackbag.png);
+    background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
-    width: 15px;
-    height: 15px;
+    width: 24px;
+    height: 23px;
+    border: none;
+    align-self: flex-end;
+    margin-left: 10px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.servicesList__item-add-btn:hover {
+    opacity: 0.5;
+}
+
+.servicesList__item-down-container {
+    display: flex;
+    justify-content: space-between;
 }
