@@ -4,9 +4,19 @@ import './PopupBag.css'
 import Good from './Good/Good'
 
 
-function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decrement}) {
+function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decrement }) {
 
   //const [goods, setGoods] = React.useState([savedGoods])
+  //total
+
+  let total = {
+    price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
+  }
+   /* countOfGoods: savedGoods.reduce((prev, curr) => {
+      return prev + curr.quanity
+    }, 0),*/
+
+  
 
   return (
     <aside className={`bag-popup ${isOpen && 'bag-popup_opened'}`}>
@@ -25,7 +35,7 @@ function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decreme
           />
         ))}  
       </ul>
-      <p className="bag-popup__sum">Сумма:{} p.</p>
+      <p className="bag-popup__sum">Сумма: {total.price} p.</p>
       <form className="bag-popup__form">
         <span className="bag-popup__input-span">Имя*</span>
         <input className="bag-popup__input"></input>
@@ -37,7 +47,7 @@ function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decreme
         <input className="bag-popup__input"></input>
 
 
-        <p className="bag-popup__input-sum">Сумма: {} р.</p>
+        <p className="bag-popup__input-sum">Сумма: {total.price} р.</p>
         <p className="bag-popup__input-sum-after-promocod">Итоговая сумма: {} р.</p>
 
       <button type="submit" className="bag-popup__button">Заказать</button>

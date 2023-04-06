@@ -28,7 +28,7 @@ function Good({good, onCardClick, onSave}) {
                     <div className="equipmentList__item-wrapper-star">
                         <h3 className="equipmentList__item-title">{good.name}</h3>
                         <div className="equipmentList__item-star-container">
-                            <div className="equipmentList__item-estimation">4,5</div>
+                            <div className="equipmentList__item-estimation">{good.rating}</div>
                             <div className="equipmentList__item-star"></div>
                             <div className="equipmentList__item-star"></div>
                             <div className="equipmentList__item-star"></div>

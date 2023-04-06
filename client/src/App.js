@@ -21,9 +21,16 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState({})
   const [savedGoods, setSavedGoods] = React.useState([])
 
- /* const handleSaveGood = (good) => {
-    setSavedGoods([good, ...savedGoods])
-  }*/
+  /*const [total, setTotal] = React.useState({
+
+    price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price}, 0),
+  
+   /* countOfGoods: savedGoods.reduce((prev, curr) => {
+      return prev + curr.quanity
+    }, 0),
+
+  })*/
+  
 
   const handleSaveGood = (good) => {
     if(savedGoods.some(item => item.id === good.id)) {
@@ -149,6 +156,7 @@ function App() {
       <Header
           isBurgerMenuCliked={handleBurgerMenuClick}
           isbagCliked={handleBagClick}
+          
       />
 
       <Routes>
@@ -226,6 +234,7 @@ function App() {
           handleDelete={handleDeleteGood}
           increment={increment}
           decrement={decrement}
+       
       />
       
       <Footer></Footer>
