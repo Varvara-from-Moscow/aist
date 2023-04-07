@@ -41,7 +41,7 @@
     /*left: 25%;*/
     display: flex;
     flex-direction: column;
-    max-width: 560px;
+    width: 560px;
     padding: 40px;
     background-color: #fff;
     /*position: relative;
@@ -337,4 +337,57 @@
 .bag-popup__item-count {
     width: 10px;
     border: none;
+}
+
+.bag-popup__promocode-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.bag-popup__input-and-span {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.bag-popup__promocode-span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.bag-popup__input-promocode {
+  height: 55px;
+  margin-top: 20px;
+  /*margin-bottom: 20px;*/
+  padding: 0;
+  border: 1px solid #181818;
+}
+
+@media screen and (max-width: 720px) {
+  .bag-popup__input-promocode {
+      margin-top: 10px;
+     /* margin-bottom: 10px;*/
+  }
+}
+.bag-popup__btn-check-promocode {
+    width: 45%;
+    height: 55px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    background-color: #DF5330;
+    align-self: flex-end;
+}
+
+.bag-popup__promocode-luck-message {
+    margin-bottom: 50px;
+}
+
+.bag-popup__promocode-err-message {
+    margin-bottom: 50px;
+    margin-top: 0;
+    color: #DF5330;
 }

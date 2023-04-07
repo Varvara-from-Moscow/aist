@@ -2,9 +2,14 @@ import ContactForm from '../components/ContactForm/ContactForm'
 import './individualPageOfEquipment.css'
 import React from 'react'
 import * as api from '../Api'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'
 
 function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall }) {
+
+  const navigate = useNavigate()
+  function goBack() {
+    navigate(-1);
+}
 /*
     const [allProducts, setAllProducts] = React.useState({})
 
@@ -30,7 +35,7 @@ function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall }
         <>
             <div className='individualPageOfEquipment-main-wrapper'>
               <div className='individualPageOfEquipment-back-container'>
-                <p className='individualPageOfEquipment-back-btn'>Назад</p>
+                <button className='individualPageOfEquipment-back-btn' onClick={goBack}>⟵ Назад</button>
                 <div className='individualPageOfEquipment-close-btn'></div>
               </div>
               <div className='individualPageOfEquipment-image-and-description-wrapper'>

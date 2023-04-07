@@ -1,25 +1,26 @@
 
-import './Solutions.css';
+import './Solutions.css'
+import Description from './Description'
 
-function Solutions({data, onSolution}) {
+function Solutions({ data, onSolution }) {
 
     function handleClick() {
         onSolution(data)
     }
+
+    let description = data.description.split(',')
+
   return (
 
           <li className="solutions__offer">
             <h2 className="solutions__offer-title">{data.name}:</h2>
             <ul className="solutions__offer-wrapper">
-                <li className="solutions__offer-text">
-                1С Розница (базовая)
-                </li>
-                <li className="solutions__offer-text">
-                Онлайн-касса Атол 30ф с ФН 15 или 36 (аппарат + фискальный накопитель + регистрация в ИФНС)
-                </li>
-                <li className="solutions__offer-text">
-                Сканер штрихкодов Mindeo 6600
-                </li>
+            {description.length > 0 && description.map((item)=> (
+              <Description
+              item={item}
+              key={item.index}
+              />
+            ))}
             </ul>
             <div className="solutions__offer-price-and-btn-container">
                 <p className="solutions__offer-price">Цена: {data.price}</p>

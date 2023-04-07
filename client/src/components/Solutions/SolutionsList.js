@@ -4,6 +4,9 @@ import Solutions from './Solutions'
 
 function SolutionsList({complects, handleSaveGood}) {
 
+  /*let description = complects.description.split('\r\n-')*/
+    
+
   return (
       <section className="solutions">
         <h2 className="solutions__title">Автоматизация под ключ</h2>
