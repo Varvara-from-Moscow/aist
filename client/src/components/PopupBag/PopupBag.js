@@ -6,7 +6,7 @@ import * as api from '../../Api'
 /*, isPromoOk, error, 
   errorMessage, afterPromo, finalPrice, checkPromo, total, promo*/
 
-function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decrement}) {
+function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decrement, total}) {
 
   const [promoInput, setPromoInput] = React.useState('')
   
@@ -15,14 +15,13 @@ function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decreme
   const [error, setError] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
   const [afterPromo, setAfterPromo] = React.useState()
-
   const [finalPrice, setFinalPrice] = React.useState()
-
   const [nameInput, setNameInput] = React.useState('')
   const [nameTel, setTelInput] = React.useState()
   const [nameEmail, setEmailInput] = React.useState('')
-
   const [discount, setDiscount] = React.useState(1)
+  const [order, setOrder] = React.useState([])
+  
 
 //Все по первой форме (запрос процента по промокоду)
 function handlePromoInputChange(e) {
@@ -56,10 +55,11 @@ const checkPromo = () => {
         }
       })
   }
-
+/*
   let total = {
     price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
-  }
+
+  }*/
 
   function getPriceAfterPromoCode() { 
     if((promo.discount !== undefined) && (promo.discount >= 0.1)){
@@ -108,27 +108,6 @@ function handleUserAndDataSubmit(e) {
   });
 }
 
-/*[
-{
-"order": 30,///id, который присылают в ответе на пост запрос res.id
-"product": 19,//id товара из заказа
-"price": 78000,//первоначальная цена товара
-"quanity": 2},//количество конкретного товара
-
-{
-  "order": 30,
-"product": 19,
-"price": 78000,
-"quanity": 2},
-
-{
-  "order": 30,
-"product": 19,
-"price": 78000,
-"quanity": 2},
-]
-*/
-
 function postUserDataAndOrder(userData){
   api.postUserDataAndOrder({
     phone_order:userData.nameTel,
@@ -136,28 +115,20 @@ function postUserDataAndOrder(userData){
     order_price: finalPrice,
     email:userData.nameEmail,
     cupon: promo.id,
+  }) 
+  .then((res) => {
+    setOrder(JSON.parse(JSON.stringify(savedGoods)))
+    order.forEach((item) => {
+      item.order = res.id
+      item.product = item.id
+    })
+    console.log(order)
   })
   .then((res) => {
     api.postOrderItems(
-      
-    )  
-  })    
-      /*
-      .length > 0 && savedGoods.forEach((good)=> (
-        {
-          'order': res.id,
-          'product': good.id,
-          'price': good.price,
-          'quanity': good.quanity
-        },
-      ))
-      
-      {
-        order: res.id,
-        product: //создать проход по массиву savedGoods и вернуть необходимое кол объектов с необходимыми полями
-      }*/
-
-  
+      order
+    )
+  })
   .then((res) => {
     setError(false)
     console.log(res)
@@ -247,5 +218,3 @@ function postUserDataAndOrder(userData){
 }
 
 export default PopupBag;
-//isPromoOk &&  
-//onClick={postUserDataAndOrder}

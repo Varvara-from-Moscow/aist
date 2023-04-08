@@ -1,6 +1,5 @@
 
 .slider__container {
-    /*max-width: 1360px;*/
     max-width: 100%;
     height: 208px;
     margin-left: 40px;
@@ -67,6 +66,14 @@
 
   .btn-slide_active {
     background-color: black;
+  }
+
+  @media screen and (max-width: 550px) {
+    .btn-slide {
+        width: 5px;
+        height: 5px;
+        margin-top: 10px;
+    }
   }
 
  .offers__container {
@@ -145,7 +152,7 @@
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
     .offers__title {
         font-size: 18px;
         line-height: 21px;
@@ -169,7 +176,7 @@
     font-style: normal;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
     .offers__text {
         font-size: 14px;
         line-height: 16px;

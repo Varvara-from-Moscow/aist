@@ -1,19 +1,13 @@
 .equipmentNav {
     width: 287px;
-    height: 254px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    /*margin-right: 40px;*/
+    justify-content: flex-start;
     margin-top: 0;
     background-color: #DF5330;
 }
-/*
-@media screen and (max-width: 1100px) {
-    .equipmentNav {
-        width: 250px;
-    }
-  }*/
 
 .equipmentNav__item {
     list-style-type: none;
@@ -26,6 +20,7 @@
     color: #fff;
     cursor: pointer;
     transition: opacity 1s;
+    max-width: 100%;
 }
 
 .equipmentNav__item:last-of-type {
@@ -46,4 +41,6 @@
     color: #fff;
     background-color: transparent;
     border: none;
+    text-align: start;
+    max-width: 100%;
 }

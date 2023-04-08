@@ -1,7 +1,7 @@
 
 //${BASE_URL}
-//export const BASE_URL = '/api';
-export const BASE_URL = '//localhost:8000/api';
+export const BASE_URL = '/api';
+//export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -203,16 +203,14 @@ export const postUserDataAndOrder = ({phone_order, first_name, order_price, emai
   })
 };
 
-export const postOrderItems = ([]) => {
+export const postOrderItems = (order) => {
   return fetch(`${BASE_URL}/ordersitems/`, {
       method: "POST",
       headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
       },
-      body: JSON.stringify([
-        
-      ])
+      body: JSON.stringify(order)
     }).then((res) => {
       return checkResponse(res)
   })

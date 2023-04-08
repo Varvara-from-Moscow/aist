@@ -4,7 +4,7 @@ import './Navigation.css'
 import logo from '../../images/logo.png'
 import bag from '../../images/bag.png'
 
-function MainNavigation({isOpen, onClose, isbagCliked}) {
+function MainNavigation({isOpen, onClose, isbagCliked, total}) {
   return (
     <aside className={`navigation ${isOpen && 'navigation__opened'}`}>
       <div className='navigation__container'>
@@ -28,8 +28,9 @@ function MainNavigation({isOpen, onClose, isbagCliked}) {
             <li className='navigation__list' onClick={onClose}>
                 <Link className='navigation__listlink' to="/">8(962)440-07-40</Link>
             </li>
-            <li className='navigation__list'>
+            <li className='navigation__list-bag'>
                    <button className='navigation__bagbtn' onClick={isbagCliked}></button>
+ 
             </li>
         </ul>
       </div>
@@ -38,3 +39,4 @@ function MainNavigation({isOpen, onClose, isbagCliked}) {
 }
 
 export default MainNavigation;
+//                  <div className="navigation__total-count">{total.count}</div>

@@ -2,7 +2,7 @@ import './EquipmentList.css'
 import Good from '../Good/Good'
 
 
-function EquipmentList({onCardClick, data, handleSaveGood}) {
+function EquipmentList({onCardClick, data, handleSaveGood, increment, decrement}) {
 
 
 
@@ -14,6 +14,8 @@ function EquipmentList({onCardClick, data, handleSaveGood}) {
           good={good}
           onCardClick={onCardClick}
           onSave={handleSaveGood}
+          increment={increment}
+          decrement={decrement}
           />
       ))}
     </ul>

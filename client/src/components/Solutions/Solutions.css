@@ -21,11 +21,21 @@
     font-size: 24px;
     line-height: 28px;
     align-self: flex-start;
+    font-style: normal;
+}
+
+@media screen and (max-width: 550px) {
+    .solutions__title {
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 30px;
+    }
 }
 
 .solutions__offer-container {
     padding: 0;
     display: flex;
+    margin: 0;
     
 }
 
@@ -64,6 +74,14 @@
     margin-right: 0;
 }
 
+@media screen and (max-width: 550px) {
+    .solutions__offer {
+        padding: 20px;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+  }
+
 .solutions__offer-title {
     margin-top: 0;
     font-style: normal;
@@ -71,6 +89,14 @@
     font-size: 18px;
     line-height: 21px;
 }
+
+@media screen and (max-width: 550px) {
+    .solutions__offer-title {
+        font-size: 14px;
+        line-height: 16px;
+    }
+  }
+
 .solutions__offer-wrapper {
 
 }
@@ -80,9 +106,25 @@
     font-size: 14px;
     line-height: 16px;
 }
+
+@media screen and (max-width: 550px) {
+    .solutions__offer-text {
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
+
 .solutions__offer-price {
 
 }
+
+@media screen and (max-width: 550px) {
+    .solutions__offer-price {
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
+
 .solutions__offer-btn {
     background-color: #DF5330;
     width: 227px;
@@ -101,6 +143,18 @@
     opacity: 0.5;
     transition: 0.3s ease;
 }
+
+@media screen and (max-width: 550px) {
+    .solutions__offer-btn {
+        width: 120px;
+        height: 32px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
+
 
 .solutions__offer-price-and-btn-container {
     display: flex;

@@ -1,0 +1,9 @@
+.information {
+    padding: 40px;
+}
+
+@media screen and (max-width: 720px) {
+    .information {
+        padding: 15px;
+    }
+  }

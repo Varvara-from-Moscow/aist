@@ -16,6 +16,18 @@
     margin-top: 0;
     margin-bottom: 50px;
     color: #181818;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@media screen and (max-width: 550px) {
+    .maintenance__title {
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 30px;
+    }
 }
 
 .maintenance__wrapper {
@@ -32,7 +44,10 @@
 .maintenance__container {
     display: flex;
     flex-direction: column;
-    /*height: 248px;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: 1px solid #181818;
 }
 
@@ -43,14 +58,24 @@
 .maintenance__container-title {
     color: #181818;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    margin-left: 15px;
-    margin-top: 20px;
+
+    font-size: 18px;
+    line-height: 21px;
+    /*margin-left: 15px;
+    margin-top: 20px;*/
+    margin: 0;
     margin-bottom: 20px;
 }
-.maintenance__container-wrapper {
 
+@media screen and (max-width: 550px) {
+    .maintenance__container-title {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+.maintenance__container-wrapper {
+    padding-left: 20px;
 }
 .maintenance__container-text {
     color: #181818;
@@ -59,4 +84,12 @@
     line-height: 16px;
     margin-bottom: 15px;
     margin-top: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 550px) {
+    .maintenance__container-text {
+        font-size: 12px;
+        line-height: 14px;
+    }
 }

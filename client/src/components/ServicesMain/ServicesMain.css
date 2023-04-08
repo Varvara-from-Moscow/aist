@@ -23,6 +23,15 @@
     margin-top: 0;
     align-self: flex-start;
 }
+
+@media screen and (max-width: 550px) {
+    .servicesMain__title {
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 30px;
+    }
+}
+
 .servicesMain__wrapper {
     max-width: 1360px;
     display: grid;

@@ -3,7 +3,7 @@ import './Header.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Header({isBurgerMenuCliked, isbagCliked}) {
+function Header({isBurgerMenuCliked, isbagCliked, total}) {
 
   const [isMobile, setIsMobile] = React.useState(false)
 
@@ -40,6 +40,7 @@ function Header({isBurgerMenuCliked, isbagCliked}) {
           </li>
           <li className="header__nav-bag">
             <button className="header__nav-bag-btn" onClick={isbagCliked}></button>
+            <div className="header__total-count">{total.count}</div>
           </li>
           <li className="header__nav">8(962)440-07-40</li>
         </ul>

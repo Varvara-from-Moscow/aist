@@ -54,6 +54,8 @@
     margin-right: 60px;
     transition: opacity 1s;
     align-self: center;
+    position: relative;
+    
 }
 
 .header__nav-bag:hover {
@@ -77,3 +79,14 @@
     color: #fff;
 }
 
+.header__total-count {
+  color:#fff;
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 0;
+}

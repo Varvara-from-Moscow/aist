@@ -10,6 +10,7 @@ import MainNavigation from './components/Navigation/MainNavigation'
 import PopupBag from './components/PopupBag/PopupBag'
 import Services from './pages/services'
 import IndividualPageOfEquipment from './pages/individualPageOfEquipment'
+import Information from './pages/Information'
 
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false)
@@ -20,66 +21,8 @@ function App() {
   const [allProducts, setAllProducts] = React.useState({})
   const [selectedCard, setSelectedCard] = React.useState({})
   const [savedGoods, setSavedGoods] = React.useState([])
-  /*const [promo, setPromo] = React.useState({})
-  const [isPromoOk, setIsPromoOk] = React.useState(false)
-  const [error, setError] = React.useState(false)
-  const [errorMessage, setErrorMessage] = React.useState('')
-  const [afterPromo, setAfterPromo] = React.useState()
-  const [finalPrice, setFinalPrice] = React.useState()*/
+  
 
-/*
-  const checkPromo = (promoInput) => {
-    api.checkPromo(promoInput)
-      .then(res => {
-        setPromo(res)
-        console.log(res)
-        setIsPromoOk(true)
-        getPriceAfterPromoCode()
-      })
-      .catch((err) => {
-        console.log(err)
-        setError(true)
-        if (err.status === 400 || 404 ) {
-          setErrorMessage('Такаго купона не существует или истек срок его действия.')
-          setTimeout(function(){
-            setErrorMessage('');
-          }, 5000)
-        }else{
-          setErrorMessage('На сервере произошла ошибка.')
-        }
-      })
-  }
-
-  let total = {
-    price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
-  }
-
-  function getPriceAfterPromoCode() { 
-    if((promo.discount !== undefined) && (promo.discount >= 0.1)){
-      setAfterPromo (total.price * promo.discount)
-    }else{
-      return
-    }
-  }
-
-  React.useEffect(() => {
-    getPriceAfterPromoCode()
-  }, [promo.discount !== undefined])
-
-  ///Формирование конечной/итоговой цены с промокодом или нет, та цена, которую я оправляю с пост запросом
-  function getFinalPrice() {
-    if(isPromoOk) {
-      setFinalPrice(afterPromo)
-    } else {
-      setFinalPrice(total.price)
-    }
-  }
-
-  React.useEffect(() => {
-    getFinalPrice()
-  }, [total.price])
-
-*/
   const handleSaveGood = (good) => {
     if(savedGoods.some(item => item.id === good.id)) {
        console.log("Товар уже был добавлен в корзину")
@@ -120,13 +63,18 @@ function App() {
             ...product,
             quanity: newQuanity,
             total_price: newQuanity * product.price,
-            //price: newQuanity * product.price,
           }
         }
         return product
       })
     })
   }
+
+
+  let total = {
+    price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
+    count: savedGoods.reduce((prev, curr) => { return prev + curr.quanity }, 0),
+  } 
 
   React.useEffect(() => {
     getPopular()
@@ -204,7 +152,7 @@ function App() {
       <Header
           isBurgerMenuCliked={handleBurgerMenuClick}
           isbagCliked={handleBagClick}
-          
+          total={total}    
       />
 
       <Routes>
@@ -230,6 +178,8 @@ function App() {
                 handleSaveGood={handleSaveGood}
                 isOpen={isMenuOpen}
                 onClose={closeAllPopups} 
+                increment={increment}
+                decrement={decrement}
                 />
               }
           />
@@ -267,12 +217,21 @@ function App() {
                 />
               }
           />
+
+          <Route 
+              path='/information'
+              element={
+                <Information
+                />
+              }
+          />
         
       </Routes>
       <MainNavigation
           isOpen={isBurgerMenuOpen}
           onClose={closeAllPopups} 
           isbagCliked={handleBagClick}
+          total={total}
       />
 
       <PopupBag
@@ -282,6 +241,7 @@ function App() {
           handleDelete={handleDeleteGood}
           increment={increment}
           decrement={decrement}
+          total={total}
       />
       
       <Footer></Footer>
@@ -290,24 +250,3 @@ function App() {
 }
 
 export default App;
-/*
-                onCardClick={handleCardClick}
-                isMenuCliked={handleMenuClick}
-
-                      <EquipmentNavigationList
-          isOpen={isMenuOpen}
-          onClose={closeAllPopups} 
-      />
-*/
-
-/*
-          isPromoOk={isPromoOk} 
-          error={error}
-          errorMessage={errorMessage}
-          afterPromo={afterPromo} 
-          finalPrice={finalPrice} 
-          total={total}
-          checkPromo={checkPromo}
-          promo={promo}
-
-*/

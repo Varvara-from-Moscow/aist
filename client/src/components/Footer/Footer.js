@@ -39,6 +39,10 @@ function Footer() {
                     <li className="footer__links-container-li">Политика конфиденциальности</li>
                     <li className="footer__links-container-li">Обработка персональных данных</li>
                     <li className="footer__links-container-li">Пользовательское соглашение</li>
+                    <li className="footer__links-container-li">
+                    <Link className='footer__links-container-link' to="/information">Дополнительная информация</Link>
+                    </li>
+                    
                 </ul>
             </nav>
         </div>
