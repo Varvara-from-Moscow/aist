@@ -132,3 +132,12 @@
         height: 163px;
     }
   }
+
+  .contactForm__err-span {
+     color: rgb(227, 61, 61);
+     font-style: normal;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 16px;
+     margin-bottom: 10px;
+  }

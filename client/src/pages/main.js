@@ -7,7 +7,7 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({popular, complects, handleSaveGood, postBackCall,isAdded}) {
+function Main({popular, complects, handleSaveGood, postBackCall, isButtonChanged, error, errorMessage }) {
     return (
         <div>
             <Promo/>
@@ -15,12 +15,14 @@ function Main({popular, complects, handleSaveGood, postBackCall,isAdded}) {
             <SolutionsList
             complects={complects}
             handleSaveGood={handleSaveGood}
-            isAdded={isAdded}
+            isButtonChanged={isButtonChanged}
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>
             <ContactForm
             postBackCall={postBackCall}
+            errorMessage={errorMessage}
+            error={error}
             />
             <PopularGoods
             popular={popular}

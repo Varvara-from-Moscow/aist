@@ -4,7 +4,7 @@ import React from 'react'
 import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
 
-function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall }) {
+function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
 
   const navigate = useNavigate()
   function goBack() {
@@ -57,6 +57,8 @@ function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall }
             </div>  
             <ContactForm
             postBackCall={postBackCall}
+            error={error} 
+            errorMessage={errorMessage}
             />
         </>
 

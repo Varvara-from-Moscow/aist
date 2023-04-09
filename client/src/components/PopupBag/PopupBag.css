@@ -362,20 +362,28 @@
     line-height: 24px;
 }
 
+@media screen and (max-width: 720px) {
+    .bag-popup__promocode-span {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
+
 .bag-popup__input-promocode {
   height: 55px;
   margin-top: 20px;
-  /*margin-bottom: 20px;*/
   padding: 0;
+  padding-left: 5px;
   border: 1px solid #181818;
 }
 
 @media screen and (max-width: 720px) {
   .bag-popup__input-promocode {
       margin-top: 10px;
-     /* margin-bottom: 10px;*/
   }
 }
+
 .bag-popup__btn-check-promocode {
     width: 45%;
     height: 55px;
@@ -384,10 +392,20 @@
     color: #fff;
     background-color: #DF5330;
     align-self: flex-end;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
 }
-
+@media screen and (max-width: 720px) {
+    .bag-popup__btn-check-promocode {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+  }
 .bag-popup__promocode-luck-message {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .bag-popup__promocode-err-message {

@@ -3,7 +3,7 @@ import Pic from '../../images/contactpic.png'
 import './ContactForm.css'
 import React from 'react'
 
-function ContactForm({postBackCall}) {
+function ContactForm({postBackCall, error, errorMessage}) {
   const [name, setName] = React.useState('');
   const [tel, setTel] = React.useState();
 
@@ -47,7 +47,7 @@ function ContactForm({postBackCall}) {
               className="contactForm__input"
               onChange={handleTelChange}
           />
-           
+          {error? <span className="contactForm__err-span">{errorMessage}</span>:<span></span>} 
           <button type="submit" className="contactForm__btn">ЗАКАЗАТЬ ЗВОНОК</button>
         </form>
         <img src={Pic} className="contactForm__pic"></img>

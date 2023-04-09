@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Description from './Description'
 
-function Solutions({ data, onSolution, isAdded }) {
+function Solutions({ data, onSolution }) {
 
     function handleClick() {
         onSolution(data)
@@ -17,17 +17,30 @@ function Solutions({ data, onSolution, isAdded }) {
             <ul className="solutions__offer-wrapper">
             {description.length > 0 && description.map((item)=> (
               <Description
-              item={item}
               key={item.index}
+              item={item}
               />
             ))}
             </ul>
             <div className="solutions__offer-price-and-btn-container">
                 <p className="solutions__offer-price">Цена: {data.price}</p>
-                  <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
+                <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
             </div>
           </li>
   );
 }
 
 export default Solutions;
+
+/*
+
+, isButtonChanged
+                {isButtonChanged? 
+
+                <button className="solutions__offer-btn" onClick={handleClick}>Добавлено</button>
+                :
+                <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
+                }
+
+
+*/

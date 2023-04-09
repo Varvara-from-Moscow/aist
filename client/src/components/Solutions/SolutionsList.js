@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Solutions from './Solutions'
 
-function SolutionsList({complects, handleSaveGood, isAdded}) {
+function SolutionsList({complects, handleSaveGood, isButtonChanged}) {
 
   /*let description = complects.description.split('\r\n-')*/
     
@@ -16,7 +16,7 @@ function SolutionsList({complects, handleSaveGood, isAdded}) {
                 key={item.id}
                 data={item}
                 onSolution={handleSaveGood}
-                isAdded={isAdded}
+                isButtonChanged={isButtonChanged}
               />
         ))}
         </ul>

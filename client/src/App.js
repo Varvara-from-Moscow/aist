@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import React from 'react'
 import * as api from './Api'
 import './App.css'
@@ -28,16 +28,48 @@ function App() {
   const [discount, setDiscount] = React.useState(1)
   const [error, setError] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
-  //const [order, setOrder] = React.useState([])
   const [finalPrice, setFinalPrice] = React.useState()
   const [afterPromo, setAfterPromo] = React.useState()
   const [isAdded, setIsAdded] = React.useState(false)
-
+  const [isButtonChanged, setIsButtonChanged] = React.useState(false)
+/*
+  function ScrollToTop() {
+    const { pathname } = useLocation();
+  
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return null;
+  }*/
+/*
+    const changeButton = (good) => {
+    if(savedGoods.some(item => item.id === good.id)) {
+       console.log("Товар был добавлен в корзину")
+       setIsButtonChanged(true)
+    }else{
+      setIsButtonChanged(false)
+    }
+  }*/
+  
+/*
   const handleSaveGood = (good) => {
     if(savedGoods.some(item => item.id === good.id)) {
-       console.log("Товар уже был добавлен в корзину")
+       //console.log("Товар уже был добавлен в корзину")
     }else{
       setSavedGoods([good, ...savedGoods])
+      setIsButtonChanged(true)
+      console.log(isButtonChanged + "успех")
+    }
+  } */
+
+  const handleSaveGood = (good) => {
+    if(!(savedGoods.some(item => item.id === good.id))) {
+      setSavedGoods([good, ...savedGoods])
+      /*setIsButtonChanged(true)
+      console.log(isButtonChanged + "успех")*/
+    }else{
+      setIsButtonChanged(true)
     }
   }
 
@@ -99,7 +131,7 @@ function App() {
         console.log(err)
         setError(true)
         if (err.status === 400 || 404 ) {
-          setErrorMessage('Такаго купона не существует или истек срок его действия.')
+          setErrorMessage('Такого купона не существует или истек срок его действия.')
           setTimeout(function(){
             setErrorMessage('');
           }, 5000)
@@ -145,6 +177,9 @@ function App() {
       setError(true)
       if (err.status === 400 || 402) {
         setErrorMessage('Ошибка с запросом');
+        setTimeout(function(){
+          setErrorMessage('');
+        }, 3000)
       } else {
         setErrorMessage('На сервере произошла ошибка.')
         setTimeout(function(){
@@ -222,6 +257,11 @@ function getFinalPrice() {
       })
       .catch((err) => {
         console.log(err)
+        setError(true)
+        setErrorMessage('Ошибка, проверьте номер телефона, он должен начинаться с +7 и содержать не менее 11 символов')
+        setTimeout(function(){
+          setErrorMessage('');
+        }, 5000)
       })
   }
 
@@ -267,6 +307,9 @@ function getFinalPrice() {
                 complects={complects}
                 handleSaveGood={handleSaveGood}
                 postBackCall={postBackCall}
+                errorMessage={errorMessage}
+                error={error}
+                isButtonChanged={isButtonChanged}
                 />
               }
           />
@@ -305,6 +348,8 @@ function getFinalPrice() {
                 handleSaveGood={handleSaveGood}
                 allProducts={allProducts}
                 postBackCall={postBackCall}
+                errorMessage={errorMessage}
+                error={error}
                 />
               }
           />
@@ -316,6 +361,8 @@ function getFinalPrice() {
                 handleSaveGood={handleSaveGood}
                 allProducts={allProducts}
                 postBackCall={postBackCall}
+                errorMessage={errorMessage}
+                error={error}
                 />
               }
           />

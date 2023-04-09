@@ -93,12 +93,12 @@
   }  
 
 .servicesMain__container-pic {
-    /*width: 426px;*/
     width: 100%;
     height: 220px;
     border: 3px solid #DF5330;
     background-position: center;
     background-repeat: no-repeat; 
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 690px) {
