@@ -131,6 +131,7 @@ function App() {
     .then((res) => {
       setError(false)
       setLuckyFormPopapOpen(true)
+      setDiscount(1)
       setSavedGoods([])
       setAfterPromo()
       setFinalPrice()

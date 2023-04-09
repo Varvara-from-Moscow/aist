@@ -72,7 +72,7 @@ function handleUserAndDataSubmit(e) {
               onChange={handlePromoInputChange}
             ></input>
           </div>
-          <button className="bag-popup__btn-check-promocode" onClick={checkPromo}>Применить промокод</button>
+          <button className="bag-popup__btn-check-promocode">Применить промокод</button>
       </form>
 
       {isPromoOk? <span className="bag-popup__promocode-luck-message">Сумма после применения купона: {finalPrice} р.</span> : <span></span>}
