@@ -53,8 +53,8 @@ function App() {
         if (product.id === id) {
           return {
             ...product,
-            quanity: ++product.quanity,
-            total_price: product.quanity * product.price,
+            quantity: ++product.quantity,
+            total_price: product.quantity * product.price,
           }
         }
         return product
@@ -67,12 +67,12 @@ function App() {
       return good.map((product) => {
         if (product.id === id) {
 
-         const newQuanity = product.quanity - 1 > 1 ? product.quanity - 1 : 1
+         const newQuantity = product.quantity - 1 > 1 ? product.quantity - 1 : 1
 
           return {
             ...product,
-            quanity: newQuanity,
-            total_price: newQuanity * product.price,
+            quantity: newQuantity,
+            total_price: newQuantity * product.price,
           }
         }
         return product
@@ -83,7 +83,7 @@ function App() {
 
   let total = {
     price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
-    count: savedGoods.reduce((prev, curr) => { return prev + curr.quanity }, 0),
+    count: savedGoods.reduce((prev, curr) => { return prev + curr.quantity }, 0),
   } 
 
   const checkPromo = (promoInput) => {
