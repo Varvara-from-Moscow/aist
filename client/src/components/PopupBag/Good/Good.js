@@ -32,7 +32,7 @@ function Good({good, handleDelete, decrement, increment}) {
 
             <div className="bag-popup__item-increament-container">
                 <button className="bag-popup__item-increament" onClick={handleIncrement}>+</button>
-                <div className="bag-popup__item-count">{good.quanity}</div>
+                <div className="bag-popup__item-count">{good.quantity}</div>
                 <button className="bag-popup__item-decrement" onClick={handleDecrement}>-</button>
             </div>
 
