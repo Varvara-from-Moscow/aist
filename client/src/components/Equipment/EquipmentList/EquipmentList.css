@@ -106,10 +106,13 @@
         height: 173px;
     }
   }
-
+*/
 .equipmentList__item-main-container {
     height: 83px;
-}*/
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 
 .equipmentList__item-title {
     font-style: normal;

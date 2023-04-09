@@ -26,7 +26,7 @@ function MainNavigation({isOpen, onClose, isbagCliked, total}) {
                 <Link className='navigation__listlink' to="/services">Услуги</Link>
             </li>
             <li className='navigation__list' onClick={onClose}>
-                <Link className='navigation__listlink' to="/">8(962)440-07-40</Link>
+                <a className='navigation__listlink' href="tel:89624400740">8(962)440-07-40</a>
             </li>
             <li className='navigation__list-bag'>
                    <button className='navigation__bagbtn' onClick={isbagCliked}></button>

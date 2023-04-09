@@ -129,6 +129,7 @@ function App() {
       )
     })
     .then((res) => {
+      console.log(res)
       setError(false)
       setLuckyFormPopapOpen(true)
       setDiscount(1)
@@ -138,7 +139,6 @@ function App() {
       setIsPromoOk(false)
       setPromo({})
       setIsAdded(false)
-      console.log(res)
     })
     .catch((err) => {
       console.log(err)

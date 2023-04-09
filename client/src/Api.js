@@ -1,7 +1,7 @@
 
 //${BASE_URL}
-//export const BASE_URL = '/api';
-export const BASE_URL = '//localhost:8000/api';
+export const BASE_URL = '/api';
+//export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -9,14 +9,6 @@ function checkResponse(res) {
   }
     return Promise.reject(`Ошибка: ${res.status}`);
 }
-//http://localhost:8000/api/products/?is_popular=true
-//`http://localhost:8000/api/products/?is_popular=${is_popular}`
-//http://localhost:8000/api/subcategories/
-//`http://localhost:8000/api/products/?category=${category}&available=${available}`
-//?category=services
-//complects
-//213.184.131.218
-//`${BASE_URL}/signup`
 
 export const postBackCall = ( {name, phone_number} ) => {
   return fetch(`${BASE_URL}/callbacks/`, {
@@ -215,42 +207,3 @@ export const postOrderItems = (order) => {
       return checkResponse(res)
   })
 };
-
-
-//http://localhost:8000/api/ordersitems/
-/*
-
-[{
-"order": 30,
-"product": 19,
-"price": 78000,
-"quanity": 2
-},{
-"order": 30,
-"product": 18,
-"price": 78000,
-"quantity": 2
-},{
-"order": 30,
-"product": 27,
-"price": 78000,
-"quantity": 2
-}]
-
-
-
-
-//http://localhost:8000/api/orders/
-в ответе 201
-параметры + id
-{
-        "phone_order": "+972533024444",
-        "first_name": "dfcz",
-        "order_price": 15000,//финальная цена со скидкой или без = итоговая
-        "email": "valliv2007@ya.ru",
-        "cupon": 7
-
-    }
-*/
-
-//`/api/recipes/?page=${page}&limit=${limit}${author ? `&author=${author}` : ''}${is_favorited ? `&is_favorited=${is_favorited}` : ''}${is_in_shopping_cart ? `&is_in_shopping_cart=${is_in_shopping_cart}` : ''}${tagsString}`,

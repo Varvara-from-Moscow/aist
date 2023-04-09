@@ -88,6 +88,7 @@
   @media screen and (max-width: 690px) {
     .servicesMain__container {
         height: fit-content;
+        min-height: 343px;
     }
   }  
 

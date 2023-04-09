@@ -22,7 +22,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*height: 320px;*/
     height: fit-content;
     z-index: 10;
     position: fixed;
@@ -31,7 +30,6 @@
     right: 0;
     opacity: 1;
     box-sizing: border-box;
-    /*width: 70%;*/
     width: 100%;
     background-color: #DF5330;
 }
@@ -53,7 +51,7 @@
 
 .navigation__closebtn:hover{
   opacity: 0.3;
-  transition: 0.3s ease;
+  transition: 0.8s ease;
 }
 
 .navigation_listcontainer {
@@ -101,12 +99,6 @@
   position: relative;
 }
 
-/*
-@media screen and (max-width: 500px) {
-    .navigation__list {
-      margin-bottom: 24px;
-    }
-  }*/
 .navigation__listlink {
     text-decoration: none;
     color: #fff;
@@ -114,20 +106,13 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
+    transition: 0.3s ease;
 }
 
 .navigation__listlink:hover {
-    text-underline-offset: 4px;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
     opacity: 0.7;
+    transition: 0.3s ease;
 }
-
-@media screen and (max-width: 500px) {
-    .navigation__listlink:hover {
-        text-underline-offset: 7px;
-    }
-  }
 
 .navigation__list-logo {
     align-items: center;
@@ -169,6 +154,12 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .navigation__bagbtn:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
   }
 
 .equipment-navigation__container {
@@ -213,10 +204,16 @@
     background-color: transparent;
     color: #fff;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.equipment-navigation__btn:hover{
+    transition: 0.3s ease;
 }
 
 .equipment-navigation__list:hover {
   opacity: 0.5;
+  transition: 0.3s ease;
 }
 
 .navigation__total-count {
