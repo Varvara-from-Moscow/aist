@@ -38,8 +38,13 @@
     gap: 27px;
     padding: 0;
     margin: auto;
-
 }
+
+@media screen and (min-width: 1441px) {
+    .maintenance__wrapper {
+        max-width: 2000px;
+    }
+  }
 
 .maintenance__container {
     display: flex;
@@ -58,11 +63,8 @@
 .maintenance__container-title {
     color: #181818;
     font-weight: 500;
-
     font-size: 18px;
     line-height: 21px;
-    /*margin-left: 15px;
-    margin-top: 20px;*/
     margin: 0;
     margin-bottom: 20px;
 }

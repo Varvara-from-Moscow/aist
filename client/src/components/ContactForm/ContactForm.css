@@ -4,6 +4,7 @@
     padding-right: 40px;
     margin-bottom: 50px;
     margin-top: 120px;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1040px) {

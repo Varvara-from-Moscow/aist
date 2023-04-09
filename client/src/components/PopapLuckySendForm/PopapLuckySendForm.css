@@ -1,0 +1,127 @@
+.popapLuckySendForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: visibility 1s, opacity 1s;
+    box-sizing: border-box;
+    overflow:auto;
+}
+.popapLuckySendForm_opened{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+    z-index: 15;
+}
+.popapLuckySendForm__container{
+    position: absolute;
+    top:130px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+    background-color: #DF5330;
+    height: 356px;
+}
+
+@media screen and (max-width: 720px) {
+    .popapLuckySendForm__container {
+        height: 262px;
+    }
+  }
+.popapLuckySendForm__title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin-bottom: 60px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+    .popapLuckySendForm__title-wrapper {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+  }
+.popapLuckySendForm__title-letters{
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 82px;
+    margin: 0;
+}
+
+@media screen and (max-width: 720px) {
+    .popapLuckySendForm__title-letters {
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 29px;
+    }
+  }
+.popapLuckySendForm__title{
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 160px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+    .popapLuckySendForm__title {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+    }
+  }
+
+.popapLuckySendForm__closebtn {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 22px;
+    height: 22px;
+    background-image: url(../../images/Close_Icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    opacity: 1;
+    transition: 0.3s ease;
+    z-index: 10;
+    
+}
+
+.popapLuckySendForm__closebtn:hover{
+  opacity: 0.3;
+  transition: 0.3s ease;
+}

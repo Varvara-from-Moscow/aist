@@ -11,17 +11,27 @@ import PopupBag from './components/PopupBag/PopupBag'
 import Services from './pages/services'
 import IndividualPageOfEquipment from './pages/individualPageOfEquipment'
 import Information from './pages/Information'
+import PopapLuckySendForm from './components/PopapLuckySendForm/PopapLuckySendForm'
 
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isBagOpen, setIsBagOpen] = React.useState(false)
+  const [isLuckyFormPopapOpen, setLuckyFormPopapOpen] = React.useState(false)
   const [popular, setPopular] = React.useState({})
   const [complects, setComplects] = React.useState({})
   const [allProducts, setAllProducts] = React.useState({})
   const [selectedCard, setSelectedCard] = React.useState({})
   const [savedGoods, setSavedGoods] = React.useState([])
-  
+  const [promo, setPromo] = React.useState({})
+  const [isPromoOk, setIsPromoOk] = React.useState(false)
+  const [discount, setDiscount] = React.useState(1)
+  const [error, setError] = React.useState(false)
+  const [errorMessage, setErrorMessage] = React.useState('')
+  //const [order, setOrder] = React.useState([])
+  const [finalPrice, setFinalPrice] = React.useState()
+  const [afterPromo, setAfterPromo] = React.useState()
+  const [isAdded, setIsAdded] = React.useState(false)
 
   const handleSaveGood = (good) => {
     if(savedGoods.some(item => item.id === good.id)) {
@@ -76,6 +86,95 @@ function App() {
     count: savedGoods.reduce((prev, curr) => { return prev + curr.quanity }, 0),
   } 
 
+  const checkPromo = (promoInput) => {
+    api.checkPromo(promoInput)
+      .then(res => {
+        setPromo(res)
+        setDiscount(res.discount)
+        console.log(res)
+        setIsPromoOk(true)
+        getPriceAfterPromoCode()
+      })
+      .catch((err) => {
+        console.log(err)
+        setError(true)
+        if (err.status === 400 || 404 ) {
+          setErrorMessage('Такаго купона не существует или истек срок его действия.')
+          setTimeout(function(){
+            setErrorMessage('');
+          }, 5000)
+        }else{
+          setErrorMessage('На сервере произошла ошибка.')
+        }
+      })
+  }
+
+  function postUserDataAndOrder(userData){
+    api.postUserDataAndOrder({
+      phone_order:userData.nameTel,
+      first_name:userData.nameInput,
+      order_price: finalPrice,
+      email:userData.nameEmail,
+      cupon: promo.id,
+    }) 
+    .then((res) => {
+      savedGoods.forEach((item) => {
+        item.order = res.id
+        item.product = item.id
+      })
+    })
+    .then((res) => {
+      api.postOrderItems(
+        savedGoods
+      )
+    })
+    .then((res) => {
+      setError(false)
+      setLuckyFormPopapOpen(true)
+      setSavedGoods([])
+      setAfterPromo()
+      setFinalPrice()
+      setIsPromoOk(false)
+      setPromo({})
+      setIsAdded(false)
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+      setError(true)
+      if (err.status === 400 || 402) {
+        setErrorMessage('Ошибка с запросом');
+      } else {
+        setErrorMessage('На сервере произошла ошибка.')
+        setTimeout(function(){
+          setErrorMessage('');
+        }, 5000)
+      }
+    })
+  }
+
+  function getPriceAfterPromoCode() { 
+    if((promo.discount !== undefined) && (promo.discount >= 0.1)){
+      setAfterPromo (total.price * promo.discount)
+    }else{
+      return
+    }
+  }
+
+  React.useEffect(() => {
+    getPriceAfterPromoCode()
+  }, [promo.discount !== undefined])
+
+///Формирование конечной/итоговой цены с промокодом или нет, та цена, которую я оправляю с пост запросом
+function getFinalPrice() {
+    setFinalPrice(total.price * discount) //умножаю цену (всех товаров и колличеств) на коэффицент (изначально истановлен 1, изменяю при запросе купона, устанавливаю значения дискаунта)
+  }
+
+  React.useEffect(() => {
+    getFinalPrice()
+  }, [total.price, afterPromo])
+///
+
   React.useEffect(() => {
     getPopular()
   }, [])
@@ -118,6 +217,7 @@ function App() {
     })
       .then(res => {
         console.log(res)
+        setLuckyFormPopapOpen(true)
       })
       .catch((err) => {
         console.log(err)
@@ -138,13 +238,13 @@ function App() {
 
   function handleBagClick() {
     setIsBagOpen(true)
-    console.log('click bag')
   }
-
+  
   function closeAllPopups() {
     setIsBurgerMenuOpen(false)
     setIsMenuOpen(false)
     setIsBagOpen(false)
+    setLuckyFormPopapOpen(false)
   }
 
   return (
@@ -161,6 +261,7 @@ function App() {
               exact path="/"
               element={
                 <Main
+                isAdded={isAdded}
                 popular={popular}
                 complects={complects}
                 handleSaveGood={handleSaveGood}
@@ -242,6 +343,18 @@ function App() {
           increment={increment}
           decrement={decrement}
           total={total}
+          checkPromo={checkPromo}
+          discount={discount}
+          isPromoOk={isPromoOk} 
+          promo={promo}
+          errorMessage={errorMessage}
+          error={error}
+          postUserDataAndOrder={postUserDataAndOrder}
+          finalPrice={finalPrice}
+      />
+      <PopapLuckySendForm
+      onClose={closeAllPopups}
+      isOpen={isLuckyFormPopapOpen}
       />
       
       <Footer></Footer>

@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Description from './Description'
 
-function Solutions({ data, onSolution }) {
+function Solutions({ data, onSolution, isAdded }) {
 
     function handleClick() {
         onSolution(data)
@@ -24,7 +24,7 @@ function Solutions({ data, onSolution }) {
             </ul>
             <div className="solutions__offer-price-and-btn-container">
                 <p className="solutions__offer-price">Цена: {data.price}</p>
-                <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
+                  <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
             </div>
           </li>
   );

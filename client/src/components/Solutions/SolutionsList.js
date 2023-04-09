@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Solutions from './Solutions'
 
-function SolutionsList({complects, handleSaveGood}) {
+function SolutionsList({complects, handleSaveGood, isAdded}) {
 
   /*let description = complects.description.split('\r\n-')*/
     
@@ -16,6 +16,7 @@ function SolutionsList({complects, handleSaveGood}) {
                 key={item.id}
                 data={item}
                 onSolution={handleSaveGood}
+                isAdded={isAdded}
               />
         ))}
         </ul>

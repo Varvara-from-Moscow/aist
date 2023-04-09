@@ -7,7 +7,7 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({popular, complects, handleSaveGood, postBackCall}) {
+function Main({popular, complects, handleSaveGood, postBackCall,isAdded}) {
     return (
         <div>
             <Promo/>
@@ -15,6 +15,7 @@ function Main({popular, complects, handleSaveGood, postBackCall}) {
             <SolutionsList
             complects={complects}
             handleSaveGood={handleSaveGood}
+            isAdded={isAdded}
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>

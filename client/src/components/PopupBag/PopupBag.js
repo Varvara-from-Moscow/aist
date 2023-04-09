@@ -1,26 +1,13 @@
 import React from 'react'
-//import { Link } from 'react-router-dom';
 import './PopupBag.css'
 import Good from './Good/Good'
-import * as api from '../../Api'
-/*, isPromoOk, error, 
-  errorMessage, afterPromo, finalPrice, checkPromo, total, promo*/
 
-function PopupBag({isOpen, onClose, savedGoods, handleDelete, increment, decrement, total}) {
+function PopupBag({finalPrice,postUserDataAndOrder,error,errorMessage,promo,isPromoOk,isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
 
   const [promoInput, setPromoInput] = React.useState('')
-  
-  const [promo, setPromo] = React.useState({})
-  const [isPromoOk, setIsPromoOk] = React.useState(false)
-  const [error, setError] = React.useState(false)
-  const [errorMessage, setErrorMessage] = React.useState('')
-  const [afterPromo, setAfterPromo] = React.useState()
-  const [finalPrice, setFinalPrice] = React.useState()
   const [nameInput, setNameInput] = React.useState('')
   const [nameTel, setTelInput] = React.useState()
   const [nameEmail, setEmailInput] = React.useState('')
-  const [discount, setDiscount] = React.useState(1)
-  const [order, setOrder] = React.useState([])
   
 
 //Все по первой форме (запрос процента по промокоду)
@@ -33,58 +20,7 @@ function handlePromoSubmit(e) {
   checkPromo(promoInput);
 } 
 
-const checkPromo = () => {
-    api.checkPromo(promoInput)
-      .then(res => {
-        setPromo(res)
-        setDiscount(res.discount)
-        console.log(res)
-        setIsPromoOk(true)
-        getPriceAfterPromoCode()
-      })
-      .catch((err) => {
-        console.log(err)
-        setError(true)
-        if (err.status === 400 || 404 ) {
-          setErrorMessage('Такаго купона не существует или истек срок его действия.')
-          setTimeout(function(){
-            setErrorMessage('');
-          }, 5000)
-        }else{
-          setErrorMessage('На сервере произошла ошибка.')
-        }
-      })
-  }
-/*
-  let total = {
-    price: savedGoods.reduce((prev, curr) => { return prev + curr.total_price }, 0),
-
-  }*/
-
-  function getPriceAfterPromoCode() { 
-    if((promo.discount !== undefined) && (promo.discount >= 0.1)){
-      setAfterPromo (total.price * promo.discount)
-    }else{
-      return
-    }
-  }
-
-  React.useEffect(() => {
-    getPriceAfterPromoCode()
-  }, [promo.discount !== undefined])
-/////
-
-///Формирование конечной/итоговой цены с промокодом или нет, та цена, которую я оправляю с пост запросом
-function getFinalPrice() {
-    setFinalPrice(total.price * discount) //умножаю цену (всех товаров и колличеств) на коэффицент (изначально истановлен 1, изменяю при запросе купона, устанавливаю значения дискаунта)
-  }
-
-  React.useEffect(() => {
-    getFinalPrice()
-  }, [total.price, afterPromo])
-///
 ///Вторая форма - отправка данных клиента, получение айди заказа и отправда с айди товаров и цены
-
 function handleNameInputChange(e) {
   setNameInput(e.target.value);
 }
@@ -106,45 +42,6 @@ function handleUserAndDataSubmit(e) {
     finalPrice,
     promo
   });
-}
-
-function postUserDataAndOrder(userData){
-  api.postUserDataAndOrder({
-    phone_order:userData.nameTel,
-    first_name:userData.nameInput,
-    order_price: finalPrice,
-    email:userData.nameEmail,
-    cupon: promo.id,
-  }) 
-  .then((res) => {
-    setOrder(JSON.parse(JSON.stringify(savedGoods)))
-    order.forEach((item) => {
-      item.order = res.id
-      item.product = item.id
-    })
-    console.log(order)
-  })
-  .then((res) => {
-    api.postOrderItems(
-      order
-    )
-  })
-  .then((res) => {
-    setError(false)
-    console.log(res)
-  })
-  .catch((err) => {
-    console.log(err)
-    setError(true)
-    if (err.status === 400 || 402) {
-      setErrorMessage('Ошибка с запросом');
-    } else {
-      setErrorMessage('На сервере произошла ошибка.')
-      setTimeout(function(){
-        setErrorMessage('');
-      }, 5000)
-    }
-  })
 }
 
   return (
