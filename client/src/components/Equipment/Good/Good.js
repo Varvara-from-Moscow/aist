@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 
-function Good({good, onCardClick, onSave, increment, decrement}) {
+function Good({good, onCardClick, onSave, increment, decrement, handleChangeButton }) {
 
     let { slug } = useParams();
 
@@ -13,6 +13,7 @@ function Good({good, onCardClick, onSave, increment, decrement}) {
 
     function handleBagClick() {
         onSave(good);
+        handleChangeButton(good)
     }
 
     function handleIncrement() {
@@ -50,24 +51,3 @@ function Good({good, onCardClick, onSave, increment, decrement}) {
   }
   
   export default Good;
-
-  /*
-  
-                            <div className="equipmentList__item-increament-container">
-                            <button className="equipmentList__item-increament" onClick={handleIncrement}>+</button>
-                            <div className="equipmentList__item-count">{good.quanity}</div>
-                            <button className="equipmentList__item-decrement" onClick={handleDecrement}>-</button>
-                          </div>
-  
-  
-  */
- /*
- <div className="equipmentList__item-star-container">
-                            <div className="equipmentList__item-estimation">{good.rating}</div>
-                            <div className="equipmentList__item-star"></div>
-                            <div className="equipmentList__item-star"></div>
-                            <div className="equipmentList__item-star"></div>
-                            <div className="equipmentList__item-star"></div>
-                            <div className="equipmentList__item-star"></div>
-                            <div className="equipmentList__item-estimation">(4)</div>
-                        </div>*/

@@ -6,7 +6,7 @@ import EquipmentNavigationList from '../components/Navigation/EquipmentNavigatio
 import './equipment.css'
 import * as api from '../Api'
 
-function Equipment({isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
+function Equipment({handleChangeButton, isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
 
     const [isMobile, setIsMobile] = React.useState(false)
     const [equipment, setEquipment] = React.useState({})
@@ -80,6 +80,7 @@ function Equipment({isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, 
             handleSaveGood={handleSaveGood}
             increment={increment}
             decrement={decrement}
+            handleChangeButton={handleChangeButton}
             />
             <EquipmentNavigationList
               isOpen={isOpen}
@@ -88,6 +89,7 @@ function Equipment({isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, 
               data={category}
               equipment={equipment}
               getAllEquipment={getAllEquipment}
+              
             />
             </>
             :
@@ -107,6 +109,7 @@ function Equipment({isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, 
                 handleSaveGood={handleSaveGood}
                 increment={increment}
                 decrement={decrement}
+                handleChangeButton={handleChangeButton}
                 />
             </div>
             </>

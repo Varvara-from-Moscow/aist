@@ -2,11 +2,24 @@
 import './Solutions.css'
 import Description from './Description'
 
-function Solutions({ data, onSolution }) {
+function Solutions({ data, onSolution, handleChangeButton }) {
+
+  const isButtonChanged = data.is_in_bag === 2
+  /*let description = complects.description.split('\r\n-')*/
+  //const isButtonChanged = data.is_in_bag > 1 ? true : false;
+  //const isButtonChanged = data.is_in_bag === 2 ? true : false;
+/*
+  function handleChangeButton(data) {
+    if(data.id === data.id) {
+      data.is_in_bag = 2
+    }
+  }*/
 
     function handleClick() {
         onSolution(data)
+        handleChangeButton(data)
     }
+
 
     let description = data.description.split(',')
 
@@ -24,7 +37,14 @@ function Solutions({ data, onSolution }) {
             </ul>
             <div className="solutions__offer-price-and-btn-container">
                 <p className="solutions__offer-price">Цена: {data.price}</p>
+
+                {isButtonChanged ?
+
+                <button className="solutions__offer-btn">Добавлено в корзину</button>
+                :
                 <button className="solutions__offer-btn" onClick={handleClick}>Выбрать</button>
+                }
+
             </div>
           </li>
   );

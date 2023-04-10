@@ -31,7 +31,9 @@ function App() {
   const [finalPrice, setFinalPrice] = React.useState()
   const [afterPromo, setAfterPromo] = React.useState()
   const [isAdded, setIsAdded] = React.useState(false)
+  /*const [value, setValue] = React.useState("Выбрать")*/
   const [isButtonChanged, setIsButtonChanged] = React.useState(false)
+  
 /*
   function ScrollToTop() {
     const { pathname } = useLocation();
@@ -66,10 +68,20 @@ function App() {
   const handleSaveGood = (good) => {
     if(!(savedGoods.some(item => item.id === good.id))) {
       setSavedGoods([good, ...savedGoods])
-      /*setIsButtonChanged(true)
-      console.log(isButtonChanged + "успех")*/
     }else{
-      setIsButtonChanged(true)
+      return
+    }
+  }
+
+  function handleChangeButton(data) {
+    if(data.id === data.id) {
+      data.is_in_bag = 2
+    }
+  }
+
+  function handleChangeButtonAfterDeletefromBag(data) {
+    if(data.id === data.id) {
+      data.is_in_bag = 1
     }
   }
 
@@ -309,7 +321,7 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
-                isButtonChanged={isButtonChanged}
+                handleChangeButton={handleChangeButton}
                 />
               }
           />
@@ -325,6 +337,7 @@ function getFinalPrice() {
                 onClose={closeAllPopups} 
                 increment={increment}
                 decrement={decrement}
+                handleChangeButton={handleChangeButton}
                 />
               }
           />
@@ -337,6 +350,7 @@ function getFinalPrice() {
                 isOpen={isMenuOpen}
                 isMenuCliked={handleMenuClick}
                 onClose={closeAllPopups} 
+                handleChangeButton={handleChangeButton}
                 />
               }
           />
@@ -350,6 +364,7 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
+                handleChangeButton={handleChangeButton}
                 />
               }
           />
@@ -363,6 +378,7 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
+                handleChangeButton={handleChangeButton}
                 />
               }
           />
@@ -399,6 +415,7 @@ function getFinalPrice() {
           error={error}
           postUserDataAndOrder={postUserDataAndOrder}
           finalPrice={finalPrice}
+          handleChangeButtonAfterDeletefromBag={handleChangeButtonAfterDeletefromBag}
       />
       <PopapLuckySendForm
       onClose={closeAllPopups}

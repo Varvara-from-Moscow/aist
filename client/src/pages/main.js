@@ -7,7 +7,7 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({popular, complects, handleSaveGood, postBackCall, isButtonChanged, error, errorMessage }) {
+function Main({handleChangeButton, onButton, popular, complects, handleSaveGood, postBackCall, value, error, errorMessage }) {
     return (
         <div>
             <Promo/>
@@ -15,7 +15,9 @@ function Main({popular, complects, handleSaveGood, postBackCall, isButtonChanged
             <SolutionsList
             complects={complects}
             handleSaveGood={handleSaveGood}
-            isButtonChanged={isButtonChanged}
+            value={value}
+            onButton={onButton}
+            handleChangeButton={handleChangeButton}
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>
@@ -27,6 +29,7 @@ function Main({popular, complects, handleSaveGood, postBackCall, isButtonChanged
             <PopularGoods
             popular={popular}
             handleSaveGood={handleSaveGood}
+            handleChangeButton={handleChangeButton}
             />
 
             <Certificates></Certificates>

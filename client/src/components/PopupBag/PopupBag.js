@@ -2,7 +2,7 @@ import React from 'react'
 import './PopupBag.css'
 import Good from './Good/Good'
 
-function PopupBag({finalPrice,postUserDataAndOrder,error,errorMessage,promo,isPromoOk,isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
+function PopupBag({handleChangeButtonAfterDeletefromBag, finalPrice, postUserDataAndOrder, error, errorMessage, promo, isPromoOk, isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
 
   const [promoInput, setPromoInput] = React.useState('')
   const [nameInput, setNameInput] = React.useState('')
@@ -55,6 +55,7 @@ function handleUserAndDataSubmit(e) {
             key={good.id}
             good={good}
             handleDelete={handleDelete}
+            handleChangeButtonAfterDeletefromBag={handleChangeButtonAfterDeletefromBag}
             increment={increment}
             decrement={decrement}
           />

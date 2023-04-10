@@ -2,10 +2,7 @@
 import './Solutions.css'
 import Solutions from './Solutions'
 
-function SolutionsList({complects, handleSaveGood, isButtonChanged}) {
-
-  /*let description = complects.description.split('\r\n-')*/
-    
+function SolutionsList({complects, handleSaveGood, value , onButton, handleChangeButton}) {
 
   return (
       <section className="solutions">
@@ -16,7 +13,9 @@ function SolutionsList({complects, handleSaveGood, isButtonChanged}) {
                 key={item.id}
                 data={item}
                 onSolution={handleSaveGood}
-                isButtonChanged={isButtonChanged}
+                value={value}
+                onButton={onButton}
+                handleChangeButton={handleChangeButton}
               />
         ))}
         </ul>

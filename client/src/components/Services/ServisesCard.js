@@ -2,12 +2,13 @@ import './ServicesList.css'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-function ServicestCard({card, handleSaveGood, onCardClick,}) {
+function ServicestCard({ card, handleSaveGood, onCardClick, handleChangeButton }) {
 
     let { slug } = useParams();
 
     function handleAddGood () {
         handleSaveGood(card)
+        handleChangeButton(card)
     }
 
     function handleClick() {

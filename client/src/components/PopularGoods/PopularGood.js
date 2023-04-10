@@ -2,12 +2,15 @@ import './PopularGoods.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 
-function PopularGood({popular, onGood}) {
+function PopularGood({popular, onGood, handleChangeButton}) {
 
 let { slug } = useParams();
 
+const isButtonChanged = popular.is_in_bag === 2
+
 function handleAddGood() {
     onGood(popular)
+    handleChangeButton(popular)
 }
 
     return (
@@ -21,7 +24,12 @@ function handleAddGood() {
                 <Link to={`/equipment/${popular.slug}`} className="popular-goods__link">
                   <p className="popular-goods__link-text">О товаре</p>
                 </Link>
-                  <button className="popular-goods__button" onClick={handleAddGood}>В корзину</button>
+                {isButtonChanged? 
+                    <button className="popular-goods__button">Добавлен в корзину</button>
+                :
+                    <button className="popular-goods__button" onClick={handleAddGood}>В корзину</button>
+                }
+                  
               </div>
         </li>
     );

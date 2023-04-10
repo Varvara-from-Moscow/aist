@@ -4,7 +4,7 @@ import React from 'react'
 import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
 
-function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
+function IndividualPageOfEquipment({ handleChangeButton, handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
 
   const navigate = useNavigate()
   function goBack() {
@@ -29,6 +29,7 @@ function IndividualPageOfEquipment({ handleSaveGood, allProducts, postBackCall, 
 
     function handleAddGood () {
         handleSaveGood(good)
+        handleChangeButton(good)
     }
 
     return (

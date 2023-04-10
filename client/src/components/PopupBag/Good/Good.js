@@ -3,10 +3,11 @@ import React from 'react'
 import '../PopupBag.css'
 
 
-function Good({good, handleDelete, decrement, increment}) {
+function Good({good, handleDelete, decrement, increment, handleChangeButtonAfterDeletefromBag}) {
 
     function handleDeleteGood() {
         handleDelete(good)
+        handleChangeButtonAfterDeletefromBag(good)
     }
 
     function handleIncrement() {
