@@ -138,6 +138,22 @@
     opacity: 0.5;
 }
 
+.servicesList__item-added-in-bag {
+    align-self: flex-end;
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: #DF5330;
+    display: flex;
+    align-self: flex-end;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
 .servicesList__item-down-container {
     display: flex;
     justify-content: space-between;

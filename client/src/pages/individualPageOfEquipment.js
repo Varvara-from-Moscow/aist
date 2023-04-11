@@ -4,7 +4,7 @@ import React from 'react'
 import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
 
-function IndividualPageOfEquipment({ handleChangeButton, handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
+function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
 
   const navigate = useNavigate()
   function goBack() {
@@ -26,6 +26,9 @@ function IndividualPageOfEquipment({ handleChangeButton, handleSaveGood, allProd
 
       let { slug } = useParams();
       const good = allProducts.find(f => f.slug === slug)
+
+      //const isButtonChanged = good.is_in_bag === 2
+      const isButtonChanged = savedGoods.some(item => item.id === good.id)
 
     function handleAddGood () {
         handleSaveGood(good)
@@ -49,7 +52,11 @@ function IndividualPageOfEquipment({ handleChangeButton, handleSaveGood, allProd
                     <p className='individualPageOfEquipment-description'>{good.description}</p>
                     <p className='individualPageOfEquipment-price'>{good.price} р.</p>
                     <div className='individualPageOfEquipment-btn-container'>
-                        <button className='individualPageOfEquipment-btn' onClick={handleAddGood}>В корзину</button>
+                    {isButtonChanged ?
+                      <button className='individualPageOfEquipment-btn'>В корзине</button>
+                      :
+                      <button className='individualPageOfEquipment-btn' onClick={handleAddGood}>В корзину</button>  
+                    }    
                         <button className='individualPageOfEquipment-btn'>Остались вопросы?</button>
                     </div>
                 </div>

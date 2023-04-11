@@ -3,7 +3,7 @@ import './PopularGoods.css'
 import { Link } from 'react-router-dom'
 import PopularGood from './PopularGood'
 
-function PopularGoods({popular, handleSaveGood, handleChangeButton}) {
+function PopularGoods({popular, handleSaveGood, handleChangeButton, savedGoods}) {
 
 
     return (
@@ -23,6 +23,8 @@ function PopularGoods({popular, handleSaveGood, handleChangeButton}) {
                 popular={item}
                 onGood={handleSaveGood}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
+                
               />
       ))}
             </ul>
@@ -32,3 +34,4 @@ function PopularGoods({popular, handleSaveGood, handleChangeButton}) {
   }
   
   export default PopularGoods;
+  

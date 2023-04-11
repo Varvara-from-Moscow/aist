@@ -2,7 +2,7 @@ import './ServicesList.css'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-function ServicestCard({ card, handleSaveGood, onCardClick, handleChangeButton }) {
+function ServicestCard({ card, handleSaveGood, onCardClick, handleChangeButton, savedGoods }) {
 
     let { slug } = useParams();
 
@@ -15,6 +15,8 @@ function ServicestCard({ card, handleSaveGood, onCardClick, handleChangeButton }
         onCardClick(card);
     }
 
+    //const isButtonChanged = card.is_in_bag === 2
+    const isButtonChanged = savedGoods.some(item => item.id === card.id)
 
     return (
         <li className="servicesList__item">
@@ -26,7 +28,12 @@ function ServicestCard({ card, handleSaveGood, onCardClick, handleChangeButton }
                 <h3 className="servicesList__item-title">{card.name}</h3>
                 <p className="servicesList__item-price">Цена {card.price} р.</p>
               </div>
-              <button className="servicesList__item-add-btn" onClick={handleAddGood}></button>
+              {isButtonChanged?
+                <button className="servicesList__item-added-in-bag">&#x2714;</button>
+              :
+                <button className="servicesList__item-add-btn" onClick={handleAddGood}></button>
+              }
+              
             </div>  
         </li>
     );

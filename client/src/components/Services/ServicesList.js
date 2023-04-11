@@ -1,7 +1,7 @@
 import './ServicesList.css'
 import ServisesCard from './ServisesCard'
 
-function ServicesList({ onCardClick, data, handleSaveGood, handleChangeButton }) {
+function ServicesList({ savedGoods, onCardClick, data, handleSaveGood, handleChangeButton }) {
 
     return (
     <ul className="servicesList">
@@ -12,6 +12,7 @@ function ServicesList({ onCardClick, data, handleSaveGood, handleChangeButton })
           onCardClick={onCardClick}
           handleSaveGood={handleSaveGood}
           handleChangeButton={handleChangeButton}
+          savedGoods={savedGoods}
           />
       ))}
     </ul>

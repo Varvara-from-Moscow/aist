@@ -58,13 +58,24 @@
     margin-right: 60px;
     transition: opacity 1s;
     align-self: center;
+    color: #fff;
+    display: flex;
     position: relative;
-    
 }
 
 .header__nav-bag:hover {
     opacity: 0.5;
     transition: opacity 1s;
+}
+
+.header__nav-bag-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.36px;
+  color: #fff;
+  margin: 0;
+  margin-right: 10px;
+  align-self: center;
 }
 
 .header__nav-bag-btn {
@@ -76,6 +87,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  
 }
 
 .header__listlink {
@@ -87,7 +99,7 @@
   color:#fff;
   position: absolute;
   top: 6px;
-  left: 15px;
+  right: 13px;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;

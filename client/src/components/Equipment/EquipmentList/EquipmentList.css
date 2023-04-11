@@ -205,6 +205,20 @@
 .equipmentList__item-bag:hover {
     opacity: 0.5;
 }
+
+.equipmentList__item-added-in-bag {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: #DF5330;
+    display: flex;
+    align-self: flex-end;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 /*
 @media screen and (max-width: 720px) {
     .equipmentList__item-bag {

@@ -46,7 +46,6 @@
 @media screen and (min-width: 1441px) {
     .servicesMain__wrapper {
         max-width: 2000px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 
@@ -74,7 +73,7 @@
 
 @media screen and (min-width: 1441px) {
     .servicesMain__container {
-        max-width: 600px;
+        max-width: 800px;
     }
   }
 

@@ -65,6 +65,8 @@ function App() {
     }
   } */
 
+  //location.pathname === '/equipment'
+
   const handleSaveGood = (good) => {
     if(!(savedGoods.some(item => item.id === good.id))) {
       setSavedGoods([good, ...savedGoods])
@@ -72,7 +74,7 @@ function App() {
       return
     }
   }
-
+//savedGoods.some(item => item.id === data.id)
   function handleChangeButton(data) {
     if(data.id === data.id) {
       data.is_in_bag = 2
@@ -174,6 +176,9 @@ function App() {
     })
     .then((res) => {
       console.log(res)
+      /*setPopular({})
+      setComplects({})
+      setAllProducts({})*/
       setError(false)
       setLuckyFormPopapOpen(true)
       setDiscount(1)
@@ -231,7 +236,6 @@ function getFinalPrice() {
     api.getPopular()
       .then(res => {
         setPopular(res)
-        console.log(res)
       })
   }
 
@@ -322,6 +326,7 @@ function getFinalPrice() {
                 errorMessage={errorMessage}
                 error={error}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
               }
           />
@@ -338,6 +343,7 @@ function getFinalPrice() {
                 increment={increment}
                 decrement={decrement}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
               }
           />
@@ -351,6 +357,7 @@ function getFinalPrice() {
                 isMenuCliked={handleMenuClick}
                 onClose={closeAllPopups} 
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
               }
           />
@@ -365,6 +372,7 @@ function getFinalPrice() {
                 errorMessage={errorMessage}
                 error={error}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
               }
           />
@@ -379,6 +387,7 @@ function getFinalPrice() {
                 errorMessage={errorMessage}
                 error={error}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
               }
           />

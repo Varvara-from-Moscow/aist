@@ -7,7 +7,7 @@ import ServisesNavigationList from '../components/Navigation/ServisesNavigationL
 import './services.css'
 
 
-function Services({handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeButton}) {
+function Services({savedGoods, handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeButton}) {
 
     //onClick={isMenuCliked}
     //isMenuCliked, onCardClick
@@ -82,6 +82,7 @@ function Services({handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeBu
               data={servicesAfterFilter}
               handleSaveGood={handleSaveGood}
               handleChangeButton={handleChangeButton}
+              savedGoods={savedGoods}
               />
               <ServisesNavigationList
                 data={category}
@@ -108,6 +109,7 @@ function Services({handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeBu
                 data={servicesAfterFilter}
                 handleSaveGood={handleSaveGood}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
                 />
             </div>
             </>
