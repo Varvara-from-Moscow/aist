@@ -1,6 +1,6 @@
 
-//export const BASE_URL = '/api';
-export const BASE_URL = '//localhost:8000/api';
+export const BASE_URL = '/api';
+//export const BASE_URL = '//localhost:8000/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -161,7 +161,7 @@ export const getServicesCategory = (
   return checkResponse(res);
 });
 }; 
-//localhost:8000/api/cupons/VALID
+
 export const checkPromo = (promoCode) => {
   return fetch(`${BASE_URL}/cupons/${promoCode}`, 
   {
