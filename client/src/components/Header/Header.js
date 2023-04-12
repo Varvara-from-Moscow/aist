@@ -39,7 +39,7 @@ function Header({isBurgerMenuCliked, isbagCliked, total}) {
           <Link className='header__listlink' to="/services">Услуги</Link>
           </li>
           <li className="header__nav-bag">
-            <p className="header__nav-bag-text">Корзина</p>
+            <button className="header__nav-bag-text" onClick={isbagCliked}>Корзина</button>
             <button className="header__nav-bag-btn" onClick={isbagCliked}></button>
             <div className="header__total-count">{total.count}</div>
           </li>

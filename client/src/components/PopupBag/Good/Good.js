@@ -1,13 +1,11 @@
 import React from 'react'
-//import { Link } from 'react-router-dom';
 import '../PopupBag.css'
 
 
-function Good({good, handleDelete, decrement, increment, handleChangeButtonAfterDeletefromBag}) {
+function Good({changeValue, good, handleDelete, decrement, increment }) {
 
     function handleDeleteGood() {
-        handleDelete(good)
-        handleChangeButtonAfterDeletefromBag(good)
+        handleDelete(good.id)
     }
 
     function handleIncrement() {
@@ -33,7 +31,7 @@ function Good({good, handleDelete, decrement, increment, handleChangeButtonAfter
 
             <div className="bag-popup__item-increament-container">
                 <button className="bag-popup__item-increament" onClick={handleIncrement}>+</button>
-                <div className="bag-popup__item-count">{good.quantity}</div>
+                <input onChange={(e) => {changeValue(good.id, e.target.value)}} type="number" min='1' max='100' className="bag-popup__item-count" value={good.quantity}></input>
                 <button className="bag-popup__item-decrement" onClick={handleDecrement}>-</button>
             </div>
 
@@ -51,3 +49,4 @@ export default Good;
 ////<p className="bag-popup__good-description">{}</p>
 
 //type="number" min='1' value={good.quanity}
+//<div className="bag-popup__item-count">{good.quantity}</div>

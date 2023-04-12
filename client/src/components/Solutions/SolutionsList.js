@@ -2,7 +2,7 @@
 import './Solutions.css'
 import Solutions from './Solutions'
 
-function SolutionsList({complects, handleSaveGood, value , onButton, handleChangeButton}) {
+function SolutionsList({savedGoods, complects, handleSaveGood, value , onButton, handleChangeButton}) {
 
   return (
       <section className="solutions">
@@ -16,6 +16,7 @@ function SolutionsList({complects, handleSaveGood, value , onButton, handleChang
                 value={value}
                 onButton={onButton}
                 handleChangeButton={handleChangeButton}
+                savedGoods={savedGoods}
               />
         ))}
         </ul>

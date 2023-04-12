@@ -31,8 +31,6 @@ function App() {
   const [finalPrice, setFinalPrice] = React.useState()
   const [afterPromo, setAfterPromo] = React.useState()
   const [isAdded, setIsAdded] = React.useState(false)
-  /*const [value, setValue] = React.useState("Выбрать")*/
-  const [isButtonChanged, setIsButtonChanged] = React.useState(false)
   
 /*
   function ScrollToTop() {
@@ -44,28 +42,6 @@ function App() {
   
     return null;
   }*/
-/*
-    const changeButton = (good) => {
-    if(savedGoods.some(item => item.id === good.id)) {
-       console.log("Товар был добавлен в корзину")
-       setIsButtonChanged(true)
-    }else{
-      setIsButtonChanged(false)
-    }
-  }*/
-  
-/*
-  const handleSaveGood = (good) => {
-    if(savedGoods.some(item => item.id === good.id)) {
-       //console.log("Товар уже был добавлен в корзину")
-    }else{
-      setSavedGoods([good, ...savedGoods])
-      setIsButtonChanged(true)
-      console.log(isButtonChanged + "успех")
-    }
-  } */
-
-  //location.pathname === '/equipment'
 
   const handleSaveGood = (good) => {
     if(!(savedGoods.some(item => item.id === good.id))) {
@@ -74,33 +50,23 @@ function App() {
       return
     }
   }
-//savedGoods.some(item => item.id === data.id)
-  function handleChangeButton(data) {
-    if(data.id === data.id) {
-      data.is_in_bag = 2
-    }
-  }
 
-  function handleChangeButtonAfterDeletefromBag(data) {
-    if(data.id === data.id) {
-      data.is_in_bag = 1
-    }
-  }
-
-  const handleDeleteGood = (good) => {
+  const handleDeleteGood = (id) => {
     setSavedGoods((goods) =>
-      goods.filter((g) => g.id !== good.id)
+    goods.filter((g) => g.id !== id)
     )
   }
 
   function increment(id) {
-    setSavedGoods((good) => {
-      return good.map((product) => {
+    setSavedGoods((goods) => {
+      return goods.map((product) => {
         if (product.id === id) {
           return {
             ...product,
-            quantity: ++product.quantity,
-            total_price: product.quantity * product.price,
+            //quantity: ++ product.quantity,
+            //total_price: product.quantity * product.price,
+            quantity: product.quantity +1,
+            total_price: (product.quantity +1) * product.price,
           }
         }
         return product
@@ -109,8 +75,8 @@ function App() {
   }
 
   function decrement(id) {
-    setSavedGoods((good) => {
-      return good.map((product) => {
+    setSavedGoods((goods) => {
+      return goods.map((product) => {
         if (product.id === id) {
 
          const newQuantity = product.quantity - 1 > 1 ? product.quantity - 1 : 1
@@ -119,6 +85,21 @@ function App() {
             ...product,
             quantity: newQuantity,
             total_price: newQuantity * product.price,
+          }
+        }
+        return product
+      })
+    })
+  }
+
+  const changeValue = (id, value) => {
+    setSavedGoods((good) => {
+      return good.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            quantity: value,
+            total_price: value * product.price,
           }
         }
         return product
@@ -175,14 +156,10 @@ function App() {
       )
     })
     .then((res) => {
-      console.log(res)
-      /*setPopular({})
-      setComplects({})
-      setAllProducts({})*/
+      setSavedGoods([])
       setError(false)
       setLuckyFormPopapOpen(true)
       setDiscount(1)
-      setSavedGoods([])
       setAfterPromo()
       setFinalPrice()
       setIsPromoOk(false)
@@ -258,7 +235,6 @@ function getFinalPrice() {
     api.getComplects()
       .then(res => {
         setComplects(res)
-        console.log(res)
       })
   }
 
@@ -325,7 +301,6 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
-                handleChangeButton={handleChangeButton}
                 savedGoods={savedGoods}
                 />
               }
@@ -342,7 +317,6 @@ function getFinalPrice() {
                 onClose={closeAllPopups} 
                 increment={increment}
                 decrement={decrement}
-                handleChangeButton={handleChangeButton}
                 savedGoods={savedGoods}
                 />
               }
@@ -356,7 +330,6 @@ function getFinalPrice() {
                 isOpen={isMenuOpen}
                 isMenuCliked={handleMenuClick}
                 onClose={closeAllPopups} 
-                handleChangeButton={handleChangeButton}
                 savedGoods={savedGoods}
                 />
               }
@@ -371,7 +344,6 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
-                handleChangeButton={handleChangeButton}
                 savedGoods={savedGoods}
                 />
               }
@@ -386,7 +358,6 @@ function getFinalPrice() {
                 postBackCall={postBackCall}
                 errorMessage={errorMessage}
                 error={error}
-                handleChangeButton={handleChangeButton}
                 savedGoods={savedGoods}
                 />
               }
@@ -424,7 +395,7 @@ function getFinalPrice() {
           error={error}
           postUserDataAndOrder={postUserDataAndOrder}
           finalPrice={finalPrice}
-          handleChangeButtonAfterDeletefromBag={handleChangeButtonAfterDeletefromBag}
+          changeValue={changeValue}
       />
       <PopapLuckySendForm
       onClose={closeAllPopups}

@@ -2,9 +2,11 @@
 import './Solutions.css'
 import Description from './Description'
 
-function Solutions({ data, onSolution, handleChangeButton }) {
+function Solutions({ data, onSolution, handleChangeButton, savedGoods }) {
 
-  const isButtonChanged = data.is_in_bag === 2
+
+  const isButtonChanged = savedGoods.some(item => item.id === data.id)
+  //const isButtonChanged = data.is_in_bag === 2
   /*let description = complects.description.split('\r\n-')*/
   //const isButtonChanged = data.is_in_bag > 1 ? true : false;
   //const isButtonChanged = data.is_in_bag === 2 ? true : false;
@@ -17,7 +19,7 @@ function Solutions({ data, onSolution, handleChangeButton }) {
 
     function handleClick() {
         onSolution(data)
-        handleChangeButton(data)
+        //handleChangeButton(data)
     }
 
 
@@ -30,7 +32,7 @@ function Solutions({ data, onSolution, handleChangeButton }) {
             <ul className="solutions__offer-wrapper">
             {description.length > 0 && description.map((item)=> (
               <Description
-              key={item.index}
+              key={item.index + 100000}
               item={item}
               />
             ))}

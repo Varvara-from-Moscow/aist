@@ -33,7 +33,7 @@ function ContactForm({postBackCall, error, errorMessage}) {
               required
               name="name"
               type="text"
-              minLength="5"
+              minLength="1"
               className="contactForm__input" 
               onChange={handleNameChange}
           /> 
@@ -42,8 +42,8 @@ function ContactForm({postBackCall, error, errorMessage}) {
               required
               name="tel"
               type="tel"
-              minLength="5"
-              maxLength="30"
+              minLength="11"
+              //maxLength="30"
               className="contactForm__input"
               onChange={handleTelChange}
           />

@@ -339,8 +339,9 @@
 }
 
 .bag-popup__item-count {
-    width: 10px;
+    min-width: 10px;
     border: none;
+    text-align: center;
 }
 
 .bag-popup__promocode-container {

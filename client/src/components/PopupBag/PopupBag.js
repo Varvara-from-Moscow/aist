@@ -2,7 +2,7 @@ import React from 'react'
 import './PopupBag.css'
 import Good from './Good/Good'
 
-function PopupBag({handleChangeButtonAfterDeletefromBag, finalPrice, postUserDataAndOrder, error, errorMessage, promo, isPromoOk, isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
+function PopupBag({changeValue, handleChangeButtonAfterDeletefromBag, finalPrice, postUserDataAndOrder, error, errorMessage, promo, isPromoOk, isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
 
   const [promoInput, setPromoInput] = React.useState('')
   const [nameInput, setNameInput] = React.useState('')
@@ -58,6 +58,7 @@ function handleUserAndDataSubmit(e) {
             handleChangeButtonAfterDeletefromBag={handleChangeButtonAfterDeletefromBag}
             increment={increment}
             decrement={decrement}
+            changeValue={changeValue}
           />
         ))}  
       </ul>
@@ -86,6 +87,7 @@ function handleUserAndDataSubmit(e) {
           className="bag-popup__input"
           name="name"
           type="text"
+          minLength="1"
           onChange={handleNameInputChange}
         />
         <span className="bag-popup__input-span">Телефон*</span>
@@ -93,6 +95,7 @@ function handleUserAndDataSubmit(e) {
           className="bag-popup__input"
           name="tel"
           type="tel"
+          minLength="11"
           onChange={handleTelInputChange}
         />
         <span className="bag-popup__input-span">Email</span>

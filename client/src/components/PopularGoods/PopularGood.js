@@ -2,7 +2,7 @@ import './PopularGoods.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 
-function PopularGood({popular, onGood, handleChangeButton, savedGoods}) {
+function PopularGood({popular, onGood, savedGoods}) {
 
 let { slug } = useParams();
 
@@ -11,7 +11,6 @@ const isButtonChanged = savedGoods.some(item => item.id === popular.id)
 
 function handleAddGood() {
     onGood(popular)
-    handleChangeButton(popular)
 }
 
     return (

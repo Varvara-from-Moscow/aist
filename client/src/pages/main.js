@@ -18,6 +18,7 @@ function Main({savedGoods, handleChangeButton, onButton, popular, complects, han
             value={value}
             onButton={onButton}
             handleChangeButton={handleChangeButton}
+            savedGoods={savedGoods}
             />
             <ServicesMain></ServicesMain>
             <Maintenance></Maintenance>
