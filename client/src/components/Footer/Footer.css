@@ -21,6 +21,12 @@
     margin-bottom: 24px;
 }
 
+@media screen and (max-width: 720px) {
+    .footer-logo {
+        margin-bottom: 0;
+    }
+  } 
+
 .footer__wrapper {
     display: flex;
     justify-content: space-between;
@@ -166,15 +172,5 @@
 
 .footer__links-container-link {
     color: #fff;
- /*   font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;*/
     text-decoration: none;
 }  
-/*
-@media screen and (max-width: 400px) {
-    .footer__links-container-link {
-        font-size: 10px;
-    }
-  }*/

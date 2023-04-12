@@ -7,7 +7,7 @@ import './Certificates.css';
 function Certificates() {
   return (
       <section className="certificates">
-        <h3 className="certificates__title">Сертификаты соответствия</h3>
+        <h2 className="certificates__title">Сертификаты соответствия</h2>
         <ul className="certificates__wrapper">
           <li className="certificates__container">
             <img src={sertificate} className="certificates__pic"></img>

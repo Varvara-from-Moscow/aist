@@ -9,7 +9,7 @@ function PopularGoods({popular, handleSaveGood, handleChangeButton, savedGoods})
     return (
         <section className="popular-goods">
             <div className="popular-goods__title-wrapper">
-                <h3 className="popular-goods__title">Популярные товары</h3>
+                <h2 className="popular-goods__title">Популярные товары</h2>
                 <Link className='' to="/equipment">
                   <button className="popular-goods__btn">Все товары</button>
                 </Link>
