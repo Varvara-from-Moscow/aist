@@ -25,7 +25,7 @@ function handleAddGood() {
                   <p className="popular-goods__link-text">О товаре</p>
                 </Link>
                 {isButtonChanged? 
-                    <button className="popular-goods__button">В корзине</button>
+                    <button className="popular-goods__button">Добавлено</button>
                 :
                     <button className="popular-goods__button" onClick={handleAddGood}>В корзину</button>
                 }

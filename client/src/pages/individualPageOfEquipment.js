@@ -53,7 +53,7 @@ function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveG
                     <p className='individualPageOfEquipment-price'>{good.price} р.</p>
                     <div className='individualPageOfEquipment-btn-container'>
                     {isButtonChanged ?
-                      <button className='individualPageOfEquipment-btn'>В корзине</button>
+                      <button className='individualPageOfEquipment-btn'>Добавлено</button>
                       :
                       <button className='individualPageOfEquipment-btn' onClick={handleAddGood}>В корзину</button>  
                     }    
