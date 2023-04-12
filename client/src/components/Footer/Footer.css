@@ -174,3 +174,8 @@
     color: #fff;
     text-decoration: none;
 }  
+
+.footer__listlink {
+    text-decoration: none;
+    color: #fff;
+}

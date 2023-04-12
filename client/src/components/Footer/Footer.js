@@ -14,9 +14,13 @@ function Footer() {
                     <li className="footer__info-container-li">ОГРНИП: 319265100139440</li>
                     <li className="footer__info-container-li footer__info-container-li-iin">ИНН: 261901001245</li>
 
-                    <li className="footer__info-container-li footer__info-container-li-mail">support@it-aist.ru</li>
+                    <li className="footer__info-container-li footer__info-container-li-mail">
+                      <a className='footer__listlink' href="mailto:support@it-aist.ru">support@it-aist.ru</a>
+                    </li>
 
-                    <li className="footer__info-container-li footer__info-container-li-tel">8(962)440-07-40</li>
+                    <li className="footer__info-container-li footer__info-container-li-tel">
+                      <a className='footer__listlink' href="tel:89624400740">8(962)440-07-40</a>
+                    </li>
                     <li className="footer__info-container-li">8(8652)40-07-40</li>
 
                 </ul>

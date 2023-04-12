@@ -32,6 +32,11 @@
     }
   }
 
+@media screen and (max-width: 720px) {
+    .services__title {
+        margin-left: 15px;
+    }
+  }
 
 .services__wrapper {
     display: flex;
@@ -68,6 +73,12 @@
     margin-right: 40px;
     align-self: center;
 }
+
+@media screen and (max-width: 720px) {
+    .services__menu {
+        margin-right: 15px;
+    }
+  }
 
 .services__text{
     font-style: normal;

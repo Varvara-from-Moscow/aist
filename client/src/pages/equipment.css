@@ -2,7 +2,6 @@
     display: flex;
     margin-left: 40px;
     background-color: #F5F5F5;
-   
 }
 
 .equipment__title-dop {
@@ -32,6 +31,12 @@
         line-height: 21px;
     }
   }
+
+  @media screen and (max-width: 720px) {
+    .equipment__title {
+        margin-left: 15px;
+    }
+  }  
 
 
 .equipment__wrapper {
@@ -69,6 +74,12 @@
     margin-right: 40px;
     align-self: center;
 }
+
+@media screen and (max-width: 720px) {
+    .quipment__menu {
+        margin-right: 15px;
+    }
+  }
 
 .quipment__text{
     font-style: normal;
