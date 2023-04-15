@@ -1,6 +1,7 @@
 .servicesNav {
-    width: 287px;
-    max-width: 287px;
+    width: calc(287px - 40px);
+    max-width: calc(287px - 40px);
+    min-width: calc(287px - 40px);
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@
     margin-top: 0;
     cursor: pointer;
     transition: 0.3s ease;
+    max-width: 100%;
 }
 
 .servicesNav__item:last-of-type {
