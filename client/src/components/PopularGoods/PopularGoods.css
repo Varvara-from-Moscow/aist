@@ -191,7 +191,13 @@ margin-top: 120px;
         width: calc(50% - 5px);
         margin-right: 10px;
     }
-  }
+  } 
+
+  @media screen and (max-width: 565px) {
+    .popular-goods__button {
+        font-size: 10px;
+    }
+  } 
 
   .popular-goods__link {
     background-color: #DF5330;
@@ -249,3 +255,9 @@ margin-top: 120px;
         line-height: 14px;
     }
   }  
+
+  @media screen and (max-width: 565px) {
+    .popular-goods__link-text {
+        font-size: 10px;
+    }
+  }    
