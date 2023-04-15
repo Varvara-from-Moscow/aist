@@ -6,6 +6,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate()
   function goBack() {
     navigate(-1);

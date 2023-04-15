@@ -1,6 +1,12 @@
+import React from 'react'
 import './Information.css'
 
 function Information() {
+    
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     return (
         <div className="information">
           <h2>ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</h2>

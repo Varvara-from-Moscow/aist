@@ -6,28 +6,16 @@ import ServicesNav from '../components/Services/ServicesNav'
 import ServisesNavigationList from '../components/Navigation/ServisesNavigationList'
 import './services.css'
 
+function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeButton}) {
 
-function Services({savedGoods, handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeButton}) {
+  
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
-    //onClick={isMenuCliked}
-    //isMenuCliked, onCardClick
-
-    const [isMobile, setIsMobile] = React.useState(false)
     const [services, setServices] = React.useState({})
     const [servicesAfterFilter, setServicesAfterFilter] = React.useState({})
     const [category, setCategory] = React.useState({})
-
-    const handleResize = () => {
-      if (window.innerWidth < 1100) {
-        setIsMobile(true)
-      } else {
-        setIsMobile(false)
-      }
-    }
-  
-    React.useEffect(() => {
-      window.addEventListener("resize", handleResize)
-    })
 
     React.useEffect(() => {
       getServices()

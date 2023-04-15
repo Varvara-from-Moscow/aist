@@ -31,17 +31,22 @@ function App() {
   const [finalPrice, setFinalPrice] = React.useState()
   const [afterPromo, setAfterPromo] = React.useState()
   const [isAdded, setIsAdded] = React.useState(false)
+  const [isMobile, setIsMobile] = React.useState(false)
   
-/*
-  function ScrollToTop() {
-    const { pathname } = useLocation();
-  
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  
-    return null;
-  }*/
+  const handleResize = () => {
+    if (window.innerWidth < 1100) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("load", handleResize)
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("reload", handleResize)
+    window.addEventListener("orientationchange", handleResize)
+  })
 
   const handleSaveGood = (good) => {
     if(!(savedGoods.some(item => item.id === good.id))) {
@@ -285,7 +290,8 @@ function getFinalPrice() {
       <Header
           isBurgerMenuCliked={handleBurgerMenuClick}
           isbagCliked={handleBagClick}
-          total={total}    
+          total={total} 
+          isMobile={isMobile}   
       />
 
       <Routes>
@@ -318,6 +324,7 @@ function getFinalPrice() {
                 increment={increment}
                 decrement={decrement}
                 savedGoods={savedGoods}
+                isMobile={isMobile} 
                 />
               }
           />
@@ -331,6 +338,7 @@ function getFinalPrice() {
                 isMenuCliked={handleMenuClick}
                 onClose={closeAllPopups} 
                 savedGoods={savedGoods}
+                isMobile={isMobile} 
                 />
               }
           />

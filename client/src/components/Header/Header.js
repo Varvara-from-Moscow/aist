@@ -3,22 +3,7 @@ import './Header.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Header({isBurgerMenuCliked, isbagCliked, total}) {
-
-  const [isMobile, setIsMobile] = React.useState(false)
-
-  const handleResize = () => {
-    if (window.innerWidth < 1000) {
-      setIsMobile(true)
-    } else {
-      setIsMobile(false)
-    }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("resize", handleResize)
-  })
-
+function Header({isMobile, isBurgerMenuCliked, isbagCliked, total}) {
 
   return (
       <header className="header">

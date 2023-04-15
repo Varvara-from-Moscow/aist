@@ -8,26 +8,28 @@ function Slider() {
   const getNext = () => {
     if(slideIndex !== dataSlider.length) {
       setSlideIndex(slideIndex + 1)
+      clearTimeout(timer)
     } else if (slideIndex === dataSlider.length) {
       setSlideIndex(1)
+      clearTimeout(timer)
     }
   }
 
   const getPrev = () => {
     if(slideIndex !== 1){
       setSlideIndex(slideIndex - 1)
+      clearTimeout(timer)
     } else if (slideIndex === 1){
       setSlideIndex(dataSlider.length)
+      clearTimeout(timer)
     }
   }
+
+  let timer =
 
   setTimeout(() => {
     getNext();
   }, "5000");
-/*
-  const moveDot = index => {
-    setSlideIndex(index)
-  }*/
 
   return (
       <div className="slider__container">
@@ -47,8 +49,9 @@ function Slider() {
               </div>
               
               <div className='slide-container-btn'>
-                <button onClick={getNext} className="btn-slide btn-slide_active"></button>
-                <button onClick={getPrev} className="btn-slide"></button>
+                {Array.from({length: 2}).map((item, index) => (
+                  <button onClick={slideIndex === index + 1 ? getNext : getPrev} className={slideIndex === index + 1 ? 'btn-slide btn-slide_active' : 'btn-slide'}></button>
+                ))}
               </div>
 
             </div>

@@ -6,25 +6,16 @@ import EquipmentNavigationList from '../components/Navigation/EquipmentNavigatio
 import './equipment.css'
 import * as api from '../Api'
 
-function Equipment({savedGoods, handleChangeButton, isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
+function Equipment({isMobile, savedGoods, handleChangeButton, isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
 
-    const [isMobile, setIsMobile] = React.useState(false)
     const [equipment, setEquipment] = React.useState({})
     const [equipmentAfterFilter, setEquipmentAfterFilter] = React.useState({})
     const [category, setCategory] = React.useState({})
-  
-    const handleResize = () => {
-      if (window.innerWidth < 1100) {
-        setIsMobile(true)
-      } else {
-        setIsMobile(false)
-      }
-    }
-  
-    React.useEffect(() => {
-      window.addEventListener("resize", handleResize)
-    })
 
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
     React.useEffect(() => {
       getEquipment()
     }, [])
