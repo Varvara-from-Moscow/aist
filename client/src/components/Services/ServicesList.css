@@ -115,6 +115,24 @@
     }
 }
 
+.servicesList__item-price-span {
+    margin: 0;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #181818;
+}
+
+@media screen and (max-width: 720px) {
+    .servicesList__item-price-span {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
+ 
+
 .servicesList__item-wrapper {
     display: flex;
     justify-content: space-between;

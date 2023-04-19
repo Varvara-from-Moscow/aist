@@ -6,7 +6,7 @@ import EquipmentNavigationList from '../components/Navigation/EquipmentNavigatio
 import './equipment.css'
 import * as api from '../Api'
 
-function Equipment({isMobile, savedGoods, handleChangeButton, isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
+function Equipment({isMobile, isResize, savedGoods, handleChangeButton, isMenuCliked, onCardClick, handleSaveGood, isOpen, onClose, decrement, increment}) {
 
     const [equipment, setEquipment] = React.useState({})
     const [equipmentAfterFilter, setEquipmentAfterFilter] = React.useState({})
@@ -55,7 +55,7 @@ function Equipment({isMobile, savedGoods, handleChangeButton, isMenuCliked, onCa
 
     return (
         <>
-            {isMobile?
+            {isMobile || isResize?
             <>
             <div className='equipment__wrapper'>
                 <h3 className='equipment__title'>Оборудование</h3>

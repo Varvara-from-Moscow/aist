@@ -346,3 +346,22 @@
         line-height: 12px;
     }
 }
+
+
+.equipmentList__item-price-span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    margin-left: 5px;
+    display: flex;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 720px) {
+    .equipmentList__item-price-span {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}

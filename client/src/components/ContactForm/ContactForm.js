@@ -43,7 +43,7 @@ function ContactForm({postBackCall, error, errorMessage}) {
               name="tel"
               type="tel"
               minLength="11"
-              //maxLength="30"
+              placeholder="+7(***)***-**-**"
               className="contactForm__input"
               onChange={handleTelChange}
           />

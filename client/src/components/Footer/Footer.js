@@ -14,6 +14,8 @@ function Footer() {
                     <li className="footer__info-container-li">ОГРНИП: 319265100139440</li>
                     <li className="footer__info-container-li footer__info-container-li-iin">ИНН: 261901001245</li>
 
+                    <li className="footer__info-container-li-text">Официальным поставщиком по 1с версии «ПРОФ» является фирма франчайзи ООО «Волгаторг»</li>
+
                     <li className="footer__info-container-li footer__info-container-li-mail">
                       <a className='footer__listlink' href="mailto:support@it-aist.ru">support@it-aist.ru</a>
                     </li>

@@ -43,6 +43,8 @@ function handleUserAndDataSubmit(e) {
     promo
   });
 }
+let totalPrice = (new Intl.NumberFormat('ru-RU').format(total.price));
+let totalFinalPrice = (new Intl.NumberFormat('ru-RU').format(finalPrice));
 
   return (
     <aside className={`bag-popup ${isOpen && 'bag-popup_opened'}`}>
@@ -62,7 +64,7 @@ function handleUserAndDataSubmit(e) {
           />
         ))}  
       </ul>
-      <p className="bag-popup__sum">Сумма: {total.price} p.</p>
+      <p className="bag-popup__sum">Сумма: {totalPrice} p.</p>
 
       <form className="bag-popup__promocode-container" onSubmit={handlePromoSubmit}>
           <div className="bag-popup__input-and-span">
@@ -77,7 +79,7 @@ function handleUserAndDataSubmit(e) {
           <button className="bag-popup__btn-check-promocode">Применить промокод</button>
       </form>
 
-      {isPromoOk? <span className="bag-popup__promocode-luck-message">Сумма после применения купона: {finalPrice} р.</span> : <span></span>}
+      {isPromoOk? <span className="bag-popup__promocode-luck-message">Сумма после применения купона: {totalFinalPrice} р.</span> : <span></span>}
       {error? <span className="bag-popup__promocode-err-message">{errorMessage}</span> : <span></span>}
 
       <form className="bag-popup__form" onSubmit={handleUserAndDataSubmit}>
@@ -106,8 +108,8 @@ function handleUserAndDataSubmit(e) {
           onChange={handleEmailInputChange}
         />
 
-        <p className="bag-popup__input-sum">Сумма: {total.price} р.</p>
-        <p className="bag-popup__input-sum-after-promocod">Итоговая сумма: {finalPrice} р.</p>
+        <p className="bag-popup__input-sum">Сумма: {totalPrice} р.</p>
+        <p className="bag-popup__input-sum-after-promocod">Итоговая сумма: {totalFinalPrice} р.</p>
 
         <button type="submit" className="bag-popup__button">Заказать</button>
 

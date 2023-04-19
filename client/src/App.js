@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
+import {isMobile} from 'react-device-detect'
 import React from 'react'
 import * as api from './Api'
 import './App.css'
@@ -31,13 +32,55 @@ function App() {
   const [finalPrice, setFinalPrice] = React.useState()
   const [afterPromo, setAfterPromo] = React.useState()
   const [isAdded, setIsAdded] = React.useState(false)
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isResize, setIsResize] = React.useState(false)
+  const [services, setServices] = React.useState({})
+  const [servicesAfterFilter, setServicesAfterFilter] = React.useState({})
+  const [category, setCategory] = React.useState({})
+
+  React.useEffect(() => {
+    getServices()
+  }, [])
+
+  const getServices = () => {
+    api.getServices({
+      })
+      .then(res => {
+        setServices(res)
+        console.log(res)
+        setServicesAfterFilter(res)
+      })
+  } 
+
+  React.useEffect(() => {
+    getServicesCategory()
+  }, [])
+
+  const getServicesCategory = () => {
+    api.getServicesCategory()
+      .then(res => {
+        setCategory(res)
+        console.log(res)
+      })
+  }
+
+  function handleChoseCategory(equipment, subCategory) {
+    return equipment.filter((item) => item.subcategory === subCategory)
+  }
+
+  function getServicesAfterFilter(services, subCategory) {
+    const result = handleChoseCategory(services, subCategory)
+    setServicesAfterFilter(result)
+  }
+
+  function getAllServices() {
+    setServicesAfterFilter(services)
+  }
   
   const handleResize = () => {
     if (window.innerWidth < 1100) {
-      setIsMobile(true)
+      setIsResize(true)
     } else {
-      setIsMobile(false)
+      setIsResize(false)
     }
   }
 
@@ -291,7 +334,11 @@ function getFinalPrice() {
           isBurgerMenuCliked={handleBurgerMenuClick}
           isbagCliked={handleBagClick}
           total={total} 
-          isMobile={isMobile}   
+          isResize={isResize}
+          isMobile={isMobile}
+          services={services}
+          getAllServices={getAllServices}
+          //allServices={allServices}
       />
 
       <Routes>
@@ -308,6 +355,8 @@ function getFinalPrice() {
                 errorMessage={errorMessage}
                 error={error}
                 savedGoods={savedGoods}
+                services={services}
+                getServicesAfterFilter={getServicesAfterFilter}//для сортировки при выборе услуг на главной странице
                 />
               }
           />
@@ -324,7 +373,8 @@ function getFinalPrice() {
                 increment={increment}
                 decrement={decrement}
                 savedGoods={savedGoods}
-                isMobile={isMobile} 
+                isResize={isResize}
+                isMobile={isMobile}
                 />
               }
           />
@@ -338,7 +388,13 @@ function getFinalPrice() {
                 isMenuCliked={handleMenuClick}
                 onClose={closeAllPopups} 
                 savedGoods={savedGoods}
-                isMobile={isMobile} 
+                isResize={isResize}
+                isMobile={isMobile}
+                services={services}
+                servicesAfterFilter={servicesAfterFilter}
+                category={category}
+                getServicesAfterFilter={getServicesAfterFilter}
+                getAllServices={getAllServices}
                 />
               }
           />
@@ -385,6 +441,7 @@ function getFinalPrice() {
           onClose={closeAllPopups} 
           isbagCliked={handleBagClick}
           total={total}
+          getAllServices={getAllServices}
       />
 
       <PopupBag

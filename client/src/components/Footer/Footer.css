@@ -179,3 +179,27 @@
     text-decoration: none;
     color: #fff;
 }
+
+.footer__info-container-li-text {
+    list-style-type: none;
+    color: #fff;
+    margin-bottom: 10px;
+    max-width: 215px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+@media screen and (max-width: 720px) {
+    .footer__info-container-li-text {
+        font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .footer__info-container-li-text {
+        font-size: 10px;
+        max-width: 150px;
+    }
+  } 

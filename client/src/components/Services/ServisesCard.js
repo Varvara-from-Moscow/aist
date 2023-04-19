@@ -14,6 +14,8 @@ function ServicestCard({ card, handleSaveGood, onCardClick, savedGoods }) {
         onCardClick(card);
     }
 
+    let price = (new Intl.NumberFormat('ru-RU').format(card.price));
+
     //const isButtonChanged = card.is_in_bag === 2
     const isButtonChanged = savedGoods.some(item => item.id === card.id)
 
@@ -25,7 +27,7 @@ function ServicestCard({ card, handleSaveGood, onCardClick, savedGoods }) {
             <div className="servicesList__item-down-container">
               <div className="servicesList__item-main-container">
                 <h3 className="servicesList__item-title">{card.name}</h3>
-                <p className="servicesList__item-price">Цена {card.price} р.</p>
+                <p className="servicesList__item-price-span">{price} <span className="servicesList__item-price"> р.</span></p>
               </div>
               {isButtonChanged?
                 <button className="servicesList__item-added-in-bag">&#x2714;</button>

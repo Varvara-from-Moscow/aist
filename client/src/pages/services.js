@@ -6,13 +6,18 @@ import ServicesNav from '../components/Services/ServicesNav'
 import ServisesNavigationList from '../components/Navigation/ServisesNavigationList'
 import './services.css'
 
-function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenuCliked, handleChangeButton}) {
+function Services({isMobile, isResize, savedGoods, 
+  handleSaveGood, isOpen, onClose, isMenuCliked, 
+  handleChangeButton,
+  services, servicesAfterFilter, category,
+  getAllServices, getServicesAfterFilter
+}) {
 
   
     React.useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
-
+/*
     const [services, setServices] = React.useState({})
     const [servicesAfterFilter, setServicesAfterFilter] = React.useState({})
     const [category, setCategory] = React.useState({})
@@ -28,7 +33,7 @@ function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenu
           setServices(res)
           setServicesAfterFilter(res)
         })
-    }  
+    } 
 
     React.useEffect(() => {
       getServicesCategory()
@@ -53,10 +58,10 @@ function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenu
     function getAllServices() {
       setServicesAfterFilter(services)
     }
-
+*/
     return (
       <>
-        {isMobile?
+        {isMobile || isResize?
           <>
             <div className='services__wrapper'>
                 <h3 className='services__title'>Услуги</h3>
@@ -76,7 +81,7 @@ function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenu
                 data={category}
                 isOpen={isOpen}
                 onClose={onClose}
-                handleChoseCategory={getTest}
+                handleChoseCategory={getServicesAfterFilter}
                 services={services}
                 getAllServices={getAllServices}
               />
@@ -89,7 +94,7 @@ function Services({isMobile, savedGoods, handleSaveGood, isOpen, onClose, isMenu
             <div className='services__container'>
                 <ServicesNav
                 data={category}
-                handleChoseCategory={getTest}
+                handleChoseCategory={getServicesAfterFilter}
                 services={services}
                 getAllServices={getAllServices}
                 />

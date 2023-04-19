@@ -3,8 +3,8 @@ import './individualPageOfEquipment.css'
 import React from 'react'
 import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
-
-function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveGood, allProducts, postBackCall, error, errorMessage }) {
+//
+function IndividualPageOfEquipment({ savedGoods, allProducts, handleChangeButton, handleSaveGood, postBackCall, error, errorMessage }) {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,13 +31,13 @@ function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveG
       let { slug } = useParams();
       const good = allProducts.find(f => f.slug === slug)
 
-      //const isButtonChanged = good.is_in_bag === 2
       const isButtonChanged = savedGoods.some(item => item.id === good.id)
 
     function handleAddGood () {
         handleSaveGood(good)
-        handleChangeButton(good)
     }
+
+    let price = (new Intl.NumberFormat('ru-RU').format(good.price));
 
     return (
         <>
@@ -54,7 +54,7 @@ function IndividualPageOfEquipment({ savedGoods, handleChangeButton, handleSaveG
                 <div className='individualPageOfEquipment-description-container'>
                     <p className='individualPageOfEquipment-name'>{good.name}</p>
                     <p className='individualPageOfEquipment-description'>{good.description}</p>
-                    <p className='individualPageOfEquipment-price'>{good.price} р.</p>
+                    <p className='individualPageOfEquipment-price'>{price} р.</p>
                     <div className='individualPageOfEquipment-btn-container'>
                     {isButtonChanged ?
                       <button className='individualPageOfEquipment-btn'>Добавлено</button>

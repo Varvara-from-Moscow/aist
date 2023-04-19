@@ -16,6 +16,8 @@ function Good({changeValue, good, handleDelete, decrement, increment }) {
       decrement(good.id)
     }
 
+    let price = (new Intl.NumberFormat('ru-RU').format(good.total_price));
+
   return (
 
         <li className="bag-popup__good">
@@ -36,7 +38,7 @@ function Good({changeValue, good, handleDelete, decrement, increment }) {
             </div>
 
 
-            <div className="bag-popup__good-price">{good.total_price}</div>
+            <div className="bag-popup__good-price">{price}</div>
             <button className="bag-popup__good-delete-btn" onClick={handleDeleteGood}></button>
           </div>  
 

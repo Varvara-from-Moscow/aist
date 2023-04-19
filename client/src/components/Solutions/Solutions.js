@@ -17,9 +17,14 @@ function Solutions({ data, onSolution, handleChangeButton, savedGoods }) {
     }
   }*/
 
+  /*
+
+  
+  */
+let price = (new Intl.NumberFormat('ru-RU').format(data.price));
+
     function handleClick() {
         onSolution(data)
-        //handleChangeButton(data)
     }
 
 
@@ -38,7 +43,7 @@ function Solutions({ data, onSolution, handleChangeButton, savedGoods }) {
             ))}
             </ul>
             <div className="solutions__offer-price-and-btn-container">
-                <p className="solutions__offer-price">Цена: {data.price}</p>
+                <p className="solutions__offer-price">Цена: <span className="solutions__offer-price-span"> {price}</span></p>
 
                 {isButtonChanged ?
 

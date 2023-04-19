@@ -3,7 +3,32 @@ import './ServicesMain.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ServicesMain() {
+function ServicesMain({services, getServicesAfterFilter}) {
+
+  function getFiterProduct1C() {
+    getServicesAfterFilter(services, "1c");
+  }
+
+  function getFiterProductEgais() {
+    getServicesAfterFilter(services, "egais");
+  }
+
+  function getFiterProductEcp() {
+    getServicesAfterFilter(services, "ecp");
+  }
+
+  function getFiterProductCZ() {
+    getServicesAfterFilter(services, "cz");
+  }
+
+  function getFiterProductOFD() {
+    getServicesAfterFilter(services, "ofd");
+  }
+
+  function getFiterProductMercuriy() {
+    getServicesAfterFilter(services, "fgis");
+  }
+
   return (
       <section className="servicesMain">
         <h2 className="servicesMain__title">Услуги</h2>
@@ -18,7 +43,7 @@ function ServicesMain() {
                     интеграция с товароучетными системами.
                   </p>
                   <Link to="/services">
-                    <button className="servicesMain__container-btn">Подробнее</button>
+                    <button className="servicesMain__container-btn" onClick={getFiterProductCZ}>Подробнее</button>
                   </Link>
                 </div>
             </li>
@@ -31,7 +56,7 @@ function ServicesMain() {
                     ведение учета, проведение инвентаризации, корректировка остатков.
                   </p>
                   <Link to="/services">
-                    <button className="servicesMain__container-btn">Подробнее</button>
+                    <button className="servicesMain__container-btn" onClick={getFiterProductEgais}>Подробнее</button>
                   </Link>
                 </div>
             </li>
@@ -43,7 +68,7 @@ function ServicesMain() {
                     Поставка, установка, настройка, доработка, сопровождение программ компании 1С.
                   </p>
                   <Link to="/services">
-                    <button className="servicesMain__container-btn">Подробнее</button>
+                    <button className="servicesMain__container-btn" onClick={getFiterProduct1C}>Подробнее</button>
                   </Link>  
                 </div>
             </li>
@@ -55,7 +80,7 @@ function ServicesMain() {
                     Подключение, продление
                   </p>
                   <Link to="/services">
-                    <button className="servicesMain__container-btn">Подробнее</button>
+                    <button className="servicesMain__container-btn" onClick={getFiterProductOFD}>Подробнее</button>
                   </Link>
                 </div>  
             </li>
@@ -68,7 +93,7 @@ function ServicesMain() {
                     (Различные торговые площадки).
                   </p>
                   <Link to="/services">
-                    <button className="servicesMain__container-btn">Подробнее</button>
+                    <button className="servicesMain__container-btn" onClick={getFiterProductEcp}>Подробнее</button>
                   </Link>
                 </div>  
             </li>
@@ -80,7 +105,7 @@ function ServicesMain() {
                     Регистрация в системе, ведение учета.
                   </p>
                   <Link to="/services" >
-                    <button className='servicesMain__container-btn'>Подробнее</button>  
+                    <button className='servicesMain__container-btn' onClick={getFiterProductMercuriy}>Подробнее</button>  
                   </Link>
                 </div>
             </li>

@@ -5,7 +5,7 @@ import '../EquipmentList/EquipmentList.css'
 
 function Good({ good, onCardClick, onSave, savedGoods, increment, decrement }) {
 
-
+  let price = (new Intl.NumberFormat('ru-RU').format(good.price));
 
     let { slug } = useParams();
 
@@ -42,7 +42,7 @@ function Good({ good, onCardClick, onSave, savedGoods, increment, decrement }) {
         </div>
 
         <div className="equipmentList__item-wrapper">      
-          <p className="equipmentList__item-price">Цена {good.price} р.</p>
+          <p className="equipmentList__item-price-span">{price}<span className="equipmentList__item-price">р.</span> </p>
         <div className="equipmentList__item-bag-container">
             <button className="equipmentList__item-bag" onClick={handleBagClick}></button>
           <div className="equipmentList__item-increament-container">

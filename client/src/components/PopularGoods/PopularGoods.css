@@ -144,10 +144,11 @@ margin-top: 120px;
 }
 .popular-goods__container-price {
     font-style: normal;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-size: 14px;
     line-height: 16px; 
     color: #181818;
+    font-weight: 500;
 }
 .popular-goods__container-btn {
     display: flex;
