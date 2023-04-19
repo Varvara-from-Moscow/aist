@@ -5,8 +5,8 @@ import EquipmentNavigationItem from './EquipmentNavigationItem'
 
 function EquipmentNavigationList({isOpen, onClose, data, handleChoseCategory, equipment, getAllEquipment}) {
 
-  function handleGetAllEquipment() {
-    getAllEquipment()
+function handleGetAllEquipment() {
+  getAllEquipment()
 }
 
   return (

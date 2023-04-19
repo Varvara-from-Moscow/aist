@@ -98,6 +98,7 @@ let totalFinalPrice = (new Intl.NumberFormat('ru-RU').format(finalPrice));
           name="tel"
           type="tel"
           minLength="11"
+          placeholder="+7(***)***-**-**"
           onChange={handleTelInputChange}
         />
         <span className="bag-popup__input-span">Email</span>
