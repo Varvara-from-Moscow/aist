@@ -50,7 +50,12 @@ function Slider() {
               
               <div className='slide-container-btn'>
                 {Array.from({length: 2}).map((item, index) => (
-                  <button onClick={slideIndex === index + 1 ? getNext : getPrev} className={slideIndex === index + 1 ? 'btn-slide btn-slide_active' : 'btn-slide'}></button>
+                  <button onClick={slideIndex === index + 1 ? getNext : getPrev} 
+                    className={slideIndex === index + 1 ? 
+                      'btn-slide btn-slide_active' 
+                      : 
+                      'btn-slide'}>
+                  </button>
                 ))}
               </div>
 

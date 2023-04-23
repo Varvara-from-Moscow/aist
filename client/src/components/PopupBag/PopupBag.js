@@ -6,8 +6,10 @@ function PopupBag({changeValue, handleChangeButtonAfterDeletefromBag, finalPrice
 
   const [promoInput, setPromoInput] = React.useState('')
   const [nameInput, setNameInput] = React.useState('')
-  const [nameTel, setTelInput] = React.useState()
+  const [nameTel, setTelInput] = React.useState('+7')
   const [nameEmail, setEmailInput] = React.useState('')
+  const [errorTelMessage, setErrorTelMessage] = React.useState('')
+  const [isErrorTel, setIsErrorTel] = React.useState(false)
   
 
 //Все по первой форме (запрос процента по промокоду)
@@ -24,9 +26,36 @@ function handlePromoSubmit(e) {
 function handleNameInputChange(e) {
   setNameInput(e.target.value);
 }
-
+/*
 function handleTelInputChange(e) {
   setTelInput(e.target.value);
+}
+*/
+
+function handleTelInputChange(e) {
+
+  if (e.target.value.slice(0,2) === '+7') {
+    setTelInput(e.target.value.replace(/\D$/, '')
+  )
+  const letter = /\D/g
+   if (letter.test(e.nativeEvent.data)) {
+    setTelInput(e.target.value.replace(/.{0,}/, '+7')
+    )
+    console.log(e.nativeEvent.data)
+      setIsErrorTel(true)
+      setErrorTelMessage('Вводите только цифры, без букв и знаков')
+      setTimeout(function(){
+        setErrorTelMessage('');
+      }, 2000)
+   }
+  }else {
+    setTelInput(e.target.value.replace(/.{0,}/, '+7'))
+
+  }if (nameTel.length > 12) {
+    setIsErrorTel(true)
+    setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
+    console.log('Введите числа, без пробелов или буквенных значений')
+  } 
 }
 
 function handleEmailInputChange(e) {
@@ -97,10 +126,11 @@ let totalFinalPrice = (new Intl.NumberFormat('ru-RU').format(finalPrice));
           className="bag-popup__input"
           name="tel"
           type="tel"
-          minLength="11"
-          placeholder="+7(***)***-**-**"
+          minLength="12"
           onChange={handleTelInputChange}
+          value={nameTel}
         />
+        {isErrorTel? <span className="bag-popup__promocode-err-message">{errorTelMessage}</span>:<span></span>}
         <span className="bag-popup__input-span">Email</span>
         <input 
           className="bag-popup__input"

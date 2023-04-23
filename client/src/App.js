@@ -46,7 +46,6 @@ function App() {
       })
       .then(res => {
         setServices(res)
-        console.log(res)
         setServicesAfterFilter(res)
       })
   } 
@@ -59,7 +58,6 @@ function App() {
     api.getServicesCategory()
       .then(res => {
         setCategory(res)
-        console.log(res)
       })
   }
 
@@ -292,7 +290,6 @@ function getFinalPrice() {
       phone_number:userData.tel,
     })
       .then(res => {
-        console.log(res)
         setLuckyFormPopapOpen(true)
       })
       .catch((err) => {

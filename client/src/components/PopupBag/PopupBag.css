@@ -410,7 +410,10 @@
 }
 
 .bag-popup__promocode-err-message {
-    margin-bottom: 50px;
-    margin-top: 0;
-    color: #DF5330;
-}
+    color: rgb(227, 61, 61);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 10px;
+ }

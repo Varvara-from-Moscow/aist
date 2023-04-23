@@ -26,6 +26,7 @@ line-height: 82px;
 
       <section className="promo">
         <h1 className='promo__title'>АИСТ</h1>
+        <h3 className='promo__title-sub'>Автоматизация.Информационные Системы.Технологии.</h3>
         <h2 className="promo__sub-title">Торговое оборудование и автоматизация в Ставропольском крае</h2>
 
         <Carousel></Carousel>

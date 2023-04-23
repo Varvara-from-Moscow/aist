@@ -85,9 +85,10 @@
 .solutions__offer-title {
     margin-top: 0;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
     line-height: 21px;
+    color: #181818;
 }
 
 @media screen and (max-width: 550px) {
