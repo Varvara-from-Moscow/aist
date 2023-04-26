@@ -1,74 +1,81 @@
 import Pic from '../../images/contactpic.png'
-//import { useForm } from "react-hook-form"
 import './ContactForm.css'
 import React from 'react'
 
-function ContactForm({postBackCall, error, errorMessage}) {
+function ContactForm({showLoading, postBackCall, error, errorMessage}) {
 
   const [errorTelMessage, setErrorTelMessage] = React.useState('')
   const [isErrorTel, setIsErrorTel] = React.useState(false)
 
+  const [errorNameMessage, setErrorNameMessage] = React.useState('')
+  const [isErrorName, setIsErrorName] = React.useState(false)
+
   const [name, setName] = React.useState('')
   const [tel, setTel] = React.useState('+7')
 
+  //const [isInputDisabled, setIsInputDisabled] = React.useState(true)
+  const [isFormValid, setIsFormValid] = React.useState(false)
+/*
+  const handleInputDisabled = () => {
+    setIsInputDisabled(!isInputDisabled)
+  }*/
 
-  /*
-        setIsErrorTel(true)
-      setErrorTel('Вводите только цифры, без букв и знаков')
-  */
+
+    React.useEffect(() => {
+      handleValideCheck()
+    },[name, tel])
+
+    function handleValideCheck() {
+      if ((tel.length === 12) && (name.length > 0) && (isErrorName  === false) && (isErrorTel === false)) {
+        setIsFormValid(true)
+        console.log(isErrorTel, isErrorName, 'valid')
+      } else {
+        setIsFormValid(false)
+        console.log(isErrorTel, isErrorName)
+      }
+    }  
 
   function handleNameChange(e) {
-    setName(e.target.value);
+    setIsErrorName(false)
+    if (e.target.value.length < 2) {
+      setIsErrorName(true)
+      setErrorNameMessage('Введите ваше имя')
+      setTimeout(function(){
+        setErrorNameMessage('');
+      }, 2000)
+    } else {
+      setIsErrorName(false)
+      setErrorNameMessage('')
+    }
+    setName(e.target.value)
   }
 
   function handleTelChange(e) {
-
+    setIsErrorTel(false)
     if (e.target.value.slice(0,2) === '+7') {
-    setTel(e.target.value.replace(/\D$/, '')
-    )
+    setTel(e.target.value.replace(/\D$/, ''))
     const letter = /\D/g
-     if (letter.test(e.nativeEvent.data)) {
+      if (letter.test(e.nativeEvent.data)) {
         setTel(e.target.value.replace(/.{0,}/, '+7')
       )
-      console.log(e.nativeEvent.data)
+      //console.log(e.nativeEvent.data)
         setIsErrorTel(true)
         setErrorTelMessage('Вводите только цифры, без букв и знаков')
         setTimeout(function(){
           setErrorTelMessage('');
         }, 2000)
      }
-      /*  if (e.target.value === '+7') {
-          setIsErrorTel(false)
-          setErrorTelMessage('')
-        }*/
-    }
-    else {
-      setTel(e.target.value.replace(/.{0,}/, '+7')
-      )
-    }
+     
+    } else {
+      setTel(e.target.value.replace(/.{0,}/, '+7'))
+    } 
 
-    if (tel.length > 12) {
+    if (tel.length > 11) {
       setIsErrorTel(true)
       setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
       console.log('Введите числа, без пробелов или буквенных значений')
     } 
   }
-
-  /*
-  function handleTelChange(e) {
-    setTel("+7" + 
-    e.target.value.replace(/\D/g, '')
-    );
-    console.log(tel)
-  }
-
-    function handleTelChange(e) {
-    setTel(e.target.value);
-  }
-              var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
-            formattedInputValue = input.value = firstSymbols + " ";
-  
-  */
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -76,6 +83,9 @@ function ContactForm({postBackCall, error, errorMessage}) {
         name,
         tel,
     });
+    setTel("+7")
+    handleValideCheck()
+    //handleInputDisabled();
   } 
 
 
@@ -91,7 +101,10 @@ function ContactForm({postBackCall, error, errorMessage}) {
               minLength="1"
               className="contactForm__input" 
               onChange={handleNameChange}
+              //disabled={!isInputDisabled}
           /> 
+          {isErrorName? <span className="contactForm__err-span">{errorNameMessage}</span>:<span></span>}
+
           <span className="contactForm__input-span">Ваш номер телефона</span>
           <input
               required
@@ -101,10 +114,19 @@ function ContactForm({postBackCall, error, errorMessage}) {
               className="contactForm__input"
               value={tel}
               onChange={handleTelChange}
+              //disabled={!isInputDisabled}
           ></input>
           {error? <span className="contactForm__err-span">{errorMessage}</span>:<span></span>}
           {isErrorTel? <span className="contactForm__err-span">{errorTelMessage}</span>:<span></span>} 
-          <button type="submit" className="contactForm__btn">ЗАКАЗАТЬ ЗВОНОК</button>
+           
+          <button 
+            type="submit" 
+            disabled={!isFormValid}
+            //onClick={handleInputDisabled} 
+            className={`contactForm__btn ${isFormValid && 'contactForm__btn_active'}`}>
+            {showLoading ? 'Заявка отправляется...' : 'ЗАКАЗАТЬ ЗВОНОК'}
+          </button>
+        
         </form>
         <img src={Pic} className="contactForm__pic"></img>
 

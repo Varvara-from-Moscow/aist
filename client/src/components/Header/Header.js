@@ -16,7 +16,7 @@ function Header({
       <header className="header">
         <Link className='header-logo' to="/">
           <img src={logo} className="header-logo-img" alt="logo" />
-          <p>Главная</p>
+          <p className='header-logo-link'>Главная</p>
         </Link>
         
         {isResize || isMobile?

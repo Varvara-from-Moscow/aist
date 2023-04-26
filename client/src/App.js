@@ -36,6 +36,7 @@ function App() {
   const [services, setServices] = React.useState({})
   const [servicesAfterFilter, setServicesAfterFilter] = React.useState({})
   const [category, setCategory] = React.useState({})
+  const [showLoading, setShowLoading] = React.useState(false)
 
   React.useEffect(() => {
     getServices()
@@ -164,7 +165,6 @@ function App() {
       .then(res => {
         setPromo(res)
         setDiscount(res.discount)
-        console.log(res)
         setIsPromoOk(true)
         getPriceAfterPromoCode()
       })
@@ -183,6 +183,7 @@ function App() {
   }
 
   function postUserDataAndOrder(userData){
+    setShowLoading(true)
     api.postUserDataAndOrder({
       phone_order:userData.nameTel,
       first_name:userData.nameInput,
@@ -227,6 +228,9 @@ function App() {
         }, 5000)
       }
     })
+    .finally(() => {
+      setShowLoading(false)
+    });
   }
 
   function getPriceAfterPromoCode() { 
@@ -285,6 +289,7 @@ function getFinalPrice() {
   }
 
   const postBackCall = (userData) => {
+    setShowLoading(true)
     api.postBackCall({
       name:userData.name,
       phone_number:userData.tel,
@@ -293,13 +298,19 @@ function getFinalPrice() {
         setLuckyFormPopapOpen(true)
       })
       .catch((err) => {
-        console.log(err)
         setError(true)
-        setErrorMessage('Ошибка, проверьте номер телефона, он должен начинаться с +7 и содержать не менее 11 символов')
-        setTimeout(function(){
-          setErrorMessage('');
-        }, 5000)
+        if (err.status === 406 || 11000 ) {
+          setErrorMessage('Вы уже отправили заявку на обратный звонок')
+          setTimeout(function(){
+            setErrorMessage('');
+          }, 5000)
+        }else{
+          setErrorMessage('На сервере произошла ошибка.')
+        }
       })
+      .finally(() => {
+        setShowLoading(false)
+      });
   }
 
   function handleCardClick(card) {
@@ -335,7 +346,6 @@ function getFinalPrice() {
           isMobile={isMobile}
           services={services}
           getAllServices={getAllServices}
-          //allServices={allServices}
       />
 
       <Routes>
@@ -349,6 +359,7 @@ function getFinalPrice() {
                 complects={complects}
                 handleSaveGood={handleSaveGood}
                 postBackCall={postBackCall}
+                showLoading={showLoading}
                 errorMessage={errorMessage}
                 error={error}
                 savedGoods={savedGoods}
@@ -458,6 +469,7 @@ function getFinalPrice() {
           postUserDataAndOrder={postUserDataAndOrder}
           finalPrice={finalPrice}
           changeValue={changeValue}
+          showLoading={showLoading}
       />
       <PopapLuckySendForm
       onClose={closeAllPopups}

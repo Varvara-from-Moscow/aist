@@ -53,19 +53,20 @@
     border: none;
     border-bottom: 1px solid #000000;
     background-color: transparent;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     height: 30px;
 }
-
+/*
 .contactForm__input:last-of-type {
     margin-bottom: 0;
 }
-
+*/
 .contactForm__input-span {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 150%; 
+    margin-top: 30px;
 }
 
 @media screen and (max-width: 720px) {
@@ -82,14 +83,10 @@
     font-size: 14px;
     line-height: 16px;
     border-radius: 7px;
-    cursor: pointer;
+    
     transition: 0.3s ease;
     margin-top: 30px;
-}
-
-.contactForm__btn:hover {
-    opacity: 0.5;
-    transition: 0.3s ease;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 720px) {
@@ -146,3 +143,15 @@
      line-height: 16px;
      margin-top: 10px;
   }
+
+  .contactForm__btn_active {
+    background-color: #DF5330;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .contactForm__btn_active:hover {
+    opacity: 0.5;
+    transition: 0.3s ease;
+}

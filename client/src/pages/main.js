@@ -8,7 +8,7 @@ import PopularGoods from '../components/PopularGoods/PopularGoods'
 import Certificates from '../components/Certificates/Certificates' 
 import Slider from '../components/Slider/Slider'
 
-function Main({services, getServicesAfterFilter, savedGoods, handleChangeButton, onButton, popular, complects, handleSaveGood, postBackCall, value, error, errorMessage }) {
+function Main({showLoading, services, getServicesAfterFilter, savedGoods, handleChangeButton, onButton, popular, complects, handleSaveGood, postBackCall, value, error, errorMessage }) {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -35,6 +35,7 @@ function Main({services, getServicesAfterFilter, savedGoods, handleChangeButton,
             postBackCall={postBackCall}
             errorMessage={errorMessage}
             error={error}
+            showLoading={showLoading}
             />
             <PopularGoods
             popular={popular}

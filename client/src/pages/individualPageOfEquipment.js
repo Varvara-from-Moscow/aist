@@ -5,6 +5,7 @@ import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
 //
 function IndividualPageOfEquipment({ savedGoods, allProducts, handleChangeButton, handleSaveGood, postBackCall, error, errorMessage }) {
+  //const [allProducts, setAllProducts] = React.useState({})
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,6 +28,7 @@ function IndividualPageOfEquipment({ savedGoods, allProducts, handleChangeButton
             setAllProducts(res)
           })
       }*/
+
 
       let { slug } = useParams();
       const good = allProducts.find(f => f.slug === slug)

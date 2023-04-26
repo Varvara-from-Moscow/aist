@@ -36,16 +36,3 @@ line-height: 82px;
 }
 
 export default Promo;
-
-/*
-<div className="promo__img">
-            <div className="promo__btn-container">
-            <Link className='promo__btn-link' to="/equipment">
-              <button className="promo__btn">Товары</button>
-            </Link>
-            <Link className='promo__btn-link' to="/services">    
-                <button className="promo__btn">Услуги</button>
-            </Link>
-            </div>
-        </div>
- */

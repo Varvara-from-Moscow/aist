@@ -2,7 +2,7 @@ import React from 'react'
 import './PopupBag.css'
 import Good from './Good/Good'
 
-function PopupBag({changeValue, handleChangeButtonAfterDeletefromBag, finalPrice, postUserDataAndOrder, error, errorMessage, promo, isPromoOk, isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
+function PopupBag({showLoading, changeValue, handleChangeButtonAfterDeletefromBag, finalPrice, postUserDataAndOrder, error, errorMessage, promo, isPromoOk, isOpen, onClose, savedGoods, handleDelete, increment, decrement, total, checkPromo}) {
 
   const [promoInput, setPromoInput] = React.useState('')
   const [nameInput, setNameInput] = React.useState('')
@@ -10,8 +10,24 @@ function PopupBag({changeValue, handleChangeButtonAfterDeletefromBag, finalPrice
   const [nameEmail, setEmailInput] = React.useState('')
   const [errorTelMessage, setErrorTelMessage] = React.useState('')
   const [isErrorTel, setIsErrorTel] = React.useState(false)
+  const [errorNameMessage, setErrorNameMessage] = React.useState('')
+  const [isErrorName, setIsErrorName] = React.useState(false)
+
+  const [isFormValid, setIsFormValid] = React.useState(false)
   
 
+  function handleValideCheck() {
+    if ((finalPrice > 1) && (savedGoods.length > 0) && (nameTel.length === 12) && (nameInput.length > 0) && (isErrorName  === false) && (isErrorTel === false)) {
+      setIsFormValid(true)
+    } else {
+      setIsFormValid(false)
+    }
+  }  
+
+  React.useEffect(() => {
+    handleValideCheck()
+  },[nameInput, nameTel, savedGoods, finalPrice])
+  
 //Все по первой форме (запрос процента по промокоду)
 function handlePromoInputChange(e) {
   setPromoInput(e.target.value);
@@ -24,14 +40,20 @@ function handlePromoSubmit(e) {
 
 ///Вторая форма - отправка данных клиента, получение айди заказа и отправда с айди товаров и цены
 function handleNameInputChange(e) {
+  setIsErrorName(false)
+  if (e.target.value.length < 2) {
+    setIsErrorName(true)
+    setErrorNameMessage('Введите ваше имя')
+    setTimeout(function(){
+      setErrorNameMessage('');
+    }, 2000)
+  } else {
+    setIsErrorName(false)
+    setErrorNameMessage('')
+  }
   setNameInput(e.target.value);
 }
 /*
-function handleTelInputChange(e) {
-  setTelInput(e.target.value);
-}
-*/
-
 function handleTelInputChange(e) {
 
   if (e.target.value.slice(0,2) === '+7') {
@@ -56,6 +78,34 @@ function handleTelInputChange(e) {
     setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
     console.log('Введите числа, без пробелов или буквенных значений')
   } 
+}*/
+
+function handleTelInputChange(e) {
+  setIsErrorTel(false)
+  if (e.target.value.slice(0,2) === '+7') {
+    setTelInput(e.target.value.replace(/\D$/, ''))
+  const letter = /\D/g
+    if (letter.test(e.nativeEvent.data)) {
+      setTelInput(e.target.value.replace(/.{0,}/, '+7')
+    )
+    //console.log(e.nativeEvent.data)
+      setIsErrorTel(true)
+      setErrorTelMessage('Вводите только цифры, без букв и знаков')
+      setTimeout(function(){
+        setErrorTelMessage('');
+      }, 2000)
+   }
+   
+  } else {
+    setTelInput(e.target.value.replace(/.{0,}/, '+7'))
+  } 
+
+  if (nameTel.length > 11) {
+    setIsErrorTel(true)
+    setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
+    console.log('Введите числа, без пробелов или буквенных значений')
+  } 
+
 }
 
 function handleEmailInputChange(e) {
@@ -142,7 +192,12 @@ let totalFinalPrice = (new Intl.NumberFormat('ru-RU').format(finalPrice));
         <p className="bag-popup__input-sum">Сумма: {totalPrice} р.</p>
         <p className="bag-popup__input-sum-after-promocod">Итоговая сумма: {totalFinalPrice} р.</p>
 
-        <button type="submit" className="bag-popup__button">Заказать</button>
+        <button 
+          type="submit" 
+          className={`bag-popup__button ${isFormValid && 'bag-popup__button_active'}`}
+          disabled={!isFormValid}>
+          {showLoading ? 'Заявка отправляется...' : 'Заказать'}
+        </button>
 
       </form>
 
