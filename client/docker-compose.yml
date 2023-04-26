@@ -8,7 +8,7 @@ services:
       - ./.env
 
   web:
-    image: valliv2007/aisbackend
+    image: valliv2007/aistbackend
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,7 +19,7 @@ services:
       - ./.env
 
   frontend:
-    image: valliv2007/aisfrontend
+    image: valliv2007/aistfrontend
     volumes:
       - ../frontend/:/app/result_build/
 
