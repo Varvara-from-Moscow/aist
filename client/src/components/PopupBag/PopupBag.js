@@ -14,7 +14,16 @@ function PopupBag({showLoading, changeValue, handleChangeButtonAfterDeletefromBa
   const [isErrorName, setIsErrorName] = React.useState(false)
 
   const [isFormValid, setIsFormValid] = React.useState(false)
-  
+  const [isPromoValid, setIsPromoValid] = React.useState(false)
+
+
+React.useEffect(() => {
+  if(promoInput) {
+    setIsPromoValid(true)
+  }else{
+    setIsPromoValid(false)
+  }
+}, [promoInput])
 
   function handleValideCheck() {
     if ((finalPrice > 1) && (savedGoods.length > 0) && (nameTel.length === 12) && (nameInput.length > 0) && (isErrorName  === false) && (isErrorTel === false)) {
@@ -145,17 +154,24 @@ let totalFinalPrice = (new Intl.NumberFormat('ru-RU').format(finalPrice));
       </ul>
       <p className="bag-popup__sum">Сумма: {totalPrice} p.</p>
 
-      <form className="bag-popup__promocode-container" onSubmit={handlePromoSubmit}>
+      <form 
+        className="bag-popup__promocode-container" 
+        onSubmit={handlePromoSubmit}>
           <div className="bag-popup__input-and-span">
             <span className="bag-popup__promocode-span">Промокод (При наличии)</span>
             <input 
               className="bag-popup__input-promocode"
               name="promoInput"
               type="text"
+              minLength="1"
               onChange={handlePromoInputChange}
             ></input>
           </div>
-          <button className="bag-popup__btn-check-promocode">Применить промокод</button>
+          <button 
+            className="bag-popup__btn-check-promocode"
+            disabled={!isPromoValid}>
+            Применить промокод
+          </button>
       </form>
 
       {isPromoOk? <span className="bag-popup__promocode-luck-message">Сумма после применения купона: {totalFinalPrice} р.</span> : <span></span>}

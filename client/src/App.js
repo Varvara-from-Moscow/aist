@@ -168,18 +168,18 @@ function App() {
         setIsPromoOk(true)
         getPriceAfterPromoCode()
       })
-      .catch((err) => {
-        console.log(err)
+      .catch((error) => {
+        console.log(error)
         setError(true)
-        if (err.status === 400 || 404 ) {
+        if (error.match(404)) {
           setErrorMessage('Такого купона не существует или истек срок его действия.')
-          setTimeout(function(){
-            setErrorMessage('');
-          }, 5000)
         }else{
-          setErrorMessage('На сервере произошла ошибка.')
+          setErrorMessage('Произошла ошибка, попробуйте еще раз')
         }
       })
+      .finally(() => {
+        deleteErrorMessage()
+      });
   }
 
   function postUserDataAndOrder(userData){
@@ -213,23 +213,17 @@ function App() {
       setPromo({})
       setIsAdded(false)
     })
-    .catch((err) => {
-      console.log(err)
+    .catch((error) => {
       setError(true)
-      if (err.status === 400 || 402) {
+      if (error.match(400)) {
         setErrorMessage('Ошибка с запросом');
-        setTimeout(function(){
-          setErrorMessage('');
-        }, 3000)
       } else {
-        setErrorMessage('На сервере произошла ошибка.')
-        setTimeout(function(){
-          setErrorMessage('');
-        }, 5000)
+        setErrorMessage('На сервере произошла ошибка')
       }
     })
     .finally(() => {
       setShowLoading(false)
+      deleteErrorMessage()
     });
   }
 
@@ -297,19 +291,19 @@ function getFinalPrice() {
       .then(res => {
         setLuckyFormPopapOpen(true)
       })
-      .catch((err) => {
+      .catch((error) => {
         setError(true)
-        if (err.status === 406 || 11000 ) {
+        if (error.match(406)) {
           setErrorMessage('Вы уже отправили заявку на обратный звонок')
-          setTimeout(function(){
-            setErrorMessage('');
-          }, 5000)
+        }else if (error.match(400)){
+          setErrorMessage('Введен некорректный номер телефона')
         }else{
-          setErrorMessage('На сервере произошла ошибка.')
+          setErrorMessage('Произошла ошибка, попробуйте еще раз')
         }
       })
       .finally(() => {
         setShowLoading(false)
+        deleteErrorMessage()
       });
   }
 
@@ -334,6 +328,12 @@ function getFinalPrice() {
     setIsMenuOpen(false)
     setIsBagOpen(false)
     setLuckyFormPopapOpen(false)
+  }
+
+  function deleteErrorMessage(){
+    setTimeout(function(){
+      setErrorMessage('');
+    }, 3000)
   }
 
   return (
