@@ -216,7 +216,7 @@ function App() {
     .catch((error) => {
       setError(true)
       if (error.match(400)) {
-        setErrorMessage('Ошибка с запросом');
+        setErrorMessage('Введены неверные данные');
       } else {
         setErrorMessage('На сервере произошла ошибка')
       }

@@ -163,7 +163,7 @@ export const getServicesCategory = (
 }; 
 
 export const checkPromo = (promoCode) => {
-  return fetch(`${BASE_URL}/cupons/${promoCode}`, 
+  return fetch(`${BASE_URL}/cupons/${promoCode}/`, 
   {
   method: 'GET',
   headers: {
