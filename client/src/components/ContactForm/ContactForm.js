@@ -54,11 +54,10 @@ function ContactForm({showLoading, postBackCall, error, errorMessage}) {
     setIsErrorTel(false)
     if (e.target.value.slice(0,2) === '+7') {
     setTel(e.target.value.replace(/\D$/, ''))
-    const letter = /\D/g
-      if (letter.test(e.nativeEvent.data)) {
-        setTel(e.target.value.replace(/.{0,}/, '+7')
-      )
-      //console.log(e.nativeEvent.data)
+    const letter = /\D/
+      if (letter.test(e.nativeEvent.data) && e.nativeEvent.data) {
+        setTel(e.target.value.replace(/.{0,}/, '+7'))
+        //console.log(e.nativeEvent.data)
         setIsErrorTel(true)
         setErrorTelMessage('Вводите только цифры, без букв и знаков')
         setTimeout(function(){
@@ -70,7 +69,7 @@ function ContactForm({showLoading, postBackCall, error, errorMessage}) {
       setTel(e.target.value.replace(/.{0,}/, '+7'))
     } 
 
-    if (tel.length > 11) {
+    if (tel.length > 11 && e.nativeEvent.data) {
       setIsErrorTel(true)
       setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
       console.log('Введите числа, без пробелов или буквенных значений')

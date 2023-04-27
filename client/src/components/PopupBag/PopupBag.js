@@ -94,7 +94,7 @@ function handleTelInputChange(e) {
   if (e.target.value.slice(0,2) === '+7') {
     setTelInput(e.target.value.replace(/\D$/, ''))
   const letter = /\D/g
-    if (letter.test(e.nativeEvent.data)) {
+    if (letter.test(e.nativeEvent.data) && e.nativeEvent.data) {
       setTelInput(e.target.value.replace(/.{0,}/, '+7')
     )
     //console.log(e.nativeEvent.data)
@@ -109,7 +109,7 @@ function handleTelInputChange(e) {
     setTelInput(e.target.value.replace(/.{0,}/, '+7'))
   } 
 
-  if (nameTel.length > 11) {
+  if (nameTel.length > 11 && e.nativeEvent.data) {
     setIsErrorTel(true)
     setErrorTelMessage('Вы ввели более 12 символов, введите не более 12 символов')
     console.log('Введите числа, без пробелов или буквенных значений')
