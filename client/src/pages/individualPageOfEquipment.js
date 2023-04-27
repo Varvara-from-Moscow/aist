@@ -5,7 +5,6 @@ import * as api from '../Api'
 import { useParams, useNavigate } from 'react-router-dom'
 //
 function IndividualPageOfEquipment({ savedGoods, allProducts, handleChangeButton, handleSaveGood, postBackCall, error, errorMessage }) {
-  //const [allProducts, setAllProducts] = React.useState({})
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,31 +14,17 @@ function IndividualPageOfEquipment({ savedGoods, allProducts, handleChangeButton
   function goBack() {
     navigate(-1);
 }
-/*
-    const [allProducts, setAllProducts] = React.useState({})
 
-    React.useEffect(() => {
-        getAllProducts()
-      }, [])
-    
-      const getAllProducts = () => {
-        api.getAllProducts()
-          .then(res => {
-            setAllProducts(res)
-          })
-      }*/
+  let { slug } = useParams();
+  const good = allProducts.find(f => f.slug === slug)
 
+  const isButtonChanged = savedGoods.some(item => item.id === good.id)
 
-      let { slug } = useParams();
-      const good = allProducts.find(f => f.slug === slug)
+  function handleAddGood () {
+    handleSaveGood(good)
+  }
 
-      const isButtonChanged = savedGoods.some(item => item.id === good.id)
-
-    function handleAddGood () {
-        handleSaveGood(good)
-    }
-
-    let price = (new Intl.NumberFormat('ru-RU').format(good.price));
+  let price = (new Intl.NumberFormat('ru-RU').format(good.price));
 
     return (
         <>
